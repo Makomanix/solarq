@@ -1,2 +1,4 @@
 class UserQuestionsController < ApplicationController
+
+
 end

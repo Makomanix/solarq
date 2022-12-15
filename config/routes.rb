@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
     # route to test your configuration
-  get '/hello', to: 'application#hello_world'
+  
+    resources :users, only: [:index, :show, :create, :destroy, :update]
+    resources :solar_objects, only: [:index, :show]
+    resources :questions, only: [:index]
+    resources :user_questions, only: [:index, :create]
+
+    post "/login", to: "sessions#create"
+    delete "/logout", to: "sesssions#destroy"
+
 end

@@ -8,10 +8,10 @@ Question.destroy_all
 UserQuestion.destroy_all
 
 puts "Creating Users"
-User.create(username: "5th Grader", password: "12345", score: 0, high_score: 0 )
+User.create(username: "astro", password: "12345", email:"astro@astro.com", favorite_planet: "Mars", score: 0, high_score: 0 )
 
 puts "Creating Solar_Objects"
-SolarObject.create(name: "The Sun", isPlanet: false, isMoon: false, isOther: false)
+SolarObject.create(name: "The Sun", isPlanet: false, isMoon: false, isOther: true)
 SolarObject.create(name: "Mercury", isPlanet: true, isMoon: false, isOther: false)
 SolarObject.create(name: "Venus", isPlanet: true, isMoon: false, isOther: false)
 SolarObject.create(name: "Earth", isPlanet: true, isMoon: false, isOther: false)
@@ -24,7 +24,13 @@ SolarObject.create(name: "Pluto", isPlanet: false, isMoon: false, isOther: true)
 SolarObject.create(name: "Luna", isPlanet: false, isMoon: true, isOther: false)
 SolarObject.create(name: "Phobos", isPlanet: false, isMoon: true, isOther: false)
 SolarObject.create(name: "Deimos", isPlanet: false, isMoon: true, isOther: false)
+SolarObject.create(name: "Ganymede", isPlanet: false, isMoon: true, isOther: false)
+SolarObject.create(name: "Deimos", isPlanet: false, isMoon: true, isOther: false)
 SolarObject.create(name: "Asteroid Belt", isPlanet: false, isMoon: false, isOther: true)
+SolarObject.create(name: "Oort Clout", isPlanet: false, isMoon: false, isOther: true)
+SolarObject.create(name: "Kuiper Belt", isPlanet: false, isMoon: false, isOther: true)
+SolarObject.create(name: "Halley's Comet", isPlanet: false, isMoon: false, isOther: true)
+
 
 puts "Creating Questions"
 Question.create(query: "What is the age of the sun?", difficulty: 1, answer: "4.6 Billion Years", wrong1: "5.6 billion years", wrong2: "6.6 billion years", wrong3: "3.9 Billion Years", hint: "Not much older than the Earth", solar_object_id: 1)
