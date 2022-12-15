@@ -62,6 +62,7 @@ export default function Login() {
                 <button>Login!</button>
                 <NavLink>Sign Up Here</NavLink>
             </form>
+            {errors? <div>{errors}</div> : null}
         </div>
-    )
+    );
 }
