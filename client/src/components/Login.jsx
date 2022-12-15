@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react";
 import {useNavigate, NavLink} from "react-router-dom";
-import About from "./About";
+
 
 export default function Login() {
 
@@ -13,7 +13,7 @@ export default function Login() {
         if (currentUser) {
             navigate("/")
         }
-    }, []);
+    }, [navigate]);
 
     const { username, password } = formData;
 
@@ -54,13 +54,14 @@ export default function Login() {
 
     return (
         <div>
+            <button onClick={navigate('/About')}>About</button>
             <form onSubmit={onSubmit}>
                 <label>Username:</label>
                 <input type='username' name='username' value={username} onChange={handleChange}/>
                 <label>Password:</label>
                 <input type='password' name='password' value={password} onChange={handleChange} />
                 <button>Login!</button>
-                <NavLink>Sign Up Here</NavLink>
+                <NavLink onClick={handleClick}>Sign Up Here</NavLink>
             </form>
             {errors? <div>{errors}</div> : null}
         </div>

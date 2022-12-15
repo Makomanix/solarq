@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 
 const emptyForm ={
-    username: ""
+    username: "",
+    email: "",
+    favorite_planet: ""
 }
 
 export default function SignUp({ users, setUsers}) { 
