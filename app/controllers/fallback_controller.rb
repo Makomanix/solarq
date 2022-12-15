@@ -1,0 +1,2 @@
+class FallbackController < ApplicationController
+end
