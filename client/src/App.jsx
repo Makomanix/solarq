@@ -1,19 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import SolarObjectContainer from './SolarObjectContainer';
+import About from './components/About';
 
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [ users, setUsers ] = useState([])
 
   useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
+    fetch(`/users`)
+    .then((res) => res.json())
+    .then((users) => setUsers(users))
+  },[setUsers])
 
   return (
     <div className="App">
-      <h1>Page Count: {count}</h1>
+      <Routes>
+        <Route path='/' element={<SolarObjectContainer />} />
+        <Route path='/login' element={<Login users={users} setUsers={setUsers}/>}/>
+        <Route path='/sign_up' element={<SignUp />} />
+        <Route path='/about' element={<About />} />
+      </Routes>
     </div>
   );
 }
