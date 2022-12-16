@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
-import SolarObjectContainer from './components/SolarObjectContainer';
 import About from './components/About';
+import SolarObjectContainer from './components/SolarObjectContainer';
 import UserContainer from './components/UserContainer';
 
 

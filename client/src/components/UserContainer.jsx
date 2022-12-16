@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export default function UserContainer({onUserCreate}) {
+export default function UserContainer() {
     const [ user, setUser ] = useState([]);
     const [ solarObjects, setSolarObjects ] = useState([]);
     const navigate = useNavigate();
@@ -22,7 +22,8 @@ export default function UserContainer({onUserCreate}) {
         .then((res) => res.json())
         .then((solarObjects) => setSolarObjects(solarObjects));
     }, []);
+
     return (
-        <div>{user}</div>
+        <div>user</div>
     )
 }

@@ -27,7 +27,7 @@ export default function Login() {
             username,
             password
         }
-        fetch(`/login`,{
+        fetch(`/users`,{
             method:'POST',
             headers:{
                 'Content-Type': 'application/json'
@@ -54,13 +54,12 @@ export default function Login() {
 
     return (
         <div>
-            <button onClick={navigate('/About')}>About</button>
             <form onSubmit={onSubmit}>
                 <label>Username:</label>
                 <input type='username' name='username' value={username} onChange={handleChange}/>
                 <label>Password:</label>
                 <input type='password' name='password' value={password} onChange={handleChange} />
-                <button>Login!</button>
+                <button>Log in!</button>
                 <NavLink onClick={handleClick}>Sign Up Here</NavLink>
             </form>
             {errors? <div>{errors}</div> : null}

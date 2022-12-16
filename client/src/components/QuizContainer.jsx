@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import UserContainer from './UserContainer'
 import SolarObjectContainer from './SolarObjectContainer'
+import About from './About'
 import { useNavigate } from 'react-router-dom'
 
 export default function QuizContainer() {
@@ -21,6 +22,7 @@ export default function QuizContainer() {
             }
             </div>
             <SolarObjectContainer />
+            <About />
         </div>
     )
 }
