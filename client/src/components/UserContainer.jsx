@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import NavBar from './NavBar';
 
 export default function UserContainer() {
     const [ user, setUser ] = useState([]);
@@ -24,6 +25,8 @@ export default function UserContainer() {
     }, []);
 
     return (
-        <div>user</div>
+        <div>
+            <NavBar />
+        </div>
     )
 }

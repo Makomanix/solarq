@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        reder json: @user, status: :ok
+        render json: @user, status: :ok
     end
 
     def create

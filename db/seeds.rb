@@ -8,7 +8,7 @@ Question.destroy_all
 UserQuestion.destroy_all
 
 puts "Creating Users"
-User.create(username: "astro", password: "12345", email:"astro@astro.com", favorite_planet: "Mars", score: 0, high_score: 0 )
+User.create(username: "test", password: "12345", email:"astro@astro.com", favorite_planet: "Mars", score: 0, high_score: 0 )
 
 puts "Creating Solar_Objects"
 SolarObject.create(name: "The Sun", isPlanet: false, isMoon: false, isOther: true)

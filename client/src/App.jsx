@@ -17,7 +17,7 @@ function App() {
   },[setUsers])
 
   return (
-    <div className="App">
+    <div className="bg-zinc-500 h-screen w-full">
       <Routes>
         <Route path='/' element={<UserContainer users={users}/>} />
         <Route path='/solar_system' element={<SolarObjectContainer />} />

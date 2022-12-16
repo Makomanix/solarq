@@ -7,14 +7,10 @@ const emptyForm ={
     favorite_planet: ""
 }
 
-export default function SignUp({ users, setUsers}) { 
+export default function SignUp() { 
 
     const [ formData, setFormData ] = useState(emptyForm);
     const navigate = useNavigate();
-
-    const addUser = (newUser) => {
-        setUsers([...users, newUser])
-    }
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -34,14 +30,9 @@ export default function SignUp({ users, setUsers}) {
         })
         .then((res) => res.json())
         .then((newUser) => {
-            addUser(newUser)
-        })
-        .then(handleLogin(formData))
+            sessionStorage.setItem("user_id", newUser.id);
+        })       
         .then(navigate("/"))
-    }
-
-    const handleLogin = (formData) => {
-        sessionStorage.setItem("user_id", formData.id);
     }
 
     return (
@@ -51,6 +42,11 @@ export default function SignUp({ users, setUsers}) {
                 <input name="username" placeholder="your name" type="text" onChange={handleChange}/>
                 <label>Password:</label>
                 <input name="password" placeholder="password" type="text" onChange={handleChange}/>
+                <label>Email:</label>
+                <input name="email" placeholder="your email" type="text" onChange={handleChange} />
+                <label>Favorite Planet</label>
+                <input name="favorite planet" placeholder="your favorite planet" type="text"/>
+                <button>Sign Up!</button>
             </form>
         </div>
     )

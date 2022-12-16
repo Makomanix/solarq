@@ -21,13 +21,13 @@ export default function Login() {
         sessionStorage.setItem("user_id", user.id);
     }
 
-    const onSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
         const user = {
             username,
             password
         }
-        fetch(`/users`,{
+        fetch(`/login`,{
             method:'POST',
             headers:{
                 'Content-Type': 'application/json'
@@ -49,18 +49,18 @@ export default function Login() {
     }
 
     const handleClick = () => {
-        navigate('/sign_up')
+        navigate("/sign_up")
     }
 
     return (
         <div>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={handleSubmit}>
                 <label>Username:</label>
                 <input type='username' name='username' value={username} onChange={handleChange}/>
                 <label>Password:</label>
                 <input type='password' name='password' value={password} onChange={handleChange} />
-                <button>Log in!</button>
-                <NavLink onClick={handleClick}>Sign Up Here</NavLink>
+                <button value='Log in!'>Log in!</button>
+                <button onClick={handleClick}>Sign Up Here</button>
             </form>
             {errors? <div>{errors}</div> : null}
         </div>
