@@ -4,6 +4,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import SolarObjectContainer from './components/SolarObjectContainer';
 import About from './components/About';
+import UserContainer from './components/UserContainer';
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<SolarObjectContainer />} />
+        <Route path='/' element={<UserContainer users={users}/>} />
+        <Route path='/solar_system' element={<SolarObjectContainer />} />
         <Route path='/login' element={<Login users={users} setUsers={setUsers}/>}/>
         <Route path='/sign_up' element={<SignUp />} />
         <Route path='/about' element={<About />} />
