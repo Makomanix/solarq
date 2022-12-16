@@ -1,5 +1,6 @@
 import React,{ useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
+import NavBar from "./NavBar";
 
 
 export default function Login() {
@@ -54,6 +55,7 @@ export default function Login() {
 
     return (
         <div>
+            <NavBar/>
             <form onSubmit={handleSubmit}>
                 <label>Username:</label>
                 <input type='username' name='username' value={username} onChange={handleChange}/>
