@@ -7,6 +7,7 @@ import SolarObjectContainer from './components/SolarObjectContainer';
 import UserContainer from './components/UserContainer';
 
 
+
 function App() {
   const [ users, setUsers ] = useState([])
 
@@ -17,7 +18,7 @@ function App() {
   },[setUsers])
 
   return (
-    <div className="bg-zinc-500 h-screen w-full">
+    <div>
       <Routes>
         <Route path='/' element={<UserContainer users={users}/>} />
         <Route path='/solar_system' element={<SolarObjectContainer />} />
