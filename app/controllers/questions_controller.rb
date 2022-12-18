@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
     def index
-        render Questions.all, status: :ok 
+        render json: Question.all, status: :ok 
     end
 
 end

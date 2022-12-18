@@ -5,6 +5,8 @@ import SignUp from './components/SignUp';
 import About from './components/About';
 import SolarObjectContainer from './components/SolarObjectContainer';
 import UserContainer from './components/UserContainer';
+import UserQuizContainer from './components/UserQuizContainer';
+import QuestionContainer from './components/QuestionContainer';
 
 
 
@@ -21,10 +23,12 @@ function App() {
     <div>
       <Routes>
         <Route path='/' element={<UserContainer users={users}/>} />
-        <Route path='/solar_system' element={<SolarObjectContainer />} />
         <Route path='/login' element={<Login users={users} setUsers={setUsers}/>}/>
         <Route path='/sign_up' element={<SignUp />} />
         <Route path='/about' element={<About />} />
+        <Route path='/solar_system' element={<SolarObjectContainer />} />
+        <Route path='/quizes' element={<QuestionContainer />} />
+        <Route path='/user_quizes' element={<UserQuizContainer />} />
       </Routes>
     </div>
   );
