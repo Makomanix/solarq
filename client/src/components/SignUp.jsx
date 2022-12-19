@@ -45,7 +45,6 @@ export default function SignUp() {
 
     return (
         <div>
-            <NavBar />
             <div className='absolute top-[30%] left-[38.5%] outline rounded-md'>
                 <h1 className='text-center text-2xl font-bold'>Sign Up!</h1>
                 <p className='text-center pb-2'>It's quick and easy</p>

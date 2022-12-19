@@ -1,28 +1,23 @@
-import React, { useState } from 'react'
-import UserContainer from './UserContainer'
-import SolarObjectContainer from './SolarObjectContainer'
-import About from './About'
-import { useNavigate } from 'react-router-dom'
+import React, {useState, useEffect} from 'react';
+import QuizCollection from './QuizCollection';
+import { useNavigate } from 'react-router-dom';
 
-export default function QuizContainer() {
-    const [ ifUser, setIfUser ] = useState(false);
+export default function QuizContainer({solarObjects}) {
+    const [ quiz, setQuiz ] = useState([])
     const navigate = useNavigate();
-
-    const handleIfUser = () => {
-        setIfUser(ifUser => !ifUser)
+    
+//     const selectedQuiz = solarObjects.filter((solarObject) => solarObject[`${click}`] === true)
+//         setQuiz(selectedQuiz)
+    const handleOnClick = (e) => {
+        navigate('/quizes')
     }
+    // const handleQuizClick = (e) => {
+    //     setClick`${e.target.value}`
+    // }
 
     return (
         <div>
-            <div>{
-            ifUser ?
-            <UserContainer 
-            onUserCreate={handleIfUser}
-            /> : navigate("/login")
-            }
-            </div>
-            <SolarObjectContainer />
-            <About />
+            <QuizCollection />             
         </div>
     )
 }

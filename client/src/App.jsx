@@ -4,31 +4,33 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import About from './components/About';
 import SolarObjectContainer from './components/SolarObjectContainer';
-import UserContainer from './components/UserContainer';
+import Home from './components/Home';
 import UserQuizContainer from './components/UserQuizContainer';
-import QuestionContainer from './components/QuestionContainer';
+import QuizContainer from './components/QuizContainer';
+import NavBar from './components/NavBar';
 
 
 
 function App() {
-  const [ users, setUsers ] = useState([])
+  const [users, setUsers] = useState([])
 
   useEffect(() => {
     fetch(`/users`)
-    .then((res) => res.json())
-    .then((users) => setUsers(users))
-  },[setUsers])
+      .then((res) => res.json())
+      .then((users) => setUsers(users))
+  }, [setUsers])
 
   return (
     <div>
+      <NavBar />
       <Routes>
-        <Route path='/' element={<UserContainer users={users}/>} />
-        <Route path='/login' element={<Login users={users} setUsers={setUsers}/>}/>
+        <Route path='/' element={<Home users={users} />} />
+        <Route path='/login' element={<Login users={users} setUsers={setUsers} />} />
         <Route path='/sign_up' element={<SignUp />} />
         <Route path='/about' element={<About />} />
         <Route path='/solar_system' element={<SolarObjectContainer />} />
-        <Route path='/quizes' element={<QuestionContainer />} />
-        <Route path='/user_quizes' element={<UserQuizContainer />} />
+        <Route path='/quizzes' element={<QuizContainer />} />
+        <Route path='/user_quizzes' element={<UserQuizContainer />} />
       </Routes>
     </div>
   );

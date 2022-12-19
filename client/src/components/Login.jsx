@@ -1,7 +1,7 @@
 import React,{ useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
-import NavBar from "./NavBar";
-import screen from "../assets/screen.jpg"
+
+
 
 
 export default function Login() {
@@ -56,7 +56,6 @@ export default function Login() {
 
     return (
         <div>
-            <NavBar/>
             <div className="absolute top-48 mx-[42%]">                
                 <form className="grid grid-cols-1 m-auto outline h-72 w-72" onSubmit={handleSubmit}>
                     <label className='mt-4 ml-2'>Username:</label>
