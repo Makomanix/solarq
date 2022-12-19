@@ -7,7 +7,6 @@ import UserQuizContainer from './UserQuizContainer';
 
 export default function UserContainer() {
     const [user, setUser] = useState([]);
-    const [solarObjects, setSolarObjects] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,25 +18,26 @@ export default function UserContainer() {
                 .then((res) => res.json())
                 .then((user) => setUser(user))
         }
-    }, [solarObjects]);
-
-    useEffect(() => {
-        fetch('/solar_objects')
-            .then((res) => res.json())
-            .then((solarObjects) => setSolarObjects(solarObjects));
     }, []);
+
+    // useEffect(() => {
+    //     fetch('/solar_objects')
+    //         .then((res) => res.json())
+    //         .then((solarObjects) => setSolarObjects(solarObjects));
+    // }, []);
+    // console.log(solarObjects)
 
     const handleOnClick = (e) => {
         navigate(`${e.target.value}`)
     }
 
     return (
-        <div>
-            <QuizContainer solarObjects={solarObjects} />
+        <div className='grid grid-cols-3 grid-rows-1'>
+            {/* <QuizContainer solarObjects={solarObjects} /> */}
             <button value="/quizzes" onClick={handleOnClick}>Test Your Solar System Knowledge</button>
-            <SolarObjectContainer solarObjects={solarObjects} setSolarObjects={setSolarObjects} />
+            {/* <SolarObjectContainer solarObjects={solarObjects} setSolarObjects={setSolarObjects} /> */}
             <button value="/solar_system" onClick={handleOnClick}>Discover Your Solar System</button>
-            <UserQuizContainer />
+            {/* <UserQuizContainer /> */}
             <button value="/user_quizzes" onClick={handleOnClick}>See your past</button>
         </div>
     )

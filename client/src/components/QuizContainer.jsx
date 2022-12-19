@@ -2,22 +2,33 @@ import React, {useState, useEffect} from 'react';
 import QuizCollection from './QuizCollection';
 import { useNavigate } from 'react-router-dom';
 
-export default function QuizContainer({solarObjects}) {
-    const [ quiz, setQuiz ] = useState([])
+export default function QuizContainer() {
+    const [ user, setUser ] = useState([])
+    const [solarObjects, setSolarObjects ] = useState([])
+    // const [ quiz, setQuiz ] = useState([])
     const navigate = useNavigate();
-    
-//     const selectedQuiz = solarObjects.filter((solarObject) => solarObject[`${click}`] === true)
-//         setQuiz(selectedQuiz)
-    const handleOnClick = (e) => {
-        navigate('/quizes')
-    }
-    // const handleQuizClick = (e) => {
-    //     setClick`${e.target.value}`
-    // }
+
+    useEffect(() => {
+        const currentUser = sessionStorage.getItem("user_id")
+        if (currentUser == null) {
+            navigate('/login')
+        } else {
+            fetch(`/users/${currentUser}`)
+                .then((res) => res.json())
+                .then((user) => setUser(user))
+        }
+    }, [navigate]);
+
+    useEffect(() => {
+        fetch('/solar_objects')
+            .then((res) => res.json())
+            .then((solarObjects) => setSolarObjects(solarObjects));
+    }, [navigate]);
+    console.log(solarObjects)
 
     return (
         <div>
-            <QuizCollection />             
+            <QuizCollection solarObjects={solarObjects}/>             
         </div>
     )
 }
