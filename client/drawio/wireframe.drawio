@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="eoKHpXvbKu-9oEBP35xx" name="Page-1">
-        <mxGraphModel dx="1608" dy="988" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1367" dy="741" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -53,25 +53,25 @@
                     <mxGeometry x="660" y="1040" width="80" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="22" value="WELCOME TO YOUR SOLAR SYSTEM:&lt;br&gt;TEST YOUR KNOWLEDGE" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="285" y="1090" width="280" height="60" as="geometry"/>
+                    <mxGeometry x="170" y="1090" width="510" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="23" value="IMAGE" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-                    <mxGeometry x="180" y="1230" width="80" height="80" as="geometry"/>
+                    <mxGeometry x="190" y="1130" width="50" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="24" value="IMAGE" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-                    <mxGeometry x="380" y="1230" width="80" height="80" as="geometry"/>
+                    <mxGeometry x="395" y="1130" width="50" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="25" value="IAMGE" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-                    <mxGeometry x="580" y="1230" width="80" height="80" as="geometry"/>
+                    <mxGeometry x="600" y="1130" width="50" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="26" value="PLANETS" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="160" y="1320" width="120" height="30" as="geometry"/>
+                    <mxGeometry x="360" y="1180" width="120" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="27" value="SUN / OTHER" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="560" y="1320" width="120" height="30" as="geometry"/>
+                    <mxGeometry x="565" y="1180" width="120" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="28" value="MOONS" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="360" y="1320" width="120" height="30" as="geometry"/>
+                    <mxGeometry x="155" y="1180" width="120" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="29" value="ABOUT" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="90" y="50" width="80" height="30" as="geometry"/>
@@ -100,7 +100,7 @@
                 <mxCell id="37" value="MOONS" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="800" y="1520" width="680" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="38" value="PLANETS" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="38" value="Chosen Quiz" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="80" y="1520" width="680" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="39" value="HOME: TITLE SCREEN" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -112,23 +112,17 @@
                 <mxCell id="41" value="HOME: TITLE SCREEN" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="90" y="1530" width="80" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="45" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-                    <mxGeometry x="280" y="1627.5" width="280" height="280" as="geometry"/>
-                </mxCell>
-                <mxCell id="48" value="QUESTION" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="310" y="1640" width="220" height="70" as="geometry"/>
-                </mxCell>
                 <mxCell id="51" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="310" y="1740" width="220" height="30" as="geometry"/>
+                    <mxGeometry x="850" y="1740" width="110" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="52" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="310" y="1780" width="220" height="30" as="geometry"/>
+                    <mxGeometry x="850" y="1780" width="110" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="53" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="310" y="1820" width="220" height="30" as="geometry"/>
+                    <mxGeometry x="850" y="1820" width="110" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="54" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="310" y="1860" width="220" height="30" as="geometry"/>
+                    <mxGeometry x="850" y="1860" width="110" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="56" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="1720" y="1620" width="280" height="280" as="geometry"/>
@@ -167,7 +161,7 @@
                     <mxGeometry x="1750" y="1860" width="220" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="68" value="NEXT" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="380" y="1920" width="80" height="32.5" as="geometry"/>
+                    <mxGeometry x="650" y="1990" width="80" height="32.5" as="geometry"/>
                 </mxCell>
                 <mxCell id="69" value="NEXT" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="1820" y="1920" width="80" height="32.5" as="geometry"/>
@@ -176,7 +170,7 @@
                     <mxGeometry x="1100" y="1920" width="80" height="32.5" as="geometry"/>
                 </mxCell>
                 <mxCell id="71" value="score" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="370" y="1580" width="100" height="30" as="geometry"/>
+                    <mxGeometry x="400" y="1992.5" width="100" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="72" value="score" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="1090" y="1580" width="100" height="30" as="geometry"/>
@@ -184,44 +178,50 @@
                 <mxCell id="73" value="score" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="1810" y="1580" width="100" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="74" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="74" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="80" y="520" width="680" height="440" as="geometry"/>
                 </mxCell>
-                <mxCell id="75" value="HOME" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="75" value="HOME" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="80" y="520" width="680" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="76" value="About" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="76" value="About" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="90" y="530" width="80" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="77" value="IMAGE" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                <mxCell id="77" value="IMAGE" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="285" y="680" width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="78" value="IMAGE" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                <mxCell id="78" value="IMAGE" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="485" y="680" width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="80" value="Take a Quiz" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="80" value="Take a Quiz" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="265" y="770" width="120" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="82" value="Explore the Solar System" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="82" value="Explore the Solar System" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="465" y="770" width="120" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="83" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="83" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="800" y="1030" width="680" height="440" as="geometry"/>
                 </mxCell>
-                <mxCell id="84" value="SOLAR SYSTEM" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="84" value="SOLAR SYSTEM" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="800" y="1030" width="680" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="85" value="HOME: TITLE SCREEN" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="85" value="HOME: TITLE SCREEN" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="810" y="1040" width="80" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="88" value="PLANETS" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="88" value="PLANETS" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="830" y="1110" width="160" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="89" value="SUN / OTHER&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="89" value="SUN / OTHER&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="1280" y="1110" width="160" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="90" value="MOONS" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="90" value="MOONS" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="1060" y="1110" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="91" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="870" y="1992.5" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="92" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="170" y="1687.5" width="500" height="232.5" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
