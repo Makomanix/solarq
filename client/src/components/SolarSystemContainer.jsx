@@ -13,7 +13,6 @@ export default function QuizContainer() {
     }
 
     return (
-        <div>
             <div>{
             ifUser ?
             <Home 
@@ -21,8 +20,5 @@ export default function QuizContainer() {
             /> : navigate("/login")
             }
             </div>
-            <SolarObjectContainer />
-            <About />
-        </div>
     )
 }

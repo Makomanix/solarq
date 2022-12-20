@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import NavBar from './NavBar';
-import QuizContainer from './QuizContainer';
-import SolarObjectContainer from './SolarObjectContainer';
-import UserQuizContainer from './UserQuizContainer';
+// import NavBar from './NavBar';
+// import QuizContainer from './QuizContainer';
+// import SolarObjectContainer from './SolarObjectContainer';
+// import UserQuizContainer from './UserQuizContainer';
 
 export default function UserContainer() {
     const [user, setUser] = useState([]);

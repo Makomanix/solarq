@@ -1,6 +1,6 @@
 class SolarObjectSerializer < ActiveModel::Serializer
-  attributes :id, :name, :isPlanet, :isMoon, :isOther
+  attributes :id, :name, :category, :story
 
-  has_many :questions
+  # has_many :questions
 
 end

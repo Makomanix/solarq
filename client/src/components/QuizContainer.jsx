@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function QuizContainer() {
     const [ user, setUser ] = useState([])
-    const [solarObjects, setSolarObjects ] = useState([])
+    const [questions, setQuestions ] = useState([])
     // const [ quiz, setQuiz ] = useState([])
     const navigate = useNavigate();
 
@@ -20,15 +20,17 @@ export default function QuizContainer() {
     }, [navigate]);
 
     useEffect(() => {
-        fetch('/solar_objects')
+        fetch('/questions')
             .then((res) => res.json())
-            .then((solarObjects) => setSolarObjects(solarObjects));
-    }, [navigate]);
-    console.log(solarObjects)
+            .then((questions) => setQuestions(questions))
+            .then(console.log(questions))
+    }, []);
+    console.log(questions)
+    
 
     return (
         <div>
-            <QuizCollection solarObjects={solarObjects}/>             
+            <QuizCollection questions={questions}/>             
         </div>
     )
 }

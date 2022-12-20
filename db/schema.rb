@@ -10,17 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_16_193058) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_19_212916) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "leaderboards", force: :cascade do |t|
+    t.string "username"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "questions", force: :cascade do |t|
-    t.string "query"
+    t.string "text"
     t.string "difficulty"
+    t.integer "points"
+    t.string "catagory"
     t.string "answer"
-    t.string "wrong1"
-    t.string "wrong2"
-    t.string "wrong3"
+    t.string "option1"
+    t.string "option2"
+    t.string "option3"
+    t.string "option4"
     t.string "hint"
     t.bigint "solar_object_id", null: false
     t.datetime "created_at", null: false
@@ -30,9 +40,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_193058) do
 
   create_table "solar_objects", force: :cascade do |t|
     t.string "name"
-    t.boolean "isPlanet"
-    t.boolean "isMoon"
-    t.boolean "isOther"
+    t.string "category"
+    t.text "story"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
