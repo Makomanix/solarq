@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_19_212916) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_21_194357) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_19_212916) do
     t.string "text"
     t.string "difficulty"
     t.integer "points"
-    t.string "catagory"
+    t.string "category"
     t.string "answer"
     t.string "option1"
     t.string "option2"

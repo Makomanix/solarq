@@ -23,7 +23,7 @@ function App() {
   return (
     <div>
       <NavBar />
-      <div className='relative h-full w-screen'>
+      <div>
         <Routes>
           <Route path='/' element={<Home users={users} />} />
           <Route path='/login' element={<Login users={users} setUsers={setUsers} />} />

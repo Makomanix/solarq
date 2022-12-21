@@ -1,5 +1,5 @@
 class QuestionSerializer < ActiveModel::Serializer
-  attributes :id, :text, :difficulty, :points, :catagory, :answer, :option1, :option2, :option3, :option4, :hint, :solar_object_id
+  attributes :id, :text, :difficulty, :points, :category, :answer, :option1, :option2, :option3, :option4, :hint, :solar_object_id
 
   # def solar_object_id
   #   self.object.solar_object

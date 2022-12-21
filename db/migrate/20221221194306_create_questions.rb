@@ -4,7 +4,7 @@ class CreateQuestions < ActiveRecord::Migration[7.0]
       t.string :text
       t.string :difficulty
       t.integer :points
-      t.string :catagory
+      t.string :category
       t.string :answer
       t.string :option1
       t.string :option2

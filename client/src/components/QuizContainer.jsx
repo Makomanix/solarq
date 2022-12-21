@@ -27,15 +27,20 @@ export default function QuizContainer() {
     }, []);
 
 
-    const selectedQuiz = questions.filter((question) => question.catagory === `${quiz}`)
+    const selectedQuiz = questions.filter((question) => question.category === `${quiz}`)
     
     const handleQuizClick = (e) => {
         setQuiz(e.target.value)
     }
 
+    console.log(selectedQuiz, "selected")
+    console.log(quiz, "quiz")
+    console.log(user)
+
     return (
-        <div className='relative h-screen w-full'>
+        <div>
             <CurrentQuiz
+            setQuiz={setQuiz}
             selectedQuiz={selectedQuiz} 
             handleQuizClick={handleQuizClick}/>             
         </div>
