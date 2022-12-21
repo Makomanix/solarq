@@ -32,13 +32,15 @@ export default function UserContainer() {
     }
 
     return (
-        <div className='grid grid-cols-3 grid-rows-1'>
-            {/* <QuizContainer solarObjects={solarObjects} /> */}
-            <button value="/quizzes" onClick={handleOnClick}>Test Your Solar System Knowledge</button>
-            {/* <SolarObjectContainer solarObjects={solarObjects} setSolarObjects={setSolarObjects} /> */}
-            <button value="/solar_system" onClick={handleOnClick}>Discover Your Solar System</button>
-            {/* <UserQuizContainer /> */}
-            <button value="/user_quizzes" onClick={handleOnClick}>See your past</button>
+        <div>
+            <div className='grid grid-cols-3 grid-rows-1'>
+                {/* <QuizContainer solarObjects={solarObjects} /> */}
+                <button value="/quizzes" onClick={handleOnClick}>Test Your Solar System Knowledge</button>
+                {/* <SolarObjectContainer solarObjects={solarObjects} setSolarObjects={setSolarObjects} /> */}
+                <button value="/solar_system" onClick={handleOnClick}>Discover Your Solar System</button>
+                {/* <UserQuizContainer /> */}
+                <button value="/user_quizzes" onClick={handleOnClick}>See your past</button>
+            </div>
         </div>
     )
 }

@@ -20,22 +20,20 @@ export default function Question({question, setAnswer, setChoice, setPoints, nex
     }
 
     return (
-        <div className='relative'>
-            <div>
-                <div>{text}</div>
-                <div>
+        <div className='h-72 w-80 outline'>
+                <div className='text-center h-16 w-full outline'>{text}</div>
+                <div className='grid grid-cols-1'>
                     <button value={option1} onClick={handleChoiceClick}>{option1}</button>
                     <button value={option2} onClick={handleChoiceClick}>{option2}</button>
                     <button value={option3} onClick={handleChoiceClick}>{option3}</button>
                     <button value={option4} onClick={handleChoiceClick}>{option4}</button> 
                 </div>
                 {showHint ?
-                <button onClick={handleHint}>{hint}</button>
+                <button className='' onClick={handleHint}>{hint}</button>
                 :
-                <button onClick={handleHint}>See Hint</button>
+                <button className='' onClick={handleHint}>See Hint</button>
                 }
                 <button value={answer} onClick={handleAnswerClick}>Submit Answer</button>
-            </div>
         </div>
     )
 }

@@ -38,14 +38,16 @@ export default function QuizCollection({ selectedQuiz, handleQuizClick}) {
     
 
     return (
-        <div>
+        <div className='relative'>
             <div className='grid grid-cols-3 grid-rows-1'>
                 <button value="planet" onClick={handleQuizClick}>Planet Quiz</button>
                 <button value="moon" onClick={handleQuizClick}>Moon Quiz</button>
                 <button value="other" onClick={handleQuizClick}>Sun and Other Quiz</button>
             </div>
+            <span className='absolute left-[45%]'>Current Score: {score} out of {pointsPossible}</span>
+            <div className='absolute top-72 left-[41%]'>
             {questionCards[currentQuestion]}
-            <span>Current Score: {score} out of {pointsPossible}</span>
+            </div>
         </div>
     )
 }

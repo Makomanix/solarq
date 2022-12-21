@@ -34,7 +34,7 @@ export default function QuizContainer() {
     }
 
     return (
-        <div>
+        <div className='relative h-screen w-full'>
             <CurrentQuiz
             selectedQuiz={selectedQuiz} 
             handleQuizClick={handleQuizClick}/>             

@@ -23,15 +23,17 @@ function App() {
   return (
     <div>
       <NavBar />
-      <Routes>
-        <Route path='/' element={<Home users={users} />} />
-        <Route path='/login' element={<Login users={users} setUsers={setUsers} />} />
-        <Route path='/sign_up' element={<SignUp />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/solar_system' element={<SolarObjectContainer />} />
-        <Route path='/quizzes' element={<QuizContainer />} />
-        <Route path='/user_quizzes' element={<UserQuizContainer />} />
-      </Routes>
+      <div className='relative h-full w-screen'>
+        <Routes>
+          <Route path='/' element={<Home users={users} />} />
+          <Route path='/login' element={<Login users={users} setUsers={setUsers} />} />
+          <Route path='/sign_up' element={<SignUp />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/solar_system' element={<SolarObjectContainer />} />
+          <Route path='/quizzes' element={<QuizContainer />} />
+          <Route path='/user_quizzes' element={<UserQuizContainer />} />
+        </Routes>
+      </div>
     </div>
   );
 }
