@@ -11,7 +11,7 @@ export default function Question({question, setAnswer, setChoice, setPoints, nex
         setPoints(points)
     }
 
-    const handleAnswerClick = () => {
+    const handleAnswerClick = (e) => {
         nextQuestion()
     }
 

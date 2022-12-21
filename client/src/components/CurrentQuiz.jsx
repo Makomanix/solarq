@@ -2,14 +2,23 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Question from './Question';
 
-export default function QuizCollection({ selectedQuiz, handleQuizClick, setAnswer, answer, choice, setChoice, points, setPoints}) {
+export default function QuizCollection({ selectedQuiz, handleQuizClick}) {
     const [ currentQuestion, setCurrentQuestion ] = useState(0);
     const [ score, setScore ] = useState(0);
+    const [ points, setPoints] = useState(0);
+    const [ pointsPossible, setPointsPossible ] = useState(0)
+    const [ answer, setAnswer] = useState("");
+    const [ choice, setChoice] = useState("");
+    
     
 
     const nextQuestion = () => {
         if(choice === answer) {
             setScore((score) => score + points)
+            setPointsPossible((pointsPossible) => pointsPossible + points)
+            setCurrentQuestion((currentQuestion) => currentQuestion + 1)   
+        } else {
+            setPointsPossible((pointsPossible) => pointsPossible + points)
             setCurrentQuestion((currentQuestion) => currentQuestion + 1)
         }
     }
@@ -24,8 +33,9 @@ export default function QuizCollection({ selectedQuiz, handleQuizClick, setAnswe
             nextQuestion={nextQuestion}
             />);
 
-
-    console.log(choice, answer, points)
+    // console.log(selectedQuiz[1].points)
+    // console.log(choice, answer, points)
+    
 
     return (
         <div>
@@ -34,8 +44,8 @@ export default function QuizCollection({ selectedQuiz, handleQuizClick, setAnswe
                 <button value="moon" onClick={handleQuizClick}>Moon Quiz</button>
                 <button value="other" onClick={handleQuizClick}>Sun and Other Quiz</button>
             </div>
-            <span>Current Score: {score}</span>
             {questionCards[currentQuestion]}
+            <span>Current Score: {score} out of {pointsPossible}</span>
         </div>
     )
 }
