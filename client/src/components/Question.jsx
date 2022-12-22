@@ -25,7 +25,7 @@ export default function Question({question, setAnswer, setChoice, setPoints, nex
 
     return (
         <div className='h-72 w-96 outline'>
-            <span className='flex items-center justify-center'>Question # {currentQuestion + 1} out of {selectedQuiz.length}</span>
+            <span className='flex items-center justify-center'>Question # {currentQuestion + 1} out of {selectedQuiz.length} : {points} Points</span>
                 <span className='flex items-center justify-center h-16 outline'>{text}</span>
                 <div className='grid grid-cols-1 pt-6 gap-y-2'>
                     <button value={option1} onClick={handleChoiceClick}>{option1}</button>

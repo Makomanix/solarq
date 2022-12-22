@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Question from './Question';
 import QuizComplete from './QuizComplete';
 
-export default function QuizCollection({ selectedQuiz, handleQuizClick, setQuiz}) {
+export default function CurrentQuiz({ selectedQuiz, handleQuizClick, setQuiz}) {
     const [ currentQuestion, setCurrentQuestion ] = useState(0);
     const [ score, setScore ] = useState(0);
     const [ points, setPoints] = useState(0);
@@ -55,6 +55,20 @@ export default function QuizCollection({ selectedQuiz, handleQuizClick, setQuiz}
                 <button value="moon" onClick={handleQuizClick}>Moon Quiz</button>
                 <button value="other" onClick={handleQuizClick}>Sun and Other Quiz</button>
             </div>
+            <form>
+                <select className='absolute top-24 left-[44%]'>Question Difficulty
+                    <option value=''>Easy</option>
+                    <option value=''>Medium</option>
+                    <option value=''>Hard</option>
+                    <option value=''>All</option>
+                </select>
+                <select className='absolute top-24 left-[49%]'>Question Difficulty
+                    <option value=''>Planet Quiz</option>
+                    <option value=''>Moon Quiz</option>
+                    <option value=''>Other Quiz</option>
+                    <option value=''>Everything Quiz</option>
+                </select>
+            </form>
             <div> {(selectedQuiz >= 0) ?
                 null :             
                 <span className='absolute top-60 left-[45%]'>Current Score: {score} out of {pointsPossible}</span>               

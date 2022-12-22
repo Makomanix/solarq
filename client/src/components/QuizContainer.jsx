@@ -33,9 +33,12 @@ export default function QuizContainer() {
         setQuiz(e.target.value)
     }
 
-    console.log(selectedQuiz, "selected")
-    console.log(quiz, "quiz")
-    console.log(user)
+    // const handleDifficulty = (e)
+
+
+    // console.log(selectedQuiz, "selected")
+    // console.log(quiz, "quiz")
+    console.log(questions)
 
     return (
         <div>
