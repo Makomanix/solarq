@@ -26,25 +26,35 @@ export default function QuizContainer() {
             .then((questions) => setQuestions(questions))
     }, []);
 
+    // function updateUser(score){
+    //     fetch(`/users/${user.id}`,)
+    // })
+
 
     const selectedQuiz = questions.filter((question) => question.category === `${quiz}`)
     
     const handleQuizClick = (e) => {
         setQuiz(e.target.value)
+        getRandom(selectedQuiz)
     }
 
+
+    // console.log(user.score)
     // const handleDifficulty = (e)
 
+    function getRandom(selectedQuiz) {
+        const shuffled = [...selectedQuiz].sort(() => 0.5 - Math.random());
 
-    // console.log(selectedQuiz, "selected")
-    // console.log(quiz, "quiz")
-    console.log(questions)
+        return shuffled.slice(0, 6)
+    }
+
+    // console.log(questions)
 
     return (
         <div>
             <CurrentQuiz
             setQuiz={setQuiz}
-            selectedQuiz={selectedQuiz} 
+            selectedQuiz={getRandom(selectedQuiz)} 
             handleQuizClick={handleQuizClick}/>             
         </div>
     )

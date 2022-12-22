@@ -13,21 +13,34 @@ export default function CurrentQuiz({ selectedQuiz, handleQuizClick, setQuiz}) {
     const [ quizResults, setQuizResults ] = useState(false)
     
     
+    const resetValues = () => {
+        setChoice("0")
+        setAnswer("1")
+    }
 
     const nextQuestion = () => {
         if(choice === answer) {
             setScore((score) => score + points)
-            setPointsPossible((pointsPossible) => pointsPossible + points)    
+            setPointsPossible((pointsPossible) => pointsPossible + points) 
+            resetValues()   
         } else {
             setPointsPossible((pointsPossible) => pointsPossible + points)
+            resetValues()
         }
 
         if(currentQuestion + 1 < selectedQuiz.length) {
-            setCurrentQuestion((currentQuestion) => currentQuestion + 1)   
+            setCurrentQuestion((currentQuestion) => currentQuestion + 1)
+            // setPoints
+            resetValues()   
         } else {
             setQuizResults(true);
+            resetValues()
+            setCurrentQuestion(0)
         }
     }
+
+    console.log(choice)
+    console.log(answer)
 
     const questionCards = selectedQuiz.map((question) =>
         <Question 

@@ -5,16 +5,13 @@ export default function Question({question, setAnswer, setChoice, setPoints, nex
 
     const [ showHint, setShowHint ] = useState(false)
 
-    const handleChoiceClick = (e) => {
+    const handleChoiceClick = (e) => {    
         setChoice(e.target.value)
         setAnswer(answer)
         setPoints(points)
-        console.log(e.target.value)
-        console.log(answer)
-        console.log(points)
+
     }
     
-
     const handleAnswerClick = (e) => {
         nextQuestion()
     }
