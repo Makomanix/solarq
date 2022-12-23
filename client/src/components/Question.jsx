@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 
-export default function Question({question, setAnswer, setChoice, setPoints, nextQuestion, currentQuestion, selectedQuiz}) {
+export default function Question({question, stateAnswer, setAnswer, choice, setChoice, setPoints, nextQuestion, currentQuestion, selectedQuiz, setNotSelected}) {
     const { text, difficulty, points, answer, option1, option2, option3, option4, hint } = question
-
     const [ showHint, setShowHint ] = useState(false)
 
     const handleChoiceClick = (e) => {    
@@ -13,7 +12,12 @@ export default function Question({question, setAnswer, setChoice, setPoints, nex
     }
     
     const handleAnswerClick = (e) => {
+        if (choice === "0" && stateAnswer === "1") {
+            setNotSelected(true)
+        } else {
+            setNotSelected(false)
         nextQuestion()
+        }
     }
 
     const handleHint = () => {

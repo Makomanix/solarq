@@ -48,7 +48,7 @@ export default function QuizContainer() {
         return shuffled.slice(0, 6)
     }
 
-    // console.log(questions)
+
 
     return (
         <div>

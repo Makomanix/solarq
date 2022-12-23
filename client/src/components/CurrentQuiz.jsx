@@ -6,16 +6,18 @@ import QuizComplete from './QuizComplete';
 export default function CurrentQuiz({ selectedQuiz, handleQuizClick, setQuiz}) {
     const [ currentQuestion, setCurrentQuestion ] = useState(0);
     const [ score, setScore ] = useState(0);
+    const [ totalScore, setTotalScore ] = useState(0)
     const [ points, setPoints] = useState(0);
     const [ pointsPossible, setPointsPossible ] = useState(0)
-    const [ answer, setAnswer] = useState("");
-    const [ choice, setChoice] = useState("");
-    const [ quizResults, setQuizResults ] = useState(false)
+    const [ answer, setAnswer] = useState("1");
+    const [ choice, setChoice] = useState("0");
+    const [ showQuizResults, setShowQuizResults ] = useState(false)
+    const [notSelected, setNotSelected] = useState(false)
     
     
     const resetValues = () => {
-        setChoice("0")
         setAnswer("1")
+        setChoice("0")
     }
 
     const nextQuestion = () => {
@@ -33,7 +35,7 @@ export default function CurrentQuiz({ selectedQuiz, handleQuizClick, setQuiz}) {
             // setPoints
             resetValues()   
         } else {
-            setQuizResults(true);
+            setShowQuizResults(true);
             resetValues()
             setCurrentQuestion(0)
         }
@@ -41,6 +43,7 @@ export default function CurrentQuiz({ selectedQuiz, handleQuizClick, setQuiz}) {
 
     console.log(choice)
     console.log(answer)
+    console.log(score)
 
     const questionCards = selectedQuiz.map((question) =>
         <Question 
@@ -53,6 +56,9 @@ export default function CurrentQuiz({ selectedQuiz, handleQuizClick, setQuiz}) {
             nextQuestion={nextQuestion}
             currentQuestion={currentQuestion}
             selectedQuiz={selectedQuiz}
+            choice={choice}
+            setNotSelected={setNotSelected}
+            stateAnswer={answer}
             />);
 
             // const resetCurrentQuestion = () => {
@@ -69,26 +75,29 @@ export default function CurrentQuiz({ selectedQuiz, handleQuizClick, setQuiz}) {
                 <button value="other" onClick={handleQuizClick}>Sun and Other Quiz</button>
             </div>
             <form>
-                <select className='absolute top-24 left-[44%]'>Question Difficulty
+                <select className='absolute top-24 left-[43%]'>
+                    <option value=''>Select Difficulty</option>
                     <option value=''>Easy</option>
                     <option value=''>Medium</option>
                     <option value=''>Hard</option>
-                    <option value=''>All</option>
+                    <option value=''>All Difficulties</option>
                 </select>
-                <select className='absolute top-24 left-[49%]'>Question Difficulty
+                <select className='absolute top-24 left-[50%]'>
+                    <option value=''>Select Quiz</option>
                     <option value=''>Planet Quiz</option>
                     <option value=''>Moon Quiz</option>
                     <option value=''>Other Quiz</option>
                     <option value=''>Everything Quiz</option>
                 </select>
+                <div>{notSelected ? "Select an Answer to Continue" : null }</div>
             </form>
-            <div> {(selectedQuiz >= 0) ?
+            {/* <div> {(selectedQuiz >= 0) ?
                 null :             
                 <span className='absolute top-60 left-[45%]'>Current Score: {score} out of {pointsPossible}</span>               
                 }
-            </div>
-            <div className='absolute top-72 left-[39.5%]'>{quizResults ? 
-            <QuizComplete setQuiz={setQuiz} score={score} pointsPossible={pointsPossible} setQuizResults={setQuizResults} /> :
+            </div> */}
+            <div className='absolute top-72 left-[39.5%]'>{showQuizResults ? 
+            <QuizComplete setQuiz={setQuiz} score={score} pointsPossible={pointsPossible} setShowQuizResults={setShowQuizResults} /> :
             <>
             {questionCards[currentQuestion]}
             </>

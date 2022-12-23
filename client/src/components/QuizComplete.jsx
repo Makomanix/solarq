@@ -1,12 +1,12 @@
 import React from 'react'
 
-export default function QuizComplete({score, pointsPossible, setQuizResults, setQuiz }) {
+export default function QuizComplete({score, pointsPossible, setShowQuizResults, setQuiz }) {
 
 
     let percentage = (Math.round((score/pointsPossible) * 100).toFixed(2))
 
     const handleNextQuiz = () => {
-        setQuizResults(false)
+        setShowQuizResults(false)
         setQuiz([])
         
         
