@@ -15,6 +15,7 @@ export default function Question({question, stateAnswer, setAnswer, choice, setC
         if (choice === "0" && stateAnswer === "1") {
             setNotSelected(true)
         } else {
+            
             setNotSelected(false)
         nextQuestion()
         }

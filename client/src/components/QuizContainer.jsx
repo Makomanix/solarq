@@ -3,7 +3,13 @@ import CurrentQuiz from './CurrentQuiz';
 import { useNavigate } from 'react-router-dom';
 
 export default function QuizContainer() {
-    const [ user, setUser ] = useState([])
+    const [ user, setUser ] = useState({
+        id: 0,
+        username: "",
+        score: 0,
+        highScore: 0,
+})
+
     const [ questions, setQuestions ] = useState([])
     const [ quiz, setQuiz ] = useState([])
 
@@ -16,7 +22,12 @@ export default function QuizContainer() {
         } else {
             fetch(`/users/${currentUser}`)
                 .then((res) => res.json())
-                .then((user) => setUser(user))
+                .then((user) => setUser({
+                    id: user.id,
+                    username: user.username,
+                    score: 0,
+                    highScore: user.high_score,
+                }))
         }
     }, [navigate]);
 
@@ -26,10 +37,24 @@ export default function QuizContainer() {
             .then((questions) => setQuestions(questions))
     }, []);
 
-    // function updateUser(score){
-    //     fetch(`/users/${user.id}`,)
-    // })
-
+    // const patchUserScore = (score, highScore) =>{
+    //     fetch(`/users/${user.id}`, {
+    //         method: 'PATCH',
+    //         headers: {
+    //             'Content-Type':'application/json'
+    //         },
+    //         body: JSON.stringify({
+    //             id: user.id,
+    //             username: user.username,
+    //             score: score,
+    //             high_score: highScore
+    //         })
+    //     })
+    //         .then(res => res.json())
+    //         .then(user => setUser(user))
+    // }
+    
+    
 
     const selectedQuiz = questions.filter((question) => question.category === `${quiz}`)
     
@@ -53,9 +78,12 @@ export default function QuizContainer() {
     return (
         <div>
             <CurrentQuiz
+            user={user}
+            setUser={setUser}
+            quiz={quiz}
             setQuiz={setQuiz}
             selectedQuiz={getRandom(selectedQuiz)} 
-            handleQuizClick={handleQuizClick}/>             
+            handleQuizClick={handleQuizClick}/>
         </div>
     )
 }
