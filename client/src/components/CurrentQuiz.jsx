@@ -26,8 +26,7 @@ export default function CurrentQuiz({ selectedQuiz, handleQuizClick, quiz, setQu
         }
     }
 
-    console.log(score, highScore)
-
+    
     const nextQuestion = () => {
         if(choice === answer) { 
             setUser( {...user, score: (score + points)}  )
@@ -49,11 +48,9 @@ export default function CurrentQuiz({ selectedQuiz, handleQuizClick, quiz, setQu
             setCurrentQuestion(0)
         }
     }
-
-    // const updateHighScore = () => {
-
-    // }
-
+    
+    console.log(score, highScore)
+    console.log(points, pointsPossible)
 
     const questionCards = selectedQuiz.map((question) =>
         <Question 

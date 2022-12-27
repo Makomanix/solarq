@@ -36,24 +36,6 @@ export default function QuizContainer() {
             .then((res) => res.json())
             .then((questions) => setQuestions(questions))
     }, []);
-
-    // const patchUserScore = (score, highScore) =>{
-    //     fetch(`/users/${user.id}`, {
-    //         method: 'PATCH',
-    //         headers: {
-    //             'Content-Type':'application/json'
-    //         },
-    //         body: JSON.stringify({
-    //             id: user.id,
-    //             username: user.username,
-    //             score: score,
-    //             high_score: highScore
-    //         })
-    //     })
-    //         .then(res => res.json())
-    //         .then(user => setUser(user))
-    // }
-    
     
 
     const selectedQuiz = questions.filter((question) => question.category === `${quiz}`)
