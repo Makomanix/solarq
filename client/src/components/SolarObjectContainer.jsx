@@ -5,6 +5,7 @@ import SolarObjectCollection from './SolarObjectCollection';
 export default function SolarObjectContainer() {
     const [user, setUser] = useState([])
     const [solarObjects, setSolarObjects] = useState([])
+    const [ category, setCategory ] = useState("")
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,14 +20,28 @@ export default function SolarObjectContainer() {
     }, [navigate]);
 
     useEffect(() => {
-        fetch('/solar_objects')
-            .then((res) => res.json())
-            .then((solarObjects) => setSolarObjects(solarObjects));
-    }, [navigate]);
+        fetch(`/test/${category}`)
+        .then((res) => res.json())
+        .then((solarObjects) => setSolarObjects(solarObjects));
+    }, [category]);
     
+    const handleObjectClick = (e) => {
+        setCategory(e.target.value)
+    }
+    // const filteredBodies = solarObjects.filter((solarObject) => solarObject.category === `${category}`) 
+    
+        // setSolarObjects(filteredBodies)     
+    // }
+    
+    console.log(solarObjects)
+
+    
+    console.log(category)
+    
+
     return (
         <div>
-            <SolarObjectCollection solarObjects={solarObjects} />
+            <SolarObjectCollection solarObjects={solarObjects} handleObjectClick={handleObjectClick}  />
         </div>
     )
 }

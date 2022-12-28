@@ -11,7 +11,8 @@ export default function QuizContainer() {
 })
 
     const [ questions, setQuestions ] = useState([])
-    const [ quiz, setQuiz ] = useState([])
+    const [ quiz, setQuiz ] = useState("")
+    // const [ shuffledQuiz, setShuffledQuiz] = useState([])
 
     const navigate = useNavigate();
 
@@ -35,27 +36,24 @@ export default function QuizContainer() {
         fetch('/questions')
             .then((res) => res.json())
             .then((questions) => setQuestions(questions))
-    }, []);
+    }, [navigate]);
     
 
     const selectedQuiz = questions.filter((question) => question.category === `${quiz}`)
     
     const handleQuizClick = (e) => {
         setQuiz(e.target.value)
-        getRandom(selectedQuiz)
+        // getRandom()
     }
-
-
-    // console.log(user.score)
-    // const handleDifficulty = (e)
-
-    function getRandom(selectedQuiz) {
-        const shuffled = [...selectedQuiz].sort(() => 0.5 - Math.random());
-
-        return shuffled.slice(0, 6)
-    }
-
-
+    
+    // function getRandom() {
+    //     const shuffled = [...selectedQuiz].sort(() => 0.5 - Math.random()).slice(0, 6);
+        
+    //     setShuffledQuiz(shuffled)
+    // };
+    
+    console.log(selectedQuiz)
+    // console.log(shuffledQuiz)
 
     return (
         <div>
@@ -64,7 +62,8 @@ export default function QuizContainer() {
             setUser={setUser}
             quiz={quiz}
             setQuiz={setQuiz}
-            selectedQuiz={getRandom(selectedQuiz)} 
+            selectedQuiz={selectedQuiz}
+            // shuffledQuiz={shuffledQuiz} 
             handleQuizClick={handleQuizClick}/>
         </div>
     )

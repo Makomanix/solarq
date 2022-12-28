@@ -1,13 +1,21 @@
 import React from 'react'
 
-export default function QuizComplete({user, setUser, score, highScore, pointsPossible, setShowQuizResults, setQuiz }) {
+export default function QuizComplete({ user, setUser, score, highScore, pointsPossible, setShowQuizResults, quiz, setQuiz, setPlanetScore, setMoonScore, setOtherScore }) {
 
 
     let percentage = (Math.round((score/pointsPossible) * 100).toFixed(2))
-
+        
     const handleNextQuiz = () => {
+        setPlanetScore(score)
+        if (quiz === "planet") {
+            setPlanetScore(score)
+        } else if (quiz === "moon") {
+            setMoonScore(score)
+        } else {
+            setOtherScore(score)
+        }
         setShowQuizResults(false)
-        setQuiz([]); 
+        setQuiz(""); 
         fetch(`/users/${user.id}`, {
             method: 'PATCH',
             headers: {
@@ -27,11 +35,15 @@ export default function QuizComplete({user, setUser, score, highScore, pointsPos
                 score: 0,
                 highScore: user.high_score,
             }))
-    }
-
+        }
     
-
+    // const handleNextQuiz = () => {
+    // }
     
+    // console.log(quiz)
+
+
+
 
     return (
         <div>

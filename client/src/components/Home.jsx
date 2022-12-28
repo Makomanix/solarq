@@ -18,14 +18,7 @@ export default function UserContainer() {
                 .then((res) => res.json())
                 .then((user) => setUser(user))
         }
-    }, []);
-
-    // useEffect(() => {
-    //     fetch('/solar_objects')
-    //         .then((res) => res.json())
-    //         .then((solarObjects) => setSolarObjects(solarObjects));
-    // }, []);
-    // console.log(solarObjects)
+    }, [navigate]);
 
     const handleOnClick = (e) => {
         navigate(`${e.target.value}`)
@@ -33,12 +26,9 @@ export default function UserContainer() {
 
     return (
         <div>
-            <div className='grid grid-cols-3 grid-rows-1'>
-                {/* <QuizContainer solarObjects={solarObjects} /> */}
-                <button value="/quizzes" onClick={handleOnClick}>Test Your Solar System Knowledge</button>
-                {/* <SolarObjectContainer solarObjects={solarObjects} setSolarObjects={setSolarObjects} /> */}
-                <button value="/solar_system" onClick={handleOnClick}>Discover Your Solar System</button>
-                {/* <UserQuizContainer /> */}
+            <div className='grid grid-cols-3 grid-rows-1'>                
+                <button value="/quizzes" onClick={handleOnClick}>Test Your Solar System Knowledge</button>                
+                <button value="/solar_system" onClick={handleOnClick}>Discover Your Solar System</button>                
                 <button value="/user_quizzes" onClick={handleOnClick}>See your past</button>
             </div>
         </div>

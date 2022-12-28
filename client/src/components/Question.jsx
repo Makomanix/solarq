@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Question({question, stateAnswer, setAnswer, choice, setChoice, setPoints, nextQuestion, currentQuestion, selectedQuiz, setNotSelected}) {
+export default function Question({ question, stateAnswer, setAnswer, choice, setChoice, setPoints, updateScore, currentQuestion, shuffledQuiz, setNotSelected}) {
     const { text, difficulty, points, answer, option1, option2, option3, option4, hint } = question
     const [ showHint, setShowHint ] = useState(false)
 
@@ -14,10 +14,9 @@ export default function Question({question, stateAnswer, setAnswer, choice, setC
     const handleAnswerClick = (e) => {
         if (choice === "0" && stateAnswer === "1") {
             setNotSelected(true)
-        } else {
-            
+        } else {           
             setNotSelected(false)
-        nextQuestion()
+        updateScore()
         }
     }
 
@@ -27,7 +26,7 @@ export default function Question({question, stateAnswer, setAnswer, choice, setC
 
     return (
         <div className='h-72 w-96 outline'>
-            <span className='flex items-center justify-center'>Question # {currentQuestion + 1} out of {selectedQuiz.length} : {points} Points</span>
+            <span className='flex items-center justify-center'>Question # {currentQuestion + 1} out of {shuffledQuiz.length} : {points} Points</span>
                 <span className='flex items-center justify-center h-16 outline'>{text}</span>
                 <div className='grid grid-cols-1 pt-6 gap-y-2'>
                     <button value={option1} onClick={handleChoiceClick}>{option1}</button>
