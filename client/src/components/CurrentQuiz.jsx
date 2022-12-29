@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import Question from './Question';
 import QuizComplete from './QuizComplete';
 
-export default function CurrentQuiz({ selectedQuiz, handleQuizClick, quiz, setQuiz, user, setUser, patchUserScores}) {
-    const { score, highScore } = user
+export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, quiz, setQuiz, user, setUser,}) {
+    const { id, username, score, highScore } = user
     const [ planetScore, setPlanetScore] = useState(0)
     const [ moonScore, setMoonScore ] = useState(0)
     const [ otherScore, setOtherScore ] = useState(0)
+    const [ totalScore, setTotalScore ] = useState(0)
     const [ currentQuestion, setCurrentQuestion ] = useState(0);
     const [ points, setPoints ] = useState(0);
     const [ pointsPossible, setPointsPossible ] = useState(0)
@@ -15,16 +16,11 @@ export default function CurrentQuiz({ selectedQuiz, handleQuizClick, quiz, setQu
     const [ choice, setChoice ] = useState("0");
     const [ showQuizResults, setShowQuizResults ] = useState(false)
     const [ notSelected, setNotSelected ] = useState(false)
-    const [shuffledQuiz, setShuffledQuiz] = useState([])
+    
     
     // setUser{...user, user.score: score , user.highScore: highScore}
-    console.log(planetScore)
+    // console.log(planetScore)
 
-    function getRandom() {
-        const shuffled = [...selectedQuiz].sort(() => 0.5 - Math.random()).slice(0, 6);
-
-        setShuffledQuiz(shuffled)
-    };
     
     const resetAnswerChoice = () => {
         setAnswer("1")
@@ -52,7 +48,7 @@ export default function CurrentQuiz({ selectedQuiz, handleQuizClick, quiz, setQu
     };
         
     const nextQuestion = () => {
-        if (currentQuestion + 1 < shuffledQuiz.length) {
+        if (currentQuestion + 1 < questions.length) {
             setCurrentQuestion((currentQuestion) => currentQuestion + 1)
         } else {
             setShowQuizResults(true);
@@ -71,11 +67,11 @@ export default function CurrentQuiz({ selectedQuiz, handleQuizClick, quiz, setQu
     //     }
     // }
     
-    console.log()
+    // console.log()
     // console.log(score, highScore)
     // console.log(points, pointsPossible)
 
-    const questionCards = shuffledQuiz.map((question) =>
+    const questionCards = questions.map((question) =>
         <Question 
             key={question.id}
             id={question.id}
@@ -85,14 +81,12 @@ export default function CurrentQuiz({ selectedQuiz, handleQuizClick, quiz, setQu
             setPoints={setPoints}
             updateScore={updateScore}
             currentQuestion={currentQuestion}
-            shuffledQuiz={shuffledQuiz}
+            questions={questions}
             choice={choice}
             setNotSelected={setNotSelected}
             stateAnswer={answer}
             />);
 
-
-        console.log(shuffledQuiz)
 
     return (
         <div className='relative'>

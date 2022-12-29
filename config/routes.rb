@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     delete "/logout", to: "sesssions#destroy"
     get "/solar_objects/:category", to: "solar_objects#getByCategory"
-    get "/questions/:category", to: "questions#getByCategory"
+    get "/questions/:quiz", to: "questions#getByCategory"
 end

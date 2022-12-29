@@ -20,7 +20,7 @@ export default function SolarObjectContainer() {
     }, [navigate]);
 
     useEffect(() => {
-        fetch(`/test/${category}`)
+        fetch(`/solar_objects/${category}`)
         .then((res) => res.json())
         .then((solarObjects) => setSolarObjects(solarObjects));
     }, [category]);

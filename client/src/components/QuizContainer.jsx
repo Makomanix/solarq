@@ -3,18 +3,15 @@ import CurrentQuiz from './CurrentQuiz';
 import { useNavigate } from 'react-router-dom';
 
 export default function QuizContainer() {
+    const navigate = useNavigate();
+    const [ questions, setQuestions ] = useState([])
+    const [ quiz, setQuiz ] = useState("")
     const [ user, setUser ] = useState({
-        id: 0,
-        username: "",
+    id: 0,
+    username: "",
         score: 0,
         highScore: 0,
 })
-
-    const [ questions, setQuestions ] = useState([])
-    const [ quiz, setQuiz ] = useState("")
-    // const [ shuffledQuiz, setShuffledQuiz] = useState([])
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         const currentUser = sessionStorage.getItem("user_id")
@@ -33,27 +30,19 @@ export default function QuizContainer() {
     }, [navigate]);
 
     useEffect(() => {
-        fetch('/questions')
+        fetch(`/questions/${quiz}`)
             .then((res) => res.json())
-            .then((questions) => setQuestions(questions))
-    }, [navigate]);
+            .then((data) => setQuestions(data))
+    }, [quiz]);
     
 
-    const selectedQuiz = questions.filter((question) => question.category === `${quiz}`)
-    
     const handleQuizClick = (e) => {
         setQuiz(e.target.value)
-        // getRandom()
     }
+
+    console.log(questions)
     
-    // function getRandom() {
-    //     const shuffled = [...selectedQuiz].sort(() => 0.5 - Math.random()).slice(0, 6);
-        
-    //     setShuffledQuiz(shuffled)
-    // };
-    
-    console.log(selectedQuiz)
-    // console.log(shuffledQuiz)
+
 
     return (
         <div>
@@ -62,8 +51,8 @@ export default function QuizContainer() {
             setUser={setUser}
             quiz={quiz}
             setQuiz={setQuiz}
-            selectedQuiz={selectedQuiz}
-            // shuffledQuiz={shuffledQuiz} 
+            questions={questions}
+            setQuestions={setQuestions}
             handleQuizClick={handleQuizClick}/>
         </div>
     )
