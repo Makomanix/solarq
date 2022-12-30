@@ -17,11 +17,6 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
     const [ showQuizResults, setShowQuizResults ] = useState(false)
     const [ notSelected, setNotSelected ] = useState(false)
     
-    
-    // setUser{...user, user.score: score , user.highScore: highScore}
-    // console.log(planetScore)
-
-    
     const resetAnswerChoice = () => {
         setAnswer("1")
         setChoice("0")
@@ -35,7 +30,26 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
     
     const updateScore = () => {
         if(choice === answer) { 
-            setUser( {...user, score: (score + points)}  )
+            // setUser( { score: (score + points)} )
+            fetch(`/users/${id}`, {
+                method: "PATCH",
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                body: JSON.stringify({
+                    id: id,
+                    username: username,
+                    score: (score + points),
+                    highScore: highScore
+                })
+            })
+                .then(res => res.json())
+                .then(user => setUser ({
+                    id: id,
+                    username: username,
+                    score: user.score,
+                    highScore: highScore
+                }))
             setPointsPossible((pointsPossible) => pointsPossible + points)
             updateHighScore()
             resetAnswerChoice() 
@@ -46,7 +60,7 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
             nextQuestion()
         }
     };
-        
+    
     const nextQuestion = () => {
         if (currentQuestion + 1 < questions.length) {
             setCurrentQuestion((currentQuestion) => currentQuestion + 1)
@@ -56,49 +70,42 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
         }
     };
 
-    // const updateCurrentQuizScore () => {
-    //     if (quiz === "planet") {
-    //         setPlanetScore(score)
-    //         patchQuizScore()
-    //     } else if (quiz === "moon") {
-    //         setMoonScore(score)
-    //     } else {
-    //         setOtherScore(score)
-    //     }
-    // }
+    console.log("score", score)
+    console.log("points", points)
+    console.log("points possible", pointsPossible)
+    console.log("choice", choice)
+    console.log("answer", answer)
     
-    // console.log()
-    // console.log(score, highScore)
-    // console.log(points, pointsPossible)
-
     const questionCards = questions.map((question) =>
-        <Question 
-            key={question.id}
-            id={question.id}
-            question={question}
-            setAnswer={setAnswer}
-            setChoice={setChoice}
-            setPoints={setPoints}
-            updateScore={updateScore}
-            currentQuestion={currentQuestion}
-            questions={questions}
-            choice={choice}
-            setNotSelected={setNotSelected}
-            stateAnswer={answer}
-            />);
+    <Question 
+        key={question.id}
+        id={question.id}
+        question={question}
+        setAnswer={setAnswer}
+        setChoice={setChoice}
+        setPoints={setPoints}
+        updateScore={updateScore}
+        currentQuestion={currentQuestion}
+        questions={questions}
+        choice={choice}
+        setNotSelected={setNotSelected}
+        stateAnswer={answer}
+    />);
 
-
-    return (
-        <div className='relative'>
+            
+            
+            return (
+                <div className='relative'>
             <div className='grid grid-cols-3 grid-rows-1'> 
                 <button value="planet" onClick={handleQuizClick}>Planet Quiz {planetScore}</button>               
                 <button value="moon" onClick={handleQuizClick}>Moon Quiz</button>                               
                 <button value="other" onClick={handleQuizClick}>Sun and Other Quiz</button>               
             </div>
-            {highScore} {planetScore}
-                <div>{notSelected ? "Select an Answer to Continue" : null }</div>
-            <div className='absolute top-72 left-[39.5%]'>{showQuizResults ? 
-                <QuizComplete user={user} 
+            {highScore} : {planetScore}
+            <div>{notSelected ? "Select an Answer to Continue" : null }</div>
+            <div>{(quiz === "planet" || quiz === "moon" || quiz === "other") ?
+                <div className='absolute top-72 left-[39.5%]'>{showQuizResults ? 
+                    <QuizComplete user={user} 
                     setUser={setUser} 
                     setPlanetScore={setPlanetScore} 
                     setMoonScore={setMoonScore} 
@@ -108,12 +115,39 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
                     score={score} 
                     highScore={highScore} 
                     pointsPossible={pointsPossible} 
+                    setPointsPossible={setPointsPossible}
                     setShowQuizResults={setShowQuizResults} /> :
-            <>
-            {questionCards[currentQuestion]}
-            </>
-            }
+                    <div>
+                {questionCards[currentQuestion]}
+                </div>
+                }
+                </div>
+            : null }
             </div>
         </div>
     )
 }
+
+// console.log(questions)
+// const updateCurrentQuizScore () => {
+    //     if (quiz === "planet") {
+        //         setPlanetScore(score)
+        //         patchQuizScore()
+        //     } else if (quiz === "moon") {
+            //         setMoonScore(score)
+            //     } else {
+                //         setOtherScore(score)
+                //     }
+                // }
+                
+                // console.log()
+
+                // setUser{...user, user.score: score , user.highScore: highScore}
+                // console.log(planetScore)
+                
+                // const displayQuiz = () => {
+                    // if(quiz === "planet" || quiz === "moon" || quiz === "other")
+                
+                // }
+                // console.log(choice)
+                // console.log(answer)

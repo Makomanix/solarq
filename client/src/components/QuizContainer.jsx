@@ -34,15 +34,23 @@ export default function QuizContainer() {
             .then((res) => res.json())
             .then((data) => setQuestions(data))
     }, [quiz]);
+
+    // async function questionfetch() {
+    //     await fetch(`/questions/${quiz}`)
+    //         .then((res) => res.json())
+    //         .then((data) => setQuestions(data));
+
+    // }
     
 
     const handleQuizClick = (e) => {
         setQuiz(e.target.value)
+        // questionfetch()
     }
 
-    console.log(questions)
+    // console.log(questions)
     
-
+    // console.log(questions)
 
     return (
         <div>
@@ -53,7 +61,7 @@ export default function QuizContainer() {
             setQuiz={setQuiz}
             questions={questions}
             setQuestions={setQuestions}
-            handleQuizClick={handleQuizClick}/>
+            handleQuizClick={handleQuizClick}/> 
         </div>
     )
 }

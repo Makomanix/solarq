@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function QuizComplete({ user, setUser, score, highScore, pointsPossible, setShowQuizResults, quiz, setQuiz, setPlanetScore, setMoonScore, setOtherScore }) {
+export default function QuizComplete({ user, setUser, score, highScore, pointsPossible, setPointsPossible, setShowQuizResults, quiz, setQuiz, setPlanetScore, setMoonScore, setOtherScore }) {
 
 
     let percentage = (Math.round((score/pointsPossible) * 100).toFixed(2))
@@ -34,7 +34,8 @@ export default function QuizComplete({ user, setUser, score, highScore, pointsPo
                 username: user.username,
                 score: 0,
                 highScore: user.high_score,
-            }))
+            }),
+            setPointsPossible(0))
         }
     
     // const handleNextQuiz = () => {
