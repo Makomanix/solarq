@@ -1,57 +1,47 @@
 import React from 'react'
 
-export default function QuizComplete({ user, setUser, score, highScore, pointsPossible, setPointsPossible, setShowQuizResults, quiz, setQuiz, setPlanetScore, setMoonScore, setOtherScore }) {
+export default function QuizComplete({ score, pointsPossible, setPointsPossible, showQuizResults, setShowQuizResults, quiz, setQuiz, setPlanetScore, setMoonScore, setOtherScore, updateHighScore, updateScore, patchEachQuiz, saveQuizResults, setSaveQuizResults }) {
 
 
     let percentage = (Math.round((score/pointsPossible) * 100).toFixed(2))
         
-    const handleNextQuiz = () => {
-        setPlanetScore(score)
+    // const handleNextQuiz = () => {
+    const handleClick = () => {
         if (quiz === "planet") {
             setPlanetScore(score)
+            updateHighScore()
+            
         } else if (quiz === "moon") {
             setMoonScore(score)
+            updateHighScore()
+            
         } else {
             setOtherScore(score)
+            updateHighScore()    
         }
+            setSaveQuizResults(true)
+        }
+
+    const handleNextQuiz = () => {
         setShowQuizResults(false)
-        setQuiz(""); 
-        fetch(`/users/${user.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                id: user.id,
-                username: user.username,
-                score: score,
-                highScore: highScore
-            })
-        })
-            .then(res => res.json())
-            .then(user => setUser({
-                id: user.id,
-                username: user.username,
-                score: 0,
-                highScore: user.high_score,
-            }),
-            setPointsPossible(0))
-        }
-    
-    // const handleNextQuiz = () => {
-    // }
-    
-    // console.log(quiz)
-
-
-
+        setSaveQuizResults(false)
+        setQuiz("");
+        setPointsPossible(0)
+        patchEachQuiz()
+    }
 
     return (
-        <div>
-            <div>Final Results</div>
-            <div>{score} out of {pointsPossible} Points!</div>
-            <div>{percentage}%</div>
-            <button onClick={handleNextQuiz}>Choose Another Quiz</button>
+        <div>{saveQuizResults ?
+                <div>
+                    <div>Final Results</div>
+                    <div>{score} out of {pointsPossible} Points!</div>
+                    <div>{percentage}%</div>
+                    <button onClick={handleNextQuiz}>Choose Another Quiz</button>
+                </div> :
+                <div>
+                    <button onClick={handleClick}>See Results</button>
+                </div>
+                }
         </div>
     )
 }

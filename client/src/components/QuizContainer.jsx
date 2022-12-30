@@ -10,8 +10,9 @@ export default function QuizContainer() {
     id: 0,
     username: "",
         score: 0,
-        highScore: 0,
+        high_score: 0,        
 })
+    // console.log(user)
 
     useEffect(() => {
         const currentUser = sessionStorage.getItem("user_id")
@@ -24,10 +25,13 @@ export default function QuizContainer() {
                     id: user.id,
                     username: user.username,
                     score: 0,
-                    highScore: user.high_score,
+                    high_score: user.high_score,
                 }))
-        }
-    }, [navigate]);
+            }
+        }, [navigate]);
+        
+        
+
 
     useEffect(() => {
         fetch(`/questions/${quiz}`)
@@ -48,9 +52,7 @@ export default function QuizContainer() {
         // questionfetch()
     }
 
-    // console.log(questions)
     
-    // console.log(questions)
 
     return (
         <div>

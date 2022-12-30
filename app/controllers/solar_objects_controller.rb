@@ -10,9 +10,9 @@ class SolarObjectsController < ApplicationController
         render json: SolarObject.where(category: params[:category])
     end
 
-    # def show
-    #     reder json: @solar_object, status: :ok
-    # end
+    def show
+        reder json: @solar_object, status: :ok
+    end
 
     def create
         solar_object = SolarObject.create!(solar_object_params)
@@ -21,9 +21,9 @@ class SolarObjectsController < ApplicationController
 
     private
 
-    # def select_solar_object
-    #     @solar_object = SolarObject.find(params[:id])
-    # end
+    def select_solar_object
+        @solar_object = SolarObject.find(params[:id])
+    end
 
     def solar_object_params
         params.permit(:name, :isPlanet, :isMoon, :isOther)
