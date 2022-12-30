@@ -5,9 +5,9 @@ import SignUp from './components/SignUp';
 import About from './components/About';
 import SolarObjectContainer from './components/SolarObjectContainer';
 import Home from './components/Home';
-import UserQuizContainer from './components/UserQuizContainer';
 import QuizContainer from './components/QuizContainer';
 import NavBar from './components/NavBar';
+import Leaderboard from './components/Leaderboard';
 
 
 
@@ -31,7 +31,7 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/solar_system' element={<SolarObjectContainer />} />
           <Route path='/quizzes' element={<QuizContainer />} />
-          <Route path='/user_quizzes' element={<UserQuizContainer />} />
+          <Route path='/leaderboard' element={<Leaderboard />} />
         </Routes>
       </div>
     </div>

@@ -17,6 +17,7 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
     const [ showQuizResults, setShowQuizResults ] = useState(false)
     const [ saveQuizResults, setSaveQuizResults ] = useState(false)
     const [ notSelected, setNotSelected ] = useState(false)
+    // const navigate = useNavigate()
 
 console.log("score", score)
 console.log("total score", totalScore)    
@@ -27,12 +28,14 @@ console.log("high_score",high_score)
         setAnswer("1")
         setChoice("0")
     };
+
     
     const updateHighScore = () => {
         if(totalScore > high_score ) {
             setUser({...user, high_score: totalScore })
         }
     };
+
 
     const updateScore = () => {
         if(choice === answer) {
@@ -41,13 +44,14 @@ console.log("high_score",high_score)
             setPointsPossible((pointsPossible) => pointsPossible + points)
             resetAnswerChoice()
             nextQuestion()
-            // updateHighScore() patches incorrect value early
+            
         } else {
             setPointsPossible((pointsPossible) => pointsPossible + points)
             resetAnswerChoice()
             nextQuestion()
         }
-    }
+    };
+
 
     const nextQuestion = () => {
         if (currentQuestion + 1 < questions.length) {
@@ -55,9 +59,9 @@ console.log("high_score",high_score)
         } else {
             setShowQuizResults(true);
             setCurrentQuestion(0)
-            // updateHighScore() patches incorrect value early
         }
     };
+
     
     const patchEachQuiz = () => {
         fetch(`/users/${user.id}`, {
@@ -79,10 +83,25 @@ console.log("high_score",high_score)
                 score: 0,
                 high_score: high_score
             }))
-    }
+            // .then(postLeaderboard())
+    };
 
-    
-    
+    // const postLeaderboard = () => {
+    //     if(planetScore > 0 && moonScore > 0 && otherScore > 0)
+    //         fetch(`/leaderboards`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 "Content-type": "application/json",
+    //             },
+    //             body: JSON.stringify({
+    //                 username: username,
+    //                 score: high_score
+    //             })
+    //             .then(navigate("/leaderboard"))
+    //         })
+    // }
+
+
     
     const questionCards = questions.map((question) =>
     <Question 
@@ -139,52 +158,5 @@ console.log("high_score",high_score)
             </div>
         </div>
     )
-}
+};
 
-// console.log(questions)
-// const updateCurrentQuizScore () => {
-    //     if (quiz === "planet") {
-        //         setPlanetScore(score)
-        //         patchQuizScore()
-        //     } else if (quiz === "moon") {
-            //         setMoonScore(score)
-            //     } else {
-                //         setOtherScore(score)
-                //     }
-                // }
-                
-                // console.log()
-
-                // setUser{...user, user.score: score , user.highScore: highScore}
-                // console.log(planetScore)
-                
-                // const displayQuiz = () => {
-                    // if(quiz === "planet" || quiz === "moon" || quiz === "other")
-                
-                // }
-                // setTotalScore((totalScore) => totalScore + points)
-                // updateHighScore()
-                // const patchEachQuiz = () => {
-                //     if(choice === answer) { 
-                        
-                //         fetch(`/users/${id}`, {
-                //             method: "PATCH",
-                //             headers: {
-                //                 'Content-Type' : 'application/json'
-                //             },
-                //             body: JSON.stringify({
-                //                 id: id,
-                //                 username: username,
-                //                 score: (score + points),
-                //                 high_score: high_score
-                //             })
-                //         })
-                //             .then(res => res.json())
-                //             .then(user => setUser ({
-                //                 id: id,
-                //                 username: username,
-                //                 score: 0,
-                //                 high_score: high_score
-                //             }))    
-                //     }
-                // };

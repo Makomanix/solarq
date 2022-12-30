@@ -25,7 +25,7 @@ export default function UserContainer() {
             <div className='grid grid-cols-3 grid-rows-1'>                
                 <button value="/quizzes" onClick={handleOnClick}>Test Your Solar System Knowledge</button>                
                 <button value="/solar_system" onClick={handleOnClick}>Discover Your Solar System</button>                
-                <button value="/user_quizzes" onClick={handleOnClick}>See your past</button>
+                <button value="/leaderboard" onClick={handleOnClick}>See the Leaderboard</button>
             </div>
         </div>
     )

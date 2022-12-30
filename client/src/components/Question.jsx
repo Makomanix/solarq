@@ -8,34 +8,36 @@ export default function Question({ question, questions, stateAnswer, setAnswer, 
 
     
     const options = [option1, option2, option3, option4]
-    
-    // console.log("choice", choice)
-    // console.log("answer", stateAnswer)
+
     
     const handleChoiceClick = (e) => {
         setChoice(e.target.value)
         setAnswer(answer)
         setPoints(points)
-    }
+    };
+
     
     const shuffleOptions = () => { 
         setSeeOptions(!seeOptions)
-        setAnswerOptions(options.sort(() => Math.random() - 0.5))}
+        setAnswerOptions(options.sort(() => Math.random() - 0.5))
+    };
         
     
-        const handleAnswerClick = () => {
-            if (choice === "0" && stateAnswer === "1") {
-                setNotSelected(true)
-            } else {           
-                setNotSelected(false)               
-                updateScore()
-                shuffleOptions()
-            }
+    const handleAnswerClick = () => {
+        if (choice === "0" && stateAnswer === "1") {
+            setNotSelected(true)
+        } else {           
+            setNotSelected(false)               
+            updateScore()
+            shuffleOptions()
         }
+    };
+
 
     const handleHint = () => {
         setShowHint(!showHint)
-    }
+    };
+
     
     return (
         <div className='h-72 w-96 outline'>
@@ -66,17 +68,4 @@ export default function Question({ question, questions, stateAnswer, setAnswer, 
             </div>
         </div>
     )
-}
-
-{/* <button value={answer} onClick={handleAnswerClick}>Submit Answer</button> */}
-{/* {answerOptions === options ?
-<div className='grid grid-cols-1 pt-6 gap-y-2'>                 
-<button value={answerOptions[0]} onClick={handleChoiceClick}>{answerOptions[0]}</button>
-<button value={answerOptions[1]} onClick={handleChoiceClick}>{answerOptions[1]}</button>
-<button value={answerOptions[2]} onClick={handleChoiceClick}>{answerOptions[2]}</button>
-<button value={answerOptions[3]} onClick={handleChoiceClick}>{answerOptions[3]}</button>
-</div> 
-: */}
-// const shuffleOptions = answerOptions.sort(() => Math.random() - 0.5)
-
-// const setshuffleOptions = setAnswerOptions(shuffleOptions)
+};
