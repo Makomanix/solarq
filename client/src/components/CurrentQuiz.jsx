@@ -17,7 +17,7 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
     const [ showQuizResults, setShowQuizResults ] = useState(false)
     const [ saveQuizResults, setSaveQuizResults ] = useState(false)
     const [ notSelected, setNotSelected ] = useState(false)
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
 console.log("score", score)
 console.log("total score", totalScore)    
@@ -83,23 +83,23 @@ console.log("high_score",high_score)
                 score: 0,
                 high_score: high_score
             }))
-            // .then(postLeaderboard())
+            postLeaderboard()
     };
 
-    // const postLeaderboard = () => {
-    //     if(planetScore > 0 && moonScore > 0 && otherScore > 0)
-    //         fetch(`/leaderboards`, {
-    //             method: 'POST',
-    //             headers: {
-    //                 "Content-type": "application/json",
-    //             },
-    //             body: JSON.stringify({
-    //                 username: username,
-    //                 score: high_score
-    //             })
-    //             .then(navigate("/leaderboard"))
-    //         })
-    // }
+    const postLeaderboard = () => {
+        if(planetScore > 0 && moonScore > 0 && otherScore > 0)
+            fetch(`/leaderboards`, {
+                method: 'POST',
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: username,
+                    score: high_score
+                })
+                .then(navigate("/leaderboard"))
+            })
+    }
 
 
     

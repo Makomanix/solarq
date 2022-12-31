@@ -11,4 +11,7 @@ Rails.application.routes.draw do
     delete "/logout", to: "sesssions#destroy"
     get "/solar_objects/:category", to: "solar_objects#getByCategory"
     get "/questions/:quiz", to: "questions#getByCategory"
+    get "/leaderboards/:planet", to: "leaderboards#getPlanetScore"
+    get "/leaderboards/:moon", to: "leaderboards#getMoonScore"
+    get "/leaderboards/:other", to: "leaderboards#getOtherScore"
 end
