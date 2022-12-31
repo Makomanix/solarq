@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_23_143245) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_31_001924) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "leaderboards", force: :cascade do |t|
     t.string "username"
-    t.integer "score"
+    t.integer "total_score"
+    t.integer "planet_score"
+    t.integer "moon_score"
+    t.integer "other_score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

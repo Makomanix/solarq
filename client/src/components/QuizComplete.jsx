@@ -5,8 +5,8 @@ export default function QuizComplete({ score, pointsPossible, setPointsPossible,
 
     let percentage = (Math.round((score/pointsPossible) * 100).toFixed(2))
         
-    // const handleNextQuiz = () => {
-    const handleClick = () => {
+    
+    const seeResults = () => {
         if (quiz === "planet") {
             setPlanetScore(score)
             updateHighScore()
@@ -39,7 +39,7 @@ export default function QuizComplete({ score, pointsPossible, setPointsPossible,
                     <button onClick={handleNextQuiz}>Choose Another Quiz</button>
                 </div> :
                 <div>
-                    <button onClick={handleClick}>See Results</button>
+                    <button onClick={seeResults}>See Results</button>
                 </div>
                 }
         </div>

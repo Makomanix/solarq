@@ -22,6 +22,7 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
 console.log("score", score)
 console.log("total score", totalScore)    
 console.log("high_score",high_score)
+console.log("user.highscore", user.high_score)
 
 
     const resetAnswerChoice = () => {
@@ -95,9 +96,12 @@ console.log("high_score",high_score)
                 },
                 body: JSON.stringify({
                     username: username,
-                    score: high_score
+                    total_score: totalScore,
+                    planet_score: planetScore,
+                    moon_score: moonScore,
+                    other_score: otherScore
                 })
-                .then(navigate("/leaderboard"))
+                // .then(navigate("/leaderboard"))
             })
     }
 
