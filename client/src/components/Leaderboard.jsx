@@ -19,7 +19,7 @@ export default function Leaderboard() {
     console.log(leaderboardData)
 
     return (
-        <div>Leaderboard
+        <div>
             <LeaderboardCollection leaderboardData={leaderboardData}
                 setLeaderboardData={setLeaderboardData}/>
         </div>
