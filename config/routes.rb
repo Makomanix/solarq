@@ -5,13 +5,13 @@ Rails.application.routes.draw do
     resources :solar_objects, only: [:index, :show]
     resources :questions, only: [ :index ]
     resources :user_questions, only: [ :index, :create ]
-    resources :leaderboards, only: [ :index, :show, :create ]
+    resources :leaderboards, only: [ :index, :create ]
 
     post "/login", to: "sessions#create"
     delete "/logout", to: "sesssions#destroy"
     get "/solar_objects/:category", to: "solar_objects#getByCategory"
     get "/questions/:quiz", to: "questions#getByCategory"
-    get "/leaderboards/:planet", to: "leaderboards#getPlanetScore"
-    get "/leaderboards/:moon", to: "leaderboards#getMoonScore"
-    get "/leaderboards/:other", to: "leaderboards#getOtherScore"
+    get "/leaderboards/:updateFetch", to: "leaderboards#getSelectedScore"
+    # get "/leaderboards/:moon", to: "leaderboards#getMoonScore"
+    # get "/leaderboards/:other", to: "leaderboards#getOtherScore"
 end

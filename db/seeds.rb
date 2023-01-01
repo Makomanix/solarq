@@ -10,9 +10,22 @@ Leaderboard.destroy_all
 
 puts "Creating Users"
 User.create(username: "test", password: "1234567", email:"astro@astro.com", favorite_planet: "Mars", score: 0, high_score: 0 )
+User.create(username: "Solar Queen", password: "1234567", email:"SolarQueen@astro.com", favorite_planet: "Mars", score: 0, high_score: 0 )
+User.create(username: "Dark Matter", password: "1234567", email:"DarkMatter@astro.com", favorite_planet: "Mars", score: 0, high_score: 0 )
+User.create(username: "Star Lord", password: "1234567", email:"StarLord@astro.com", favorite_planet: "Mars", score: 0, high_score: 0 )
 
 puts "Creating Leaderboards"
-Leaderboard.create(username: "test", total_score: 2400, planet_score: 800, moon_score: 800, other_score: 800 )
+Leaderboard.create(username: "Solar Queen", total_score: 2400, planet_score: 1200, moon_score: 200, other_score: 1000 )
+Leaderboard.create(username: "Star Lord", total_score: 2300, planet_score: 700, moon_score: 800, other_score: 800 )
+Leaderboard.create(username: "Dark Matter", total_score: 2100, planet_score: 800, moon_score: 700, other_score: 600 )
+Leaderboard.create(username: "Solar Queen", total_score: 2100, planet_score: 800, moon_score: 800, other_score: 500 )
+Leaderboard.create(username: "Solar Queen", total_score: 1900, planet_score: 1100, moon_score: 400, other_score: 400 )
+Leaderboard.create(username: "Dark Matter", total_score: 1700, planet_score: 200, moon_score: 1200, other_score: 300 )
+Leaderboard.create(username: "Star Lord", total_score: 1600, planet_score: 400, moon_score: 900, other_score: 300 )
+Leaderboard.create(username: "Star Lord", total_score: 1400, planet_score: 100, moon_score: 200, other_score: 1100 )
+Leaderboard.create(username: "Dark Matter", total_score: 1200, planet_score: 300, moon_score: 800, other_score: 0 )
+Leaderboard.create(username: "Dark Matter", total_score: 1000, planet_score: 100, moon_score: 200, other_score: 700 )
+
 
 puts "Creating Solar_Objects"
 SolarObject.create(name: "The Sun", category: "other", story: "Our Sun is a 4.5 billion-year-old star – a hot glowing ball of hydrogen and helium at the center of our solar system. The Sun is about 93 million miles (150 million kilometers) from Earth, and without its energy, life as we know it could not exist here on our home planet. The Sun is the largest object in our solar system. The Sun’s volume would need 1.3 million Earths to fill it. Its gravity holds the solar system together, keeping everything from the biggest planets to the smallest bits of debris in orbit around it. The hottest part of the Sun is its core, where temperatures top 27 million degrees Fahrenheit (15 million degrees Celsius). The Sun’s activity, from its powerful eruptions to the steady stream of charged particles it sends out, influences the nature of space throughout the solar system ", image: "")
