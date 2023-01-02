@@ -10,17 +10,12 @@ class LeaderboardsController < ApplicationController
         render json: leaderboard, status: :created
     end
 
-    # def show
-    #     leaderboard = Leaderboard.all.order(:planet_score).reverse.slice(0, 10) 
-    #     render json: leaderboard, status: :ok
-    # end
-
     def getSelectedScore
         leaderboard = Leaderboard.all.order(params[:updateFetch]).reverse.slice(0, 10) 
         render json: leaderboard, status: :ok
     end
 
-    def getOtherScore
+    def getUserScores
         leaderboard = Leaderboard.all.order(:other_score).reverse.slice(0, 10) 
         render json: leaderboard, status: :ok
     end

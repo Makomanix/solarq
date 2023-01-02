@@ -5,13 +5,13 @@ import { useNavigate } from 'react-router-dom';
 export default function Leaderboard() {
     const [ leaderboardData, setLeaderboardData ] = useState([])
     const [ updateFetch, setUpdateFetch ] = useState("")
+    const navigate = useNavigate() 
     const [user, setUser] = useState({
         id: 0,
         username: "",
         score: 0,
         high_score: 0,
     })
-    const navigate = useNavigate() 
 
 
     useEffect(() => {
@@ -36,10 +36,10 @@ export default function Leaderboard() {
         .then((leaderboardData) => setLeaderboardData(leaderboardData))
     }, [updateFetch]);
 
-    const filterUserScores = ()  => {
-        const userScores = leaderboardData.filter((leaderboard) => leaderboard.username === user.username)
-    }
-    
+    // const filterUserScores = ()  => {
+    //     const userScores = leaderboardData.filter((leaderboard) => leaderboard.username === user.username)
+    // }
+
     console.log(updateFetch)
     console.log(leaderboardData)
 

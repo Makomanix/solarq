@@ -2,12 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    li {
-        @apply text-2xl text-orange-500 pl-32
-    }
 
-    button {
-        @apply text-white border-2 bg-indigo-600 border-indigo-600 active:bg-green-500
-    }
-}
