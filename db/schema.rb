@@ -68,6 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_31_001924) do
     t.string "favorite_planet"
     t.integer "score"
     t.integer "high_score"
+    t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

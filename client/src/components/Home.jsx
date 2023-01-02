@@ -22,11 +22,17 @@ export default function UserContainer() {
     }
 
     return (
-        <div>
-            <div className='grid grid-cols-3 grid-rows-1 z-40'>                
-                <button value="/quizzes" onClick={handleOnClick}>Test Your Solar System Knowledge</button>                
-                <button value="/solar_system" onClick={handleOnClick}>Discover Your Solar System</button>                
-                <button value="/leaderboard" onClick={handleOnClick}>See the Leaderboard</button>
+        <div className='relative'>
+            <div className='absolute h-56 w-screen top-20 content-center grid grid-cols-3 grid-rows-1 gap-x-20 outline text-center text-white'> 
+                <span className='outline'>
+                    <button value="/quizzes" onClick={handleOnClick}>Take a </button> 
+                </span> 
+                <span className='outline'>              
+                    <button value="/solar_system" onClick={handleOnClick}>Discover Your Solar System</button> 
+                </span> 
+                <span className='outline'>             
+                    <button value="/leaderboard" onClick={handleOnClick}>See the Leaderboard</button>
+                </span>
             </div>
         </div>
     )

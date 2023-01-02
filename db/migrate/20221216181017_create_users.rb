@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :favorite_planet
       t.integer :score
       t.integer :high_score
+      t.boolean :admin
 
       t.timestamps
     end

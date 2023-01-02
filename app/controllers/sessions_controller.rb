@@ -13,14 +13,14 @@ class SessionsController < ApplicationController
     def show
         user = User.find_by(id: session[:user_id])
         if user
-            render json: driver
+            render json: user
         else
             render json: { error: "Not Authorized" }, status: :unauthorized
         end
     end
 
     def destroy
-        session.delete :driver_id
+        session.delete :user_id
         head :no_content
     end
 

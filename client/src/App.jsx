@@ -26,11 +26,11 @@ function App() {
       <img className="absolute w-full h-full mix-blend-overlay" src={background} alt='nightsky'/>
       <NavBar />
         <Routes>
-          <Route path='/poop' element={<Home users={users} />} />
+          <Route path='/' element={<Home users={users} />} />
           <Route path='/login' element={<Login users={users} setUsers={setUsers} />} />
           <Route path='/sign_up' element={<SignUp />} />
           <Route path='/about' element={<About />} />
-          <Route path='/' element={<SolarObjectContainer />} />
+          <Route path='/solar_system' element={<SolarObjectContainer />} />
           <Route path='/quizzes' element={<QuizContainer />} />
           <Route path='/leaderboard' element={<Leaderboard />} />
         </Routes>
