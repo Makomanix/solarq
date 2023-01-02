@@ -8,6 +8,7 @@ import Home from './components/Home';
 import QuizContainer from './components/QuizContainer';
 import NavBar from './components/NavBar';
 import Leaderboard from './components/Leaderboard';
+import background from "./assets/background.jpg"
 
 
 
@@ -21,21 +22,23 @@ function App() {
   }, [setUsers])
 
   return (
-    <div>
+    <div className='relative h-screen w-screen'>
+      <img className="absolute w-full h-full mix-blend-overlay" src={background} alt='nightsky'/>
       <NavBar />
-      <div>
         <Routes>
-          <Route path='/' element={<Home users={users} />} />
+          <Route path='/poop' element={<Home users={users} />} />
           <Route path='/login' element={<Login users={users} setUsers={setUsers} />} />
           <Route path='/sign_up' element={<SignUp />} />
           <Route path='/about' element={<About />} />
-          <Route path='/solar_system' element={<SolarObjectContainer />} />
+          <Route path='/' element={<SolarObjectContainer />} />
           <Route path='/quizzes' element={<QuizContainer />} />
           <Route path='/leaderboard' element={<Leaderboard />} />
         </Routes>
-      </div>
     </div>
   );
 }
 
 export default App;
+
+
+{/* <img className='z-1' src={background} alt={background} /> */}

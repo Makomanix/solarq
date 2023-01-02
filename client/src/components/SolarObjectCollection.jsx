@@ -16,7 +16,7 @@ export default function SolarObjectCollection({ solarObjects, setCategory}) {
 
     return (
         <div className='relative '>
-            <div className='absolute top-10 h-80 w-screen '>
+            <div className='absolute h-screen w-screen'>
                 <div className='flex items-center justify-center '>
                     <div className='grid grid-cols-4 grid-rows-1 gap-x-10 '>
                         <button value="planet" onClick={handleObjectClick}>Planets</button>

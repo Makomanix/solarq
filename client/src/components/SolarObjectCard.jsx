@@ -9,7 +9,7 @@ export default function SolarObjectCard({solarObjectCard}) {
             <div className='flex items-center justify-center'>
                 <div className='grid grid-cols-2 grid-rows-auto gap-x-6 text-2xl text-center h-20 w-[50%] my-2 '>
                     <div>{name}</div>
-                    <div className='text-red-500 outline z-40' >{image}</div>
+                    <img className='' src={require(`../assets/${image}.jpg`)} /> 
                 </div>
             </div>
         </div>

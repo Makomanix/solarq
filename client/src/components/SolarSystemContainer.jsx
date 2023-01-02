@@ -13,9 +13,9 @@ export default function QuizContainer() {
     }
 
     return (
-            <div>{
+        <div >{
             ifUser ?
-            <Home 
+                <Home 
             onUserCreate={handleIfUser}
             /> : navigate("/login")
             }
