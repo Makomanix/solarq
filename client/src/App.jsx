@@ -15,6 +15,10 @@ import background from "./assets/background.jpg"
 function App() {
   const [users, setUsers] = useState([])
 
+  // const addUser = (newUser) => {
+  //   setUsers([...users, newUser])
+  // }
+
   useEffect(() => {
     fetch(`/users`)
       .then((res) => res.json())
@@ -28,7 +32,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home users={users} />} />
           <Route path='/login' element={<Login users={users} setUsers={setUsers} />} />
-          <Route path='/sign_up' element={<SignUp />} />
+          <Route path='/sign_up' element={<SignUp users={users} setUsers={setUsers} />} />
           <Route path='/about' element={<About />} />
           <Route path='/solar_system' element={<SolarObjectContainer />} />
           <Route path='/quizzes' element={<QuizContainer />} />

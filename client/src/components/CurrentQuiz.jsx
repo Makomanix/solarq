@@ -101,9 +101,9 @@ console.log("user.highscore", user.high_score)
                     moon_score: moonScore,
                     other_score: otherScore
                 })
-                // .then(navigate("/leaderboard"))
+                
             })
-    }
+    };
 
 
     

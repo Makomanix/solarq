@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import background from "../assets/background.jpg"
+
 
 export default function UserContainer() {
     const [user, setUser] = useState([]);
     const navigate = useNavigate();
-
+    
+    
     useEffect(() => {
         const currentUser = sessionStorage.getItem("user_id")
-        if (currentUser == null) {
+        if (sessionStorage.getItem("user_id") === null) {
             navigate('/login')
         } else {
             fetch(`/users/${currentUser}`)
@@ -21,11 +22,13 @@ export default function UserContainer() {
         navigate(`${e.target.value}`)
     }
 
+    console.log(user)
+
     return (
         <div className='relative'>
             <div className='absolute h-56 w-screen top-20 content-center grid grid-cols-3 grid-rows-1 gap-x-20 outline text-center text-white'> 
                 <span className='outline'>
-                    <button value="/quizzes" onClick={handleOnClick}>Take a </button> 
+                    <button value="/quizzes" onClick={handleOnClick}>Take A Quiz</button> 
                 </span> 
                 <span className='outline'>              
                     <button value="/solar_system" onClick={handleOnClick}>Discover Your Solar System</button> 

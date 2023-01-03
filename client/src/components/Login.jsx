@@ -2,8 +2,6 @@ import React,{ useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 
 
-
-
 export default function Login() {
 
     const [ formData, setFormData ] = useState("");
@@ -50,20 +48,23 @@ export default function Login() {
         setFormData({ ...formData, [name]: value})
     }
 
+
+    // console.log(user)
+
     // const handleClick = () => {
     //     navigate("/sign_up")
     // }
 
     return (
-        <div>
-            <div className="absolute top-48 mx-[42%]">                
-                <form className="grid grid-cols-1 m-auto outline h-72 w-72" onSubmit={handleSubmit}>
-                    <label className='mt-4 ml-2'>Username:</label>
-                    <input className='-mt-2 mx-2' type='username' name='username' value={username} onChange={handleChange}/>
-                    <label className='mt-4 ml-2'>Password:</label>
-                    <input className='-mt-2 mx-2' type='password' name='password' value={password} onChange={handleChange} />
-                    <button className='m-2 bg-green-500 rounded-md font-bold' value='Log in!'>Log in!</button>                    
-                    <NavLink className='justify-center m-2 px-8 text-center' to='/sign_up'>First time? Sign Up here!</NavLink>
+        <div className="relative">
+            <div className="absolute top-48 mx-[36%] ">                
+                <form className="grid grid-cols-1 gap-y-8 w-[200%] bg-slate-900 rounded-md" onSubmit={handleSubmit}>
+                    <label className='mt-4 mx-12 text-blue-400 text-lg'>Username:</label>
+                    <input className='-mt-4 ml-28 h-10 w-[60%] text-lg text-center rounded-lg' type='username' name='username' value={username} onChange={handleChange}/>
+                    <label className='mt-4 ml-12 text-blue-400 text-lg'>Password:</label>
+                    <input className='-mt-4 ml-28 h-10 w-[60%] text-lg text-center rounded-lg' type='password' name='password' value={password} onChange={handleChange} />
+                    <button className='ml-28 h-12 w-52 bg-blue-400 hover:bg-green-500 rounded-md font-bold text-xl' value='Log in!'>Log in!</button>                    
+                    <NavLink className='justify-center m-2 px-8 text-center text-blue-400 hover:text-green-500 text-lg' to='/sign_up'>First time? Sign Up here!</NavLink>
                 </form>                
             </div>
             {errors? <div>{errors}</div> : null}
