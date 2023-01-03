@@ -9,10 +9,10 @@ UserQuestion.destroy_all
 Leaderboard.destroy_all
 
 puts "Creating Users"
-User.create(username: "admin", password: "1234567", email:"astro@astro.com", favorite_planet: "Mars", score: 0, high_score: 0, admin: true )
-User.create(username: "Solar Queen", password: "1234567", email:"SolarQueen@astro.com", favorite_planet: "Mars", score: 0, high_score: 0, admin: false )
-User.create(username: "Dark Matter", password: "1234567", email:"DarkMatter@astro.com", favorite_planet: "Mars", score: 0, high_score: 0, admin: false )
-User.create(username: "Star Lord", password: "1234567", email:"StarLord@astro.com", favorite_planet: "Mars", score: 0, high_score: 0, admin: false )
+User.create(username: "admin", password: "1234567", email: "astro@astro.com", favorite_planet: "Mars", score: 0, high_score: 0, admin: true )
+User.create(username: "Solar Queen", password: "1234567", email: "SolarQueen@astro.com", favorite_planet: "Mars", score: 0, high_score: 0, admin: false )
+User.create(username: "Dark Matter", password: "1234567", email: "DarkMatter@astro.com", favorite_planet: "Mars", score: 0, high_score: 0, admin: false )
+User.create(username: "Star Lord", password: "1234567", email: "StarLord@astro.com", favorite_planet: "Mars", score: 0, high_score: 0, admin: false )
 
 puts "Creating Leaderboards"
 Leaderboard.create(username: "Solar Queen", total_score: 2400, planet_score: 1200, moon_score: 200, other_score: 1000 )
