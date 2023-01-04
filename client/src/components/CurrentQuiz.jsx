@@ -126,17 +126,17 @@ console.log("user.highscore", user.high_score)
     
     return (
         <div className='relative'>
-            <div className='grid grid-cols-3 grid-rows-1'> 
-                <button value="planet" onClick={handleQuizClick}>Planet Quiz {planetScore}</button>               
-                <button value="moon" onClick={handleQuizClick}>Moon Quiz {moonScore}</button>                               
-                <button value="other" onClick={handleQuizClick}>Sun and Other Quiz {otherScore}</button>               
+            <div className='h-16 grid grid-cols-3 mx-60 mt-4 gap-x-8 grid-rows-1'> 
+                <button className='bg-slate-900 text-4xl text-blue-400 rounded-md hover:text-blue-500 outline' value="planet" onClick={handleQuizClick}>Planet Quiz {planetScore}</button>               
+                <button className='bg-slate-900 text-4xl text-blue-400 rounded-md hover:text-blue-500 outline' value="moon" onClick={handleQuizClick}>Moon Quiz {moonScore}</button>                               
+                <button className='bg-slate-900 text-4xl text-blue-400 rounded-md hover:text-blue-500 outline' value="other" onClick={handleQuizClick}>Sun / Other Quiz {otherScore}</button>               
             </div>
-            High Score : {high_score} Total Score : {totalScore}
+            {/* High Score : {high_score} Total Score : {totalScore} */}
             <div>
                 {notSelected ? "Select an Answer to Continue" : null }
             </div>
             <div>{(quiz === "planet" || quiz === "moon" || quiz === "other") ?
-                <div className='absolute top-72 left-[39.5%]'>{showQuizResults ? 
+                <div className='relative'>{showQuizResults ? 
                     <QuizComplete  
                     setPlanetScore={setPlanetScore} 
                     setMoonScore={setMoonScore} 
@@ -153,12 +153,15 @@ console.log("user.highscore", user.high_score)
                     updateHighScore={updateHighScore}
                     updateScore={updateScore}
                     patchEachQuiz={patchEachQuiz}/> :
-                    <div>
+                    <div className='mx-[27%] h-72 w-[45%]'>
                     {questionCards[currentQuestion]}
                     </div>
                 }
                 </div>
-            : null }
+                : null }
+                <div className='absolute'>
+                    {notSelected ? "Select an Answer to Continue" : null }
+                </div>
             </div>
         </div>
     )

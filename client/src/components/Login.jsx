@@ -56,15 +56,15 @@ export default function Login() {
     // }
 
     return (
-        <div className="relative">
-            <div className="absolute top-48 mx-[36%] ">                
-                <form className="grid grid-cols-1 gap-y-8 w-[200%] bg-slate-900 rounded-md" onSubmit={handleSubmit}>
-                    <label className='mt-4 mx-12 text-blue-400 text-lg'>Username:</label>
-                    <input className='-mt-4 ml-28 h-10 w-[60%] text-lg text-center rounded-lg' type='username' name='username' value={username} onChange={handleChange}/>
-                    <label className='mt-4 ml-12 text-blue-400 text-lg'>Password:</label>
-                    <input className='-mt-4 ml-28 h-10 w-[60%] text-lg text-center rounded-lg' type='password' name='password' value={password} onChange={handleChange} />
-                    <button className='ml-28 h-12 w-52 bg-blue-400 hover:bg-green-500 rounded-md font-bold text-xl' value='Log in!'>Log in!</button>                    
-                    <NavLink className='justify-center m-2 px-8 text-center text-blue-400 hover:text-green-500 text-lg' to='/sign_up'>First time? Sign Up here!</NavLink>
+        <div >
+            <div className='absolute top-[30%] mx-[33%] h-[45%] w-[35%] bg-slate-900 outline rounded-md'>                
+                <form className="grid grid-cols-1 gap-y-8 bg-slate-900 rounded-md" onSubmit={handleSubmit}>
+                    <label className='mt-10 mx-[20%] text-blue-400 text-xl'>Username:</label>
+                    <input className='-mt-6 mx-[20%] h-10 w-[60%] text-xl text-center rounded-lg' type='username' name='username' value={username} onChange={handleChange}/>
+                    <label className='mt-4 mx-[20%] text-blue-400 text-xl'>Password:</label>
+                    <input className='-mt-6 mx-[20%] h-10 w-[60%] text-xl text-center rounded-lg' type='password' name='password' value={password} onChange={handleChange} />
+                    <button className='mx-[35%] h-12 w-52 text-white bg-blue-400 hover:bg-blue-500 rounded-md font-bold text-xl' value='Log in!'>Log in!</button>                    
+                    <NavLink className='m-2 px-8 text-center text-blue-400 hover:text-blue-500 text-lg' to='/sign_up'>First time? Sign Up here!</NavLink>
                 </form>                
             </div>
             {errors? <div>{errors}</div> : null}

@@ -46,23 +46,23 @@ export default function NavBar() {
 
     return (
         <div className='relative'>
-            <NavLink className="absolute top-16 right-[12%] text-white text-3xl hover:text-red-400" to="/about">About</NavLink>
+            <NavLink className="absolute top-16 right-[12%] text-white text-3xl hover:text-blue-500" to="/about">About</NavLink>
             <h1 className='absolute top-0 left-4 mt-2 text-white text-8xl'>Solar Quiz</h1> 
             <div className="h-32 w-full"></div>
             {currentUser ? 
             <div>
                 <div className='absolute top-16 right-[18%] grid-cols-4 gap-x-20' >
-                        <NavLink className=' text-white text-3xl mx-8 hover:text-red-400' to="/">Home</NavLink>
-                        <NavLink className=' text-white text-3xl mx-8 hover:text-red-400' to="/solar_system">Solar System</NavLink>  
-                        <NavLink className=' text-white text-3xl mx-8 hover:text-red-400' to="/quizzes">Quizzes</NavLink> 
-                        <NavLink className=' text-white text-3xl mx-8 hover:text-red-400' to="/leaderboard">Leaderboard</NavLink>
+                        <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/">Home</NavLink>
+                        <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/solar_system">Solar System</NavLink>  
+                        <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/quizzes">Quizzes</NavLink> 
+                        <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/leaderboard">Leaderboard</NavLink>
                 </div>             
                 <button 
-                        className=' absolute top-16 right-16 text-white hover:text-red-400 text-3xl' 
+                        className=' absolute top-16 right-16 text-white hover:text-blue-500 text-3xl' 
                     onClick={handleProfileDisplay}>Profile
                 </button>
                 <div>{profileDisplay ? 
-                    <Profile user={user} setUser={setUser} handleLogOut={handleLogOut} setProfileDisplay={setProfileDisplay}/> : null }
+                        <Profile user={user} setUser={setUser} handleLogOut={handleLogOut} setProfileDisplay={setProfileDisplay} handleProfileDisplay={handleProfileDisplay} /> : null }
                 </div>                
             </div> : null 
             }

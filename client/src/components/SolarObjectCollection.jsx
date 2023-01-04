@@ -16,7 +16,7 @@ export default function SolarObjectCollection({ solarObjects, setCategory}) {
 
     return (
         <div className='relative '>
-            <div className='absolute h-screen w-screen'>
+            <div className='absolute h-[50%] w-[80%]'>
                 <div className='flex items-center justify-center '>
                     <div className='grid grid-cols-4 grid-rows-1 gap-x-10 '>
                         <button value="planet" onClick={handleObjectClick}>Planets</button>
@@ -24,7 +24,7 @@ export default function SolarObjectCollection({ solarObjects, setCategory}) {
                         <button value="other" onClick={handleObjectClick}>Sun / Other </button>
                     </div>
                 </div>
-                <div className='grid grid-cols-1 grid-rows-auto'>
+                <div className='mx-32 mt-16 h-[80%] w-[85%] grid grid-cols-4 grid-rows-auto gap-y-10 '>
                     {solarObjectCards}
                 </div>
             </div>

@@ -12,7 +12,7 @@ export default function QuizContainer() {
         score: 0,
         high_score: 0,        
 })
-    // console.log(user)
+    
 
     useEffect(() => {
         const currentUser = sessionStorage.getItem("user_id")

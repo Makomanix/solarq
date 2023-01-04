@@ -40,30 +40,30 @@ export default function Question({ question, questions, stateAnswer, setAnswer, 
 
     
     return (
-        <div className='h-72 w-96 outline'>
-            <span className='flex items-center justify-center'>
+        <div className='mt-10 h-[200%] w-[100%] bg-slate-900 outline rounded-md'>
+            <span className='flex items-center justify-center py-4 bg-blue-400 text-white text-xl'>
                 Question # {currentQuestion + 1} out of {questions.length} : {points} Points
             </span>
-            <span className='flex items-center justify-center h-16 outline'>
+            <span className='grid grid-cols-1 pt-2 h-14 text-center text-blue-400 text-xl '>
                 {text}
             </span>
             <div>
-                <div className='grid grid-cols-1 pt-6 gap-y-2'>
-                    <button value={answerOptions[0]} onClick={handleChoiceClick}>{answerOptions[0]}</button>
-                    <button value={answerOptions[1]} onClick={handleChoiceClick}>{answerOptions[1]}</button>
-                    <button value={answerOptions[2]} onClick={handleChoiceClick}>{answerOptions[2]}</button>
-                    <button value={answerOptions[3]} onClick={handleChoiceClick}>{answerOptions[3]}</button>
+                <div className='grid grid-cols-1 pt-6 gap-y-4'>
+                    <button className='mx-24 h-14 bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-xl text-white rounded-md' value={answerOptions[0]} onClick={handleChoiceClick}>{answerOptions[0]}</button>
+                    <button className='mx-24 h-14 bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-xl text-white rounded-md' value={answerOptions[1]} onClick={handleChoiceClick}>{answerOptions[1]}</button>
+                    <button className='mx-24 h-14 bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-xl text-white rounded-md' value={answerOptions[2]} onClick={handleChoiceClick}>{answerOptions[2]}</button>
+                    <button className='mx-24 h-14 bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-xl text-white rounded-md' value={answerOptions[3]} onClick={handleChoiceClick}>{answerOptions[3]}</button>
                 </div>
             </div>                
-            <div className='grid grid-cols-2 pt-4'>
+            <div className='grid grid-cols-1 pt-8 gap-y-4'>
                 {showHint ?
-                <button className='' onClick={handleHint}>{hint}</button>
+                    <button className='h-12 mx-[30%] w-auto bg-blue-400 text-white text-xl hover:bg-blue-500 rounded-md' onClick={handleHint}>{hint}</button>
                 :
-                <button className='' onClick={handleHint}>See Hint</button>
+                    <button className='h-12 mx-[30%] w-[40%] bg-blue-400 text-white text-xl hover:bg-blue-500 rounded-md' onClick={handleHint}>See Hint</button>
                 }
                 { seeOptions ? 
-                <button onClick={handleAnswerClick}>Submit Answer</button> :
-                <button onClick={ shuffleOptions }>See Options</button>
+                    <button className='h-12 mx-[30%] w-[40%] bg-blue-400 text-white text-xl hover:bg-blue-500 rounded-md' onClick={handleAnswerClick}>Submit Answer</button> :
+                    <button className='h-12 mx-[30%] w-[40%] bg-blue-400 text-white text-xl hover:bg-blue-500 rounded-md' onClick={ shuffleOptions }>See Options</button>
                 }
             </div>
         </div>

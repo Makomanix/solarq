@@ -11,13 +11,9 @@ import Leaderboard from './components/Leaderboard';
 import background from "./assets/background.jpg"
 
 
-
 function App() {
   const [users, setUsers] = useState([])
 
-  // const addUser = (newUser) => {
-  //   setUsers([...users, newUser])
-  // }
 
   useEffect(() => {
     fetch(`/users`)
@@ -27,7 +23,7 @@ function App() {
 
   return (
     <div className='relative h-screen w-screen'>
-      <img className="absolute w-full h-full mix-blend-overlay" src={background} alt='nightsky'/>
+      <img className="absolute w-screen h-screen overflow-hidden mix-blend-overlay" src={background} alt='nightsky'/>
       <NavBar />
         <Routes>
           <Route path='/' element={<Home users={users} />} />
@@ -45,4 +41,3 @@ function App() {
 export default App;
 
 
-{/* <img className='z-1' src={background} alt={background} /> */}

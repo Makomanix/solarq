@@ -7,7 +7,7 @@ const emptyForm = {
     email: "",
     favorite_planet: ""
 }
-export default function Profile({user, setUser, handleLogOut, setProfileDisplay }) {
+export default function Profile({ user, setUser, handleLogOut, setProfileDisplay, handleProfileDisplay }) {
     
     const {id, username, password, email, favorite_planet, high_score, } = user
     const [ edit, setEdit ] = useState(false)
@@ -73,23 +73,23 @@ export default function Profile({user, setUser, handleLogOut, setProfileDisplay 
     return (
         <div className='bg-slate-900 bg-cover top-28 right-0 fixed h-auto w-[18%] z-40 px-2 rounded-md'>
             <div className='grid grid-cols-1'>
-                <h1 className='text-blue-400 text-center text-lg underline' >Profile</h1>
-                <p className='text-blue-400 pl-4 text-lg text-left'>Username: {username}</p>
-                <p className='text-blue-400 pl-4 text-lg text-left'>Email: {email}</p>
-                <p className='text-blue-400 pl-4 text-lg text-left'>Favorite Planet: {favorite_planet}</p>
-                <p className='text-blue-400 pl-4 text-lg text-left'>High Score: {high_score}</p>
-                <button className='bg-blue-400 mt-4 text-lg rounded-md' onClick={handleEdit}>Toggle Edit</button>
-                <br></br>
+                <button className='text-blue-400  text-left text-2xl' onClick={handleProfileDisplay} >x</button>
+                <p className='text-blue-400 -mt-3 pl-10 text-xl text-left'>Username: {username}</p>
+                <p className='text-blue-400  pl-10 text-xl text-left'>Email: {email}</p>
+                <p className='text-blue-400  pl-10 text-xl text-left'>Favorite Planet: {favorite_planet}</p>
+                <p className='text-blue-400  pl-10 text-xl text-left'>High Score: {high_score}</p>
+                <button className='bg-blue-400  hover:bg-blue-500 my-4 mx-14 text-lg text-white rounded-md' onClick={handleEdit}>Toggle Edit</button>
+                
                     { edit ? 
                     <div className='relative '>
-                        <form className='grid grid-cols-1 gap-y-4' onSubmit={handleSubmit}>
+                        <form className='grid grid-cols-1 mx-6 gap-y-4' onSubmit={handleSubmit}>
                             {/* <label>Username</label> */}
-                            <input className="bg-slate-100 text-center rounded-md h-8 outline" name="username" placeholder="username" type="text" onChange={handleChange} />
+                            <input className="bg-slate-100 text-center text-xl rounded-md h-8 outline" name="username" placeholder="username" type="text" onChange={handleChange} />
                             {/* <label>Password</label> */}
-                            <input className='bg-slate-100 text-center rounded-md h-8 outline' name="password" placeholder="password" type="text" onChange={handleChange} />
+                            <input className='bg-slate-100 text-center text-xl rounded-md h-8 outline' name="password" placeholder="password" type="text" onChange={handleChange} />
                             {/* <label>Email</label> */}
-                            <input className="bg-slate-100 text-center rounded-md h-8 outline" name="email" placeholder="email" type="text" onChange={handleChange} />
-                            <label className='text-center text-blue-400 '>Favorite Planet</label>
+                            <input className="bg-slate-100 text-center text-xl rounded-md h-8 outline" name="email" placeholder="email" type="text" onChange={handleChange} />
+                            <label className='text-center text-xl text-blue-400 '>Favorite Planet</label>
                             <select className="bg-slate-100 text-center rounded-md h-8 outline" name="favorite_planet" type="text" onChange={handleSelect}>
                                 <option className=""></option>
                                 <option value="Mercury">Mercury</option>
@@ -101,12 +101,12 @@ export default function Profile({user, setUser, handleLogOut, setProfileDisplay 
                                 <option value="Uranus">Uranus</option>
                                 <option value="Neptune">Neptune</option>
                             </select>
-                            <button className='bg-blue-400 h-8 mt-4 text-center text-xl rounded-md outline'>Save Changes</button>
+                            <button className='bg-blue-400  hover:bg-blue-500 h-8 mt-2 mx-14 text-white text-center text-xl rounded-md'>Save</button>
                         </form> 
-                        <button className='h-8 ml-[30%] mt-4 mb-4 w-32 bg-red-500 rounded-md' onClick={handleLogOut}>Logout</button>
+                        <button className='h-8 mx-[30.5%] mt-4 mb-4 w-32 bg-red-900 hover:bg-red-500 text-white rounded-md text-center text-xl' onClick={handleLogOut}>Logout</button>
                         <br></br>
                         <br></br>
-                        <button className='ml-[20%] mb-4 w-48 bg-red-500 rounded-md' onClick={handleSetShowDelete}>Toggle Delete Account</button>
+                        <button className='ml-[20%] mb-4 w-48 bg-red-900 hover:bg-red-500   text-white rounded-md' onClick={handleSetShowDelete}>Toggle Delete Account</button>
                         <div>{ showDelete ?
                         <DeleteAccount user={user} setProfileDisplay={setProfileDisplay}/> : null }
                         </div>
