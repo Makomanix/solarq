@@ -52,8 +52,8 @@ export default function NavBar() {
             {currentUser ? 
             <div>
                 <div className='absolute top-16 right-[18%] grid-cols-4 gap-x-20' >
-                        <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/">Home</NavLink>
-                        <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/solar_system">Solar System</NavLink>  
+                        {/* <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/">Home</NavLink> */}
+                        <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/">Solar System</NavLink>  
                         <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/quizzes">Quizzes</NavLink> 
                         <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/leaderboard">Leaderboard</NavLink>
                 </div>             
