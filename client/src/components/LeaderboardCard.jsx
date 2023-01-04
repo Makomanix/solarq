@@ -8,8 +8,8 @@ export default function LeaderboardCard({leaderboardCard}) {
     return (
         <div className='relative'>
             <div className='flex items-center justify-center'>
-                <div className='grid grid-cols-5 grid-rows-auto gap-x-6 text-2xl text-center h-10 w-[50%] my-2 outline'>
-                    <span className='outline'>{username}</span>
+                <div className='grid grid-cols-5 grid-rows-auto gap-x-6 text-2xl text-center h-10 w-[97%] my-2 bg-blue-400 text-white rounded'>
+                    <span className=''>{username}</span>
                     <span className=''>{total_score}</span>
                     <span className=''>{planet_score}</span>
                     <span className=''>{moon_score}</span>

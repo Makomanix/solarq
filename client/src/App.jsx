@@ -22,8 +22,8 @@ function App() {
   }, [setUsers])
 
   return (
-    <div className='relative h-screen w-screen'>
-      <img className="absolute w-screen h-screen overflow-hidden mix-blend-overlay" src={background} alt='nightsky'/>
+    <div className='relative'>
+      <img className="absolute w-full h-screen mix-blend-overlay" src={background} alt='nightsky'/>
       <NavBar />
         <Routes>
           <Route path='/' element={<Home users={users} />} />

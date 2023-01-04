@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Question({ question, questions, stateAnswer, setAnswer, choice, setChoice, setPoints, updateScore, currentQuestion, setNotSelected}) {
+export default function Question({ question, questions, stateAnswer, setAnswer, choice, setChoice, setPoints, updateScore, currentQuestion, setNotSelected, score}) {
     const { text, difficulty, points, answer, option1, option2, option3, option4, hint } = question
     const [ showHint, setShowHint ] = useState(false)
     const [answerOptions, setAnswerOptions] = useState([])
@@ -40,9 +40,10 @@ export default function Question({ question, questions, stateAnswer, setAnswer, 
 
     
     return (
-        <div className='mt-10 h-[200%] w-[100%] bg-slate-900 outline rounded-md'>
+        <div className='mt-24 h-[200%] w-[100%] bg-slate-900 outline rounded-md'>
             <span className='flex items-center justify-center py-4 bg-blue-400 text-white text-xl'>
-                Question # {currentQuestion + 1} out of {questions.length} : {points} Points
+                <p>Question # {currentQuestion + 1} out of {questions.length} : {points} Points</p>
+                {/* <span className='text-white text-xl'>Current Score: {score}</span> */}
             </span>
             <span className='grid grid-cols-1 pt-2 h-14 text-center text-blue-400 text-xl '>
                 {text}

@@ -71,7 +71,7 @@ export default function Profile({ user, setUser, handleLogOut, setProfileDisplay
     // console.log(formData)
 
     return (
-        <div className='bg-slate-900 bg-cover top-28 right-0 fixed h-auto w-[18%] z-40 px-2 rounded-md'>
+        <div className='bg-slate-900 bg-cover top-28 right-0 fixed h-auto w-[18%] z-40 px-2 rounded-md outline'>
             <div className='grid grid-cols-1'>
                 <button className='text-blue-400  text-left text-2xl' onClick={handleProfileDisplay} >x</button>
                 <p className='text-blue-400 -mt-3 pl-10 text-xl text-left'>Username: {username}</p>

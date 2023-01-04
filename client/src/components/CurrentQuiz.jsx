@@ -121,6 +121,7 @@ console.log("user.highscore", user.high_score)
         choice={choice}
         setNotSelected={setNotSelected}
         stateAnswer={answer}
+        score={score}
     />);
 
     
@@ -132,9 +133,6 @@ console.log("user.highscore", user.high_score)
                 <button className='bg-slate-900 text-4xl text-blue-400 rounded-md hover:text-blue-500 outline' value="other" onClick={handleQuizClick}>Sun / Other Quiz {otherScore}</button>               
             </div>
             {/* High Score : {high_score} Total Score : {totalScore} */}
-            <div>
-                {notSelected ? "Select an Answer to Continue" : null }
-            </div>
             <div>{(quiz === "planet" || quiz === "moon" || quiz === "other") ?
                 <div className='relative'>{showQuizResults ? 
                     <QuizComplete  
@@ -153,15 +151,23 @@ console.log("user.highscore", user.high_score)
                     updateHighScore={updateHighScore}
                     updateScore={updateScore}
                     patchEachQuiz={patchEachQuiz}/> :
-                    <div className='mx-[27%] h-72 w-[45%]'>
-                    {questionCards[currentQuestion]}
+                    <div>
+                        <div className='mx-[27%] h-72 w-[46%]'>
+                        {questionCards[currentQuestion]}
+                        </div>
+                        <div className='absolute -top-14 left-[23%] w-[15%] h-10 text-white bg-blue-400 text-2xl text-center rounded-md '>
+                            High Score: {high_score} points
+                        </div>
+                        <div className='absolute -top-14 left-[62%] w-[15%] h-10  text-white bg-blue-400 text-2xl text-center rounded-md '>
+                            Current Score: {score} points
+                        </div>
+                        <div className='absolute -top-[19%] left-[41.6%] h-10 w-80 grid grid-cols-1 rounded-md'>
+                            <span className='text-3xl text-center font-bold text-red-500 '>{notSelected ? "Answer to Continue" : null}</span>
+                        </div>
                     </div>
                 }
                 </div>
                 : null }
-                <div className='absolute'>
-                    {notSelected ? "Select an Answer to Continue" : null }
-                </div>
             </div>
         </div>
     )
