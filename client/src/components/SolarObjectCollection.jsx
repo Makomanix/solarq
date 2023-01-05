@@ -31,9 +31,9 @@ export default function SolarObjectCollection({ solarObjects, setCategory}) {
     return (
         <div className='relative'>             
             <div className='w-[40%] h-12 mx-[30.3%] mt-4 grid grid-cols-3 grid-rows-1 bg-slate-900 rounded-lg outline'>
-                <button className='text-2xl text-blue-400 hover:bg-blue-400 hover:text-white rounded-md focus:bg-blue-400 focus:text-white' value="planet" onClick={handleObjectClick}>Planets</button>
-                <button className='text-2xl text-blue-400 hover:bg-blue-400 hover:text-white rounded-md focus:bg-blue-400 focus:text-white' value="moon" onClick={handleObjectClick}>Moons</button>
-                <button className='text-2xl text-blue-400 hover:bg-blue-400 hover:text-white rounded-md focus:bg-blue-400 focus:text-white' value="other" onClick={handleObjectClick}>Sun / Other </button>
+                <button className='text-2xl text-blue-400 hover:bg-blue-400 hover:text-white rounded-md' value="planet" onClick={handleObjectClick}>Planets</button>
+                <button className='text-2xl text-blue-400 hover:bg-blue-400 hover:text-white rounded-md' value="moon" onClick={handleObjectClick}>Moons</button>
+                <button className='text-2xl text-blue-400 hover:bg-blue-400 hover:text-white rounded-md' value="other" onClick={handleObjectClick}>Sun / Other </button>
             </div>
             <div className='absolute top-32 h-[1200%] w-[70%] '>{ solarObjectId ?
             <SolarObjectDetails solarObject={selectedSolarObject}/> : null }

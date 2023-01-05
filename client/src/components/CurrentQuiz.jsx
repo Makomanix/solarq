@@ -5,9 +5,9 @@ import QuizComplete from './QuizComplete';
 
 export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, quiz, setQuiz, user, setUser,}) {
     const { id, username, score, high_score } = user
-    const [ planetScore, setPlanetScore] = useState(0)
-    const [ moonScore, setMoonScore ] = useState(0)
-    const [ otherScore, setOtherScore ] = useState(0)
+    const [ planetScore, setPlanetScore] = useState(null)
+    const [ moonScore, setMoonScore ] = useState(null)
+    const [ otherScore, setOtherScore ] = useState(null)
     const [ totalScore, setTotalScore ] = useState(0)
     const [ currentQuestion, setCurrentQuestion ] = useState(0);
     const [ points, setPoints ] = useState(0);
@@ -18,11 +18,6 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
     const [ saveQuizResults, setSaveQuizResults ] = useState(false)
     const [ notSelected, setNotSelected ] = useState(false)
     const navigate = useNavigate()
-
-console.log("score", score)
-console.log("total score", totalScore)    
-console.log("high_score",high_score)
-console.log("user.highscore", user.high_score)
 
 
     const resetAnswerChoice = () => {
@@ -105,6 +100,18 @@ console.log("user.highscore", user.high_score)
             })
     };
 
+    const planetQuizComplete = (planetScore > 0 ? 
+        <button className='h-14 w-72 bg-blue-400 text-4xl text-white-400 rounded-md' value="planet" >Planet Quiz {planetScore}</button> :
+        <button className='h-14 w-72 bg-slate-900 text-4xl text-blue-400 rounded-md hover:text-white hover:bg-blue-400' value="planet" onClick={handleQuizClick}>Planet Quiz</button>);
+
+    const moonQuizComplete = (moonScore > 0 ?
+        <button className='h-14 w-72 bg-blue-400 text-4xl text-white-400 rounded-md ' value="moon" >Moon Quiz {moonScore}</button> :
+        <button className='h-14 w-72 bg-slate-900 text-4xl text-blue-400 rounded-md hover:text-white hover:bg-blue-400' value="moon" onClick={handleQuizClick}>Moon Quiz</button>);   
+        
+    const otherQuizComplete = (otherScore > 0 ?
+        <button className='h-14 w-72 bg-blue-400 text-4xl text-white-400 rounded-md ' value="other" >Sun+ Quiz {otherScore}</button> :
+        <button className='h-14 w-72 bg-slate-900 text-4xl text-blue-400 rounded-md hover:text-white hover:bg-blue-400' value="other" onClick={handleQuizClick}>Sun+ Quiz</button>);    
+
 
     
     const questionCards = questions.map((question) =>
@@ -127,17 +134,26 @@ console.log("user.highscore", user.high_score)
     
     return (
         <div className='relative'>
-            <div className='h-16 grid grid-cols-3 mx-60 mt-4 gap-x-8 grid-rows-1'> 
-                <button className='bg-slate-900 text-4xl text-blue-400 rounded-md hover:text-blue-500 outline' value="planet" onClick={handleQuizClick}>Planet Quiz {planetScore}</button>               
-                <button className='bg-slate-900 text-4xl text-blue-400 rounded-md hover:text-blue-500 outline' value="moon" onClick={handleQuizClick}>Moon Quiz {moonScore}</button>                               
-                <button className='bg-slate-900 text-4xl text-blue-400 rounded-md hover:text-blue-500 outline' value="other" onClick={handleQuizClick}>Sun / Other Quiz {otherScore}</button>               
+            <div className='h-16 ml-[24%] w-[55%] grid grid-cols-3 mt-4 grid-rows-1 '>
+                <div>
+                    {planetQuizComplete}
+                </div>
+                <div>
+                    {moonQuizComplete}
+                </div>
+                <div>
+                    {otherQuizComplete}
+                </div>            
             </div>
             {/* High Score : {high_score} Total Score : {totalScore} */}
             <div>{(quiz === "planet" || quiz === "moon" || quiz === "other") ?
                 <div className='relative'>{showQuizResults ? 
                     <QuizComplete  
-                    setPlanetScore={setPlanetScore} 
-                    setMoonScore={setMoonScore} 
+                    planetScore={planetScore}
+                    setPlanetScore={setPlanetScore}
+                    moonScore={moonScore}
+                    setMoonScore={setMoonScore}
+                    otherScore={otherScore}
                     setOtherScore={setOtherScore}
                     quiz={quiz} 
                     setQuiz={setQuiz} 
@@ -155,13 +171,13 @@ console.log("user.highscore", user.high_score)
                         <div className='mx-[27%] h-72 w-[46%]'>
                         {questionCards[currentQuestion]}
                         </div>
-                        <div className='absolute -top-14 left-[23%] w-[15%] h-10 text-white bg-blue-400 text-2xl text-center rounded-md '>
+                        <div className='absolute -top-16 left-[23%] w-[15%] h-10 text-white bg-blue-400 text-2xl text-center rounded-md '>
                             High Score: {high_score} points
                         </div>
-                        <div className='absolute -top-14 left-[62%] w-[15%] h-10  text-white bg-blue-400 text-2xl text-center rounded-md '>
+                        <div className='absolute -top-16 left-[62%] w-[15%] h-10  text-white bg-blue-400 text-2xl text-center rounded-md '>
                             Current Score: {score} points
                         </div>
-                        <div className='absolute -top-[19%] left-[41.6%] h-10 w-80 grid grid-cols-1 rounded-md'>
+                        <div className='absolute -top-[21%] left-[41.6%] h-10 w-80 grid grid-cols-1 rounded-md'>
                             <span className='text-3xl text-center font-bold text-red-500 '>{notSelected ? "Answer to Continue" : null}</span>
                         </div>
                     </div>

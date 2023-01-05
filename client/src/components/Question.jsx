@@ -40,10 +40,9 @@ export default function Question({ question, questions, stateAnswer, setAnswer, 
 
     
     return (
-        <div className='mt-24 h-[200%] w-[100%] bg-slate-900 outline rounded-md'>
+        <div className='mt-28 h-[200%] w-[100%] bg-slate-900 outline rounded-md'>
             <span className='flex items-center justify-center py-4 bg-blue-400 text-white text-xl'>
                 <p>Question # {currentQuestion + 1} out of {questions.length} : {points} Points</p>
-                {/* <span className='text-white text-xl'>Current Score: {score}</span> */}
             </span>
             <span className='grid grid-cols-1 pt-2 h-14 text-center text-blue-400 text-xl '>
                 {text}
@@ -58,7 +57,7 @@ export default function Question({ question, questions, stateAnswer, setAnswer, 
             </div>                
             <div className='grid grid-cols-1 pt-8 gap-y-4'>
                 {showHint ?
-                    <button className='h-12 mx-[30%] w-auto bg-blue-400 text-white text-xl hover:bg-blue-500 rounded-md' onClick={handleHint}>{hint}</button>
+                    <button className='h-14 mx-[30%] w-auto bg-blue-400 text-white text-xl hover:bg-blue-500 rounded-md' onClick={handleHint}>{hint}</button>
                 :
                     <button className='h-12 mx-[30%] w-[40%] bg-blue-400 text-white text-xl hover:bg-blue-500 rounded-md' onClick={handleHint}>See Hint</button>
                 }

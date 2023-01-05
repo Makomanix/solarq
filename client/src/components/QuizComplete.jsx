@@ -1,10 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-export default function QuizComplete({ score, pointsPossible, setPointsPossible, showQuizResults, setShowQuizResults, quiz, setQuiz, setPlanetScore, setMoonScore, setOtherScore, updateHighScore, updateScore, patchEachQuiz, saveQuizResults, setSaveQuizResults }) {
+export default function QuizComplete({ score, pointsPossible, setPointsPossible, setShowQuizResults, quiz, setQuiz, planetScore, setPlanetScore, moonScore, setMoonScore, otherScore, setOtherScore, updateHighScore, patchEachQuiz, saveQuizResults, setSaveQuizResults }) {
 
+    const navigate = useNavigate();
 
-    let percentage = (Math.round((score/pointsPossible) * 100).toFixed(2))
+    let percentage = (Math.round((score/pointsPossible) * 100).toFixed(2));
         
+
+    console.log(planetScore, moonScore, otherScore)
     
     const seeResults = () => {
         if (quiz === "planet") {
@@ -20,7 +24,7 @@ export default function QuizComplete({ score, pointsPossible, setPointsPossible,
             updateHighScore()    
         }
             setSaveQuizResults(true)
-        }
+        };
 
     const handleNextQuiz = () => {
         setShowQuizResults(false)
@@ -28,7 +32,15 @@ export default function QuizComplete({ score, pointsPossible, setPointsPossible,
         setQuiz("");
         setPointsPossible(0)
         patchEachQuiz()
+    };
+
+    const handleLastQuiz = () => {
+        navigate("/leaderboard")
     }
+
+    const chooseAnotherQuiz = ((planetScore > 0 && moonScore > 0 && otherScore > 0) ?
+        <button className='bg-blue-400 h-12 w-80 mt-16 text-3xl hover:bg-blue-500 rounded-md' onClick={handleLastQuiz}>Check the Leaderboard</button> :
+        <button className='bg-blue-400 h-12 w-80 mt-16 text-3xl hover:bg-blue-500 rounded-md' onClick={handleNextQuiz}>Choose Another Quiz</button>);
 
     return (
         <div className='relative'>{saveQuizResults ?
@@ -36,12 +48,12 @@ export default function QuizComplete({ score, pointsPossible, setPointsPossible,
                     <div className='text-blue-400 mt-6 text-3xl'>Final Results</div>
                 <div className='text-blue-400 my-4 text-3xl'>{score} out of {pointsPossible} Points!</div>
                 <div className='text-blue-400 text-3xl'>{percentage}%</div>
-                <button className='bg-blue-400 h-12 w-80 mt-16 text-3xl hover:bg-blue-500 rounded-md' onClick={handleNextQuiz}>Choose Another Quiz</button>
+                {chooseAnotherQuiz}
                 </div> :
-                <div className='absolute top-14 left-[40%] h-80 w-96 grid-cols-1 text-center bg-slate-900 outline rounded-md'>
-                    <button className='h-20 w-80 bg-blue-400 text-white text-6xl mt-28 rounded-lg' onClick={seeResults}>See Results</button>
+                <div className='absolute top-14 left-[40%] h-56 w-96 grid-cols-1 text-center bg-slate-900 outline rounded-md'>
+                    <button className='h-16 w-80 bg-blue-400 text-white text-5xl mt-20 rounded-lg' onClick={seeResults}>See Results</button>
                 </div>
                 }
         </div>
     )
-}
+};
