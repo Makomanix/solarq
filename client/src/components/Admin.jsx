@@ -42,46 +42,54 @@ export default function Admin({ questions, solarObjects, handleAdminDisplay }) {
         
 
     const handleSubmit = () => {
-        fetch(`/questions`, {
-            method: 'POST',
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-                text: formData.text,
-                difficulty: formData.difficulty,
-                points: formData.points,
-                category: formData.category,
-                answer: formData.answer,
-                option1: formData.option1,
-                option2: formData.option2,
-                option3: formData.option3,
-                option4: formData.option4,
-                hint: formData.hint,
-                solar_object_id: filteredObject[0]
-            })
+        if (formData.text === "" || formData.difficulty === "" || formData.points === 0 || formData.category === "" || formData.answer === "" || formData.option2 === "" || formData.option3 === "" || formData.option4 === "" || formData.hint === "" || filteredObject.length === 0) { alert("Please Complete Form") 
+        } else {
+            fetch(`/questions`, {
+                method: 'POST',
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify({
+                    text: formData.text,
+                    difficulty: formData.difficulty,
+                    points: formData.points,
+                    category: formData.category,
+                    answer: formData.answer,
+                    option1: formData.answer,
+                    option2: formData.option2,
+                    option3: formData.option3,
+                    option4: formData.option4,
+                    hint: formData.hint,
+                    solar_object_id: filteredObject[0]
+                })
 
-        })
+            })
+        }
     };
 
-    console.log(formData)
-    console.log(formData.solar_object)
     console.log(selectedObject)
-    console.log(filteredObject[0])
+
 
     return (
-        <div className='bg-slate-900 bg-cover top-28 pb-8 right-0 fixed h-auto w-[18%] z-40 px-2 rounded-md outline'>
+        <div className='bg-slate-900 bg-cover top-28 pb-12 right-0 fixed h-auto w-[25%] z-40 px-2 rounded-md outline'>
             <div className='grid grid-cols-1'>
                 <button className='text-blue-400 mr-3 text-right text-2xl' onClick={handleAdminDisplay}>x</button>
+                <h1 className='text-blue-400 text-2xl text-center pb-4 underline'>Add a Question</h1>
                     <div className='relative '>
                         <form className='grid grid-cols-1 mx-6 gap-y-4' onSubmit={handleSubmit}>
-                            <input className="bg-slate-100 text-center text-xl rounded-md h-8 outline" name="text" placeholder="question" type="text" onChange={handleChange} />
-                            <input className='bg-slate-100 text-center text-xl rounded-md h-8 outline' name="points" placeholder="points" type="number" onChange={handleChange} />
-                            <input className="bg-slate-100 text-center text-xl rounded-md h-8 outline" name="answer" placeholder="answer" type="text" onChange={handleChange} />
-                            <input className="bg-slate-100 text-center text-xl rounded-md h-8 outline" name="option2" placeholder="option" type="text" onChange={handleChange} />
-                            <input className="bg-slate-100 text-center text-xl rounded-md h-8 outline" name="option3" placeholder="option" type="text" onChange={handleChange} />
-                            <input className="bg-slate-100 text-center text-xl rounded-md h-8 outline" name="option4" placeholder="option" type="text" onChange={handleChange} />
-                            <input className="bg-slate-100 text-center text-xl rounded-md h-8 outline" name="hint" placeholder="hint" type="text" onChange={handleChange} />
+                            <input className="bg-slate-100 text-center text-xl rounded-md h-8 mb-1 outline" name="text" placeholder="question" type="text" onChange={handleChange} />
+                            <input className="bg-slate-100 text-center text-xl rounded-md h-8 mb-1 outline" name="answer" placeholder="answer" type="text" onChange={handleChange} />
+                            <input className="bg-slate-100 text-center text-xl rounded-md h-8  mb-1 outline" name="option2" placeholder="option" type="text" onChange={handleChange} />
+                            <input className="bg-slate-100 text-center text-xl rounded-md h-8 mb-1 outline" name="option3" placeholder="option" type="text" onChange={handleChange} />
+                            <input className="bg-slate-100 text-center text-xl rounded-md h-8 mb-1 outline" name="option4" placeholder="option" type="text" onChange={handleChange} />
+                            <input className="bg-slate-100 text-center text-xl rounded-md h-8 mb-1 outline" name="hint" placeholder="hint" type="text" onChange={handleChange} />
+                            <label className='text-center text-xl text-blue-400 '>Points</label>
+                            <select className="bg-slate-100 text-center rounded-md h-8 outline" name="points" placeholder="points" type="text" onChange={handleSelect}>
+                                <option className=""></option>
+                                <option value="100">100</option>
+                                <option value="200">200</option>
+                                <option value="300">300</option>
+                            </select>    
                             <label className='text-center text-xl text-blue-400 '>Category</label>
                             <select className="bg-slate-100 text-center rounded-md h-8 outline" name="category" placeholder="category" type="text" onChange={handleSelect}>
                                 <option className=""></option>
@@ -90,7 +98,7 @@ export default function Admin({ questions, solarObjects, handleAdminDisplay }) {
                                 <option value="other">Sun+</option>
                             </select>    
                             <label className='text-center text-xl text-blue-400 '>Difficulty</label>
-                            <select className="bg-slate-100 text-center rounded-md h-8 outline" name="favorite_planet" type="text" onChange={handleSelect}>
+                            <select className="bg-slate-100 text-center rounded-md h-8 outline" name="difficulty" type="text" onChange={handleSelect}>
                                 <option className=""></option>
                                 <option value="Easy">East</option>
                                 <option value="Medium">Medium</option>

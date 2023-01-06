@@ -8,7 +8,7 @@ import Admin from './Admin'
 export default function NavBar({questions, solarObjects}) {
     const currentUser = sessionStorage.getItem("user_id")
     const navigate = useNavigate()
-    const [ adminDisplay, setAdminDisplay] = useState(true)
+    const [ adminDisplay, setAdminDisplay] = useState(false)
     const [ profileDisplay, setProfileDisplay ] = useState(false)
     const [ user, setUser ] = useState({
         id: "",
@@ -42,10 +42,12 @@ export default function NavBar({questions, solarObjects}) {
 
     const handleProfileDisplay = () => {
         setProfileDisplay(!profileDisplay)
+        setAdminDisplay(false)
     }
 
     const handleAdminDisplay = () => {
         setAdminDisplay(!adminDisplay)
+        setProfileDisplay(false)
     }
 
     
@@ -54,15 +56,15 @@ export default function NavBar({questions, solarObjects}) {
         <div className='relative'>
             {user.admin ?
             <div>
-                <button>Admin</button>
-                <Admin questions={questions} solarObjects={solarObjects} handleAdminDisplay={handleAdminDisplay}/>  
+                <button className='absolute top-4 right-14 h-8 w-24 text-white text-2xl' onClick={handleAdminDisplay}>Admin</button> {adminDisplay ?
+                <Admin questions={questions} solarObjects={solarObjects} handleAdminDisplay={handleAdminDisplay} />  : null }
                 </div> : null }
-            <NavLink className="absolute top-16 right-[12%] text-white text-3xl hover:text-blue-500" to="/about">About</NavLink>
-            <h1 className='absolute top-0 left-4 mt-2 text-white text-8xl'>Solar Quiz</h1> 
+            {/* <NavLink className="absolute top-16 right-[12%] text-white text-3xl hover:text-blue-500" to="/about">About</NavLink> */}
+            <h1 className='absolute top-0 left-4 mt-2 text-white text-8xl'>Solar Explorer</h1> 
             <div className="h-32 w-full"></div>
             {currentUser  ? 
             <div>
-                <div className='absolute top-16 right-[18%] grid-cols-4 gap-x-20' >
+                <div className='absolute top-16 right-[9.3%] grid-cols-4 gap-x-20' >
                         {/* <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/">Home</NavLink> */}
                         <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/">Solar System</NavLink>  
                         <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/quizzes">Quizzes</NavLink> 

@@ -71,7 +71,7 @@ export default function Profile({ user, setUser, handleLogOut, setProfileDisplay
 
 
     return (
-        <div className='bg-slate-900 bg-cover top-28 right-0 fixed h-auto w-[18%] z-40 px-2 rounded-md outline'>
+        <div className='bg-slate-900 bg-cover top-28 right-0 pb-1 fixed h-auto w-[18%] z-40 px-2 rounded-md outline'>
             <div className='grid grid-cols-1'>
                 <button className='text-blue-400 mr-3 text-right text-2xl' onClick={handleProfileDisplay} >x</button>
                 <p className='text-blue-400 -mt-3 pl-10 text-xl text-left'>Username: {username}</p>
@@ -103,10 +103,10 @@ export default function Profile({ user, setUser, handleLogOut, setProfileDisplay
                             </select>
                             <button className='bg-blue-400  hover:bg-blue-500 h-8 mt-2 mx-14 text-white text-center text-xl rounded-md'>Save</button>
                         </form> 
-                        <button className='h-8 mx-[30.5%] mt-4 mb-4 w-32 bg-red-900 hover:bg-red-500 text-white rounded-md text-center text-xl' onClick={handleLogOut}>Logout</button>
+                        <button className='h-8 mx-[30.5%] mt-4 mb-4 w-32 bg-red-700 hover:bg-red-500 text-white rounded-md text-center text-xl' onClick={handleLogOut}>Logout</button>
                         <br></br>
                         <br></br>
-                        <button className='ml-[20%] mb-4 w-48 bg-red-900 hover:bg-red-500   text-white rounded-md' onClick={handleSetShowDelete}>Toggle Delete Account</button>
+                        <button className='ml-[20%] mb-4 w-48 bg-red-700 hover:bg-red-500   text-white rounded-md' onClick={handleSetShowDelete}>Toggle Delete Account</button>
                         <div>{ showDelete ?
                         <DeleteAccount user={user} setProfileDisplay={setProfileDisplay}/> : null }
                         </div>
