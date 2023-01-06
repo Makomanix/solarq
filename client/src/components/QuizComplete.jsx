@@ -7,8 +7,6 @@ export default function QuizComplete({ score, pointsPossible, setPointsPossible,
 
     let percentage = (Math.round((score/pointsPossible) * 100).toFixed(2));
         
-
-    console.log(planetScore, moonScore, otherScore)
     
     const seeResults = () => {
         if (quiz === "planet") {

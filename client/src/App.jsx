@@ -13,18 +13,32 @@ import background from "./assets/background.jpg"
 
 function App() {
   const [users, setUsers] = useState([])
+  const [ solarObjects, setSolarObjects ] = useState([])
+  const [ questions, setQuestions] = ([])
 
 
   useEffect(() => {
     fetch(`/users`)
       .then((res) => res.json())
       .then((users) => setUsers(users))
-  }, [setUsers])
+  }, [])
+
+  useEffect(() => {
+    fetch(`/solar_objects`)
+      .then((res) => res.json())
+      .then((solarObjects) => setSolarObjects(solarObjects))
+  }, [setSolarObjects])
+
+  useEffect(() => {
+    fetch(`/questions`)
+      .then((res) => res.json())
+      .then((questions) => setQuestions(questions))
+  }, [setQuestions])
 
   return (
     <div className='relative'>
       <img className="absolute w-full h-screen mix-blend-overlay" src={background} alt='nightsky'/>
-      <NavBar />
+      <NavBar questions={questions} solarObjects={solarObjects}/>
         <Routes>
           {/* <Route path='/' element={<Home users={users} />} /> */}
           <Route path='/login' element={<Login users={users} setUsers={setUsers} />} />

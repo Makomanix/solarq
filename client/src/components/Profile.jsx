@@ -45,6 +45,7 @@ export default function Profile({ user, setUser, handleLogOut, setProfileDisplay
                 "Content-type": "application/json",
             },
             body: JSON.stringify({ 
+                id: user.id,
                 username: formData.username,
                 password: formData.password,
                 email: formData.email,
@@ -53,6 +54,7 @@ export default function Profile({ user, setUser, handleLogOut, setProfileDisplay
         })
             .then((res) => res.json())
             .then((user) => setUser({
+                id: id,
                 username: username,
                 password: password,
                 email: email,
@@ -67,8 +69,6 @@ export default function Profile({ user, setUser, handleLogOut, setProfileDisplay
         window.location.reload(true)
     }
 
-    // console.log(user.id)
-    // console.log(formData)
 
     return (
         <div className='bg-slate-900 bg-cover top-28 right-0 fixed h-auto w-[18%] z-40 px-2 rounded-md outline'>

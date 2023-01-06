@@ -27,17 +27,13 @@ export default function SolarObjectContainer() {
                     high_score: user.high_score,
                 }))
         }
-    }, [navigate]);
+    }, []);
 
     useEffect(() => {
         fetch(`/solar_objects/${category}`)
         .then((res) => res.json())
         .then((solarObjects) => setSolarObjects(solarObjects));
     }, [category]);
-    
-    console.log(user)
-    console.log(solarObjects)
-    // console.log(category)
     
 
     return (

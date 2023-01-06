@@ -2,12 +2,13 @@ import React, {useState, useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import Profile from './Profile'
-// import banner from "../assets/banner.jpg"
+import Admin from './Admin'
 
 
-export default function NavBar() {
+export default function NavBar({questions, solarObjects}) {
     const currentUser = sessionStorage.getItem("user_id")
     const navigate = useNavigate()
+    const [ adminDisplay, setAdminDisplay] = useState(true)
     const [ profileDisplay, setProfileDisplay ] = useState(false)
     const [ user, setUser ] = useState({
         id: "",
@@ -31,7 +32,7 @@ export default function NavBar() {
                 high_score: user.high_score,
                 admin: user.admin
             }))
-}, [navigate, user]);
+}, [navigate, currentUser]);
 
     const handleLogOut = () => {
         sessionStorage.removeItem("user_id")
@@ -42,14 +43,24 @@ export default function NavBar() {
     const handleProfileDisplay = () => {
         setProfileDisplay(!profileDisplay)
     }
+
+    const handleAdminDisplay = () => {
+        setAdminDisplay(!adminDisplay)
+    }
+
     
 
     return (
         <div className='relative'>
+            {user.admin ?
+            <div>
+                <button>Admin</button>
+                <Admin questions={questions} solarObjects={solarObjects} handleAdminDisplay={handleAdminDisplay}/>  
+                </div> : null }
             <NavLink className="absolute top-16 right-[12%] text-white text-3xl hover:text-blue-500" to="/about">About</NavLink>
             <h1 className='absolute top-0 left-4 mt-2 text-white text-8xl'>Solar Quiz</h1> 
             <div className="h-32 w-full"></div>
-            {currentUser ? 
+            {currentUser  ? 
             <div>
                 <div className='absolute top-16 right-[18%] grid-cols-4 gap-x-20' >
                         {/* <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/">Home</NavLink> */}

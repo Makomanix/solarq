@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    before_action :select_user, only: [:show, :update, :destroy]
+    before_action :select_user, :authorize, only: [:show, :update, :destroy]
 
     def index 
         render json: User.all, status: :ok
@@ -11,9 +11,13 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.create!(user_params)
-        session[:user_id] = user.id
-        render json: user, status: :created
+        user = User.create(user_params)
+        if user.valid?
+            session[:user_id] = user.id
+            render json: user, status: :created
+        else
+            render json: [error: user.errors.full_messages], status: :unprocessable_entity
+        end
     end
 
     def update
@@ -30,6 +34,10 @@ class UsersController < ApplicationController
 
     def select_user
         @user = User.find(params[:id])
+    end
+
+    def authorize
+        render json: {error: "Not authorized"}, status: unauthorized unless session.include? :user_id
     end
 
     def user_params

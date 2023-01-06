@@ -13,10 +13,6 @@ export default function SignUp({ users, setUsers, addUser }) {
     const [ formData, setFormData ] = useState(emptyForm);
     const navigate = useNavigate();
 
-    // const addUser = (newUser) => {
-    //     setUsers([...users, newUser])
-    // }
-
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -43,7 +39,6 @@ export default function SignUp({ users, setUsers, addUser }) {
         })
         .then((res) => res.json())
         .then((newUser) => {
-            // setUsers([...users, newUser])
             sessionStorage.setItem("user_id", newUser.id);
         })
         .then(handleLogin(formData))       
@@ -55,8 +50,8 @@ export default function SignUp({ users, setUsers, addUser }) {
     }
 
     return (
-        <div>
-            <div className='absolute top-[30%] mx-[33%] h-[45%] w-[35%] bg-slate-900 outline rounded-md'>
+        <div className=''>
+            <div className='absolute top-[200%] mx-[33%] h-[300%] w-[35%] bg-slate-900 outline rounded-md'>
                 <h1 className='text-center pt-4 text-blue-400 text-2xl font-bold'>Sign Up!</h1>
                 <p className='text-center pt-2 text-blue-400 pb-10'>It's quick and easy</p>
                 <form className="grid  grid-cols-2 grid-rows-4 mx-4 gap-px gap-x-4 gap-y-10 grid-flow-row w-auto h-auto" onSubmit={handleSubmit}>
@@ -78,8 +73,8 @@ export default function SignUp({ users, setUsers, addUser }) {
                         <option value="Uranus">Uranus</option>
                         <option value="Neptune">Neptune</option>                    
                     </select>
-                    <button className='absolute top-[68%] mx-[32.5%] h-12 w-52 font-bold bg-blue-400 hover:bg-blue-500 text-white text-xl rounded-md'>Sign Up!</button>
-                    <NavLink className='absolute top-[89%] mx-[44%]  font-bold text-blue-400 hover:text-blue-500 text-lg rounded-md' to='/login'>Login</NavLink>
+                    <button className='absolute top-[70%] mx-[32.5%] h-12 w-52 font-bold bg-blue-400 hover:bg-blue-500 text-white text-xl rounded-md'>Sign Up!</button>
+                    <NavLink className='absolute top-[90%] mx-[44%]  font-bold text-blue-400 hover:text-blue-500 text-lg rounded-md' to='/login'>Login</NavLink>
                 </form>
             </div>
         </div>

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
     resources :users, only: [ :index, :show, :create, :destroy, :update ]
     resources :solar_objects, only: [:index ]
-    resources :questions, only: [ :index ]
+    resources :questions, only: [ :index, :create ]
     resources :user_questions, only: [ :index, :create ]
     resources :leaderboards, only: [ :index, :create ]
 
@@ -12,6 +12,4 @@ Rails.application.routes.draw do
     get "/solar_objects/:category", to: "solar_objects#getByCategory"
     get "/questions/:quiz", to: "questions#getByCategory"
     get "/leaderboards/:updateFetch", to: "leaderboards#getSelectedScore"
-    # get "/leaderboards/:moon", to: "leaderboards#getMoonScore"
-    # get "/leaderboards/:other", to: "leaderboards#getOtherScore"
 end

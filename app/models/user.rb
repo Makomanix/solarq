@@ -5,10 +5,12 @@ class User < ApplicationRecord
 
 
     validates :username, presence: true
-    validates :username, uniqueness: true
-    validates :username, length: {in: 2..15}
+    # validates :username, uniqueness: true
+    # validates :username, length: {in: 2..15}
+    validates :password, presence: true 
     validates :email, presence: true,
     format: { with: /(.+)@(.+)/, message: "Email invalid" }, 
                 uniqueness: { case_sensitive: false },
                 length: { minimum: 5, maximum: 50 }
+
 end
