@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export default function QuizComplete({ score, pointsPossible, setPointsPossible, setShowQuizResults, quiz, setQuiz, planetScore, setPlanetScore, moonScore, setMoonScore, otherScore, setOtherScore, updateHighScore, patchEachQuiz, saveQuizResults, setSaveQuizResults }) {
+export default function QuizComplete({ score, pointsPossible, postLeaderboard, setPointsPossible, setShowQuizResults, quiz, setQuiz, planetScore, setPlanetScore, moonScore, setMoonScore, otherScore, setOtherScore, updateHighScore, patchEachQuiz, saveQuizResults, setSaveQuizResults }) {
 
     const navigate = useNavigate();
 
@@ -11,14 +11,17 @@ export default function QuizComplete({ score, pointsPossible, setPointsPossible,
     const seeResults = () => {
         if (quiz === "planet") {
             setPlanetScore(score)
+            // planetScore = score
             updateHighScore()
             
         } else if (quiz === "moon") {
             setMoonScore(score)
+            // moonScore = score
             updateHighScore()
             
         } else {
             setOtherScore(score)
+            // otherScore = score
             updateHighScore()    
         }
             setSaveQuizResults(true)
@@ -30,9 +33,11 @@ export default function QuizComplete({ score, pointsPossible, setPointsPossible,
         setQuiz("");
         setPointsPossible(0)
         patchEachQuiz()
+        console.log("See Results", planetScore)
     };
 
     const handleLastQuiz = () => {
+        postLeaderboard()
         navigate("/leaderboard")
     }
 
