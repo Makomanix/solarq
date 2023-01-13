@@ -11,4 +11,5 @@ class User < ApplicationRecord
     format: { with: /(.+)@(.+)/, message: "Email invalid" }, 
                 uniqueness: { case_sensitive: false },
                 length: { minimum: 5, maximum: 50 }
+
 end

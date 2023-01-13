@@ -36,12 +36,6 @@ export default function Leaderboard() {
         .then((leaderboardData) => setLeaderboardData(leaderboardData))
     }, [updateFetch]);
 
-    // const filterUserScores = ()  => {
-    //     const userScores = leaderboardData.filter((leaderboard) => leaderboard.username === user.username)
-    // }
-
-    console.log(updateFetch)
-    console.log(leaderboardData)
 
     return (
         <div>

@@ -2,24 +2,28 @@ import React,{ useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 
 
-export default function Login() {
+export default function Login({users}) {
 
-    const [ formData, setFormData ] = useState("");
+    const [ formData, setFormData ] = useState({});
     const [ errors, setErrors ] = useState("");
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const currentUser = sessionStorage.getItem("user_id")
-        if (currentUser) {
-            navigate("/")
-        }
-    }, [navigate]);
+    // useEffect(() => {
+    //     const currentUser = sessionStorage.getItem("user_id")
+    //     if (currentUser) {
+    //         navigate("/")
+    //     } 
+    // }, []);
+
+
 
     const { username, password } = formData;
 
     const handleLogin = (user) => {
         sessionStorage.setItem("user_id", user.id);
     }
+
+        
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -33,12 +37,13 @@ export default function Login() {
                 'Content-Type': 'application/json'
             },
             body:JSON.stringify(user)
+            
         })
         .then(res => {
             if(res.ok){
                 res.json().then(currentUser => handleLogin(currentUser)).then(() => {navigate("/")})
             } else {
-                res.json().then(json => setErrors(json.errors))
+                res.json().then(data => setErrors(data.errors))
             }
         })
     }
@@ -48,16 +53,11 @@ export default function Login() {
         setFormData({ ...formData, [name]: value})
     }
 
-
-    // console.log(user)
-
-    // const handleClick = () => {
-    //     navigate("/sign_up")
-    // }
+    
 
     return (
         <div >
-            <div className='absolute top-[30%] mx-[33%] h-[45%] w-[35%] bg-slate-900 outline rounded-md'>                
+            <div className='absolute top-[200%] mx-[33%] h-[307%] w-[35%] bg-slate-900 rounded-md outline'>                
                 <form className="grid grid-cols-1 gap-y-8 bg-slate-900 rounded-md" onSubmit={handleSubmit}>
                     <label className='mt-10 mx-[20%] text-blue-400 text-xl'>Username:</label>
                     <input className='-mt-6 mx-[20%] h-10 w-[60%] text-xl text-center rounded-lg' type='username' name='username' value={username} onChange={handleChange}/>

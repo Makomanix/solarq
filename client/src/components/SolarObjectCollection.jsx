@@ -26,8 +26,6 @@ export default function SolarObjectCollection({ solarObjects, setCategory}) {
             detailsClick={detailsClick}/>
     )
 
-    console.log(selectedSolarObject)
-
     return (
         <div className='relative'>             
             <div className='w-[40%] h-12 mx-[30.3%] mt-4 grid grid-cols-3 grid-rows-1 bg-slate-900 rounded-lg outline'>

@@ -22,7 +22,7 @@ export default function UserContainer() {
         navigate(`${e.target.value}`)
     }
 
-    console.log(user)
+
 
     return (
         <div className='relative'>
