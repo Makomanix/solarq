@@ -5,9 +5,9 @@ import QuizComplete from './QuizComplete';
 
 export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, quiz, setQuiz, user, setUser,}) {
     const { id, username, score, high_score } = user
-    const [ planetScore, setPlanetScore] = useState(null)
-    const [ moonScore, setMoonScore ] = useState(null)
-    const [ otherScore, setOtherScore ] = useState(null)
+    const [ planetScore, setPlanetScore] = useState(0)
+    const [ moonScore, setMoonScore ] = useState(0)
+    const [ otherScore, setOtherScore ] = useState(0)
     const [ totalScore, setTotalScore ] = useState(0)
     const [ currentQuestion, setCurrentQuestion ] = useState(0);
     const [ points, setPoints ] = useState(0);
@@ -79,11 +79,19 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
                 score: 0,
                 high_score: high_score
             }))
-            postLeaderboard()
+            allowLeaderboardPost()
     };
 
+    const allowLeaderboardPost = () => {
+        if (planetScore > 0 && moonScore > 0 && otherScore > 0) {
+            postLeaderboard()
+        } else {
+            alert("finish quizzes")
+        }
+    }
+
     const postLeaderboard = () => {
-        if(planetScore > 0 && moonScore > 0 && otherScore > 0)
+        if(planetScore > 0 && moonScore > 0 && otherScore > 0) 
             fetch(`/leaderboards`, {
                 method: 'POST',
                 headers: {
@@ -98,6 +106,7 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
                 })
                 
             })
+            
     };
 
     const planetQuizComplete = (planetScore > 0 ? 

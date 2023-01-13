@@ -44,7 +44,7 @@ export default function Question({ question, questions, stateAnswer, setAnswer, 
             <span className='flex items-center justify-center py-4 bg-blue-400 text-white text-xl'>
                 <p>Question # {currentQuestion + 1} out of {questions.length} : {points} Points</p>
             </span>
-            <span className='grid grid-cols-1 pt-2 h-14 text-center text-blue-400 text-xl '>
+            <span className='grid grid-cols-1 pt-2 h-14 text-center text-blue-400 text-2xl '>
                 {text}
             </span>
             <div>

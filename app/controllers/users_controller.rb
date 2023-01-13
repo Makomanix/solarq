@@ -11,13 +11,13 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.create(user_params)
-        if user.valid?
+        user = User.create!(user_params)
+        # if user.valid?
             session[:user_id] = user.id
             render json: user, status: :created
-        else
-            render json: [error: user.errors.full_messages], status: :unprocessable_entity
-        end
+        # else
+        #     render json: [error: user.errors.full_messages], status: :unprocessable_entity
+        # end
     end
 
     def update
