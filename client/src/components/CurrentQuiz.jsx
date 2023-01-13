@@ -55,6 +55,7 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
         } else {
             setShowQuizResults(true);
             setCurrentQuestion(0)
+
         }
     };
 
@@ -79,16 +80,8 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
                 score: 0,
                 high_score: high_score
             }))
-            allowLeaderboardPost()
     };
 
-    const allowLeaderboardPost = () => {
-        if (planetScore > 0 && moonScore > 0 && otherScore > 0) {
-            postLeaderboard()
-        } else {
-            alert("finish quizzes")
-        }
-    }
 
     const postLeaderboard = () => {
         if(planetScore > 0 && moonScore > 0 && otherScore > 0) 
@@ -108,6 +101,7 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
             })
             
     };
+
 
     const planetQuizComplete = (planetScore > 0 ? 
         <button className='h-14 w-72 bg-blue-400 text-4xl text-white-400 rounded-md' value="planet" >Planet Quiz {planetScore}</button> :
@@ -166,7 +160,8 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
                     setOtherScore={setOtherScore}
                     quiz={quiz} 
                     setQuiz={setQuiz} 
-                    score={score}  
+                    score={score}
+                    postLeaderboard={postLeaderboard}
                     pointsPossible={pointsPossible} 
                     setPointsPossible={setPointsPossible}
                     setShowQuizResults={setShowQuizResults}
