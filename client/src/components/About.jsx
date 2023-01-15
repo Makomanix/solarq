@@ -8,7 +8,7 @@ export default function About() {
 
     const handleClick = () => {
         // window.location.href = "https://github.com/Makomanix"
-        console.log("i click")
+        
     }
 
     return (

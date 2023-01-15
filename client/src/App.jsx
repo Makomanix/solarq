@@ -12,16 +12,18 @@ import background from "./assets/background.jpg"
 
 
 function App() {
-  const [users, setUsers] = useState([])
+  // const currentUser = localStorage.getItem("user_id")
+  const [user, setUser] = useState([])
   const [ solarObjects, setSolarObjects ] = useState([])
   const [ questions, setQuestions] = ([])
+  const [ toggleLogin, setToggleLogin ] = useState(null)
 
 
-  useEffect(() => {
-    fetch(`/users`)
-      .then((res) => res.json())
-      .then((users) => setUsers(users))
-  }, [])
+  // useEffect(() => {
+  //   fetch(`/users/${currentUser}`)
+  //     .then((res) => res.json())
+  //     .then((user) => setUser(user))
+  // }, [toggleLogin])
 
   useEffect(() => {
     fetch(`/solar_objects`)
@@ -38,11 +40,11 @@ function App() {
   return (
     <div className='relative'>
       <img className="absolute w-full h-screen mix-blend-overlay" src={background} alt='nightsky'/>
-      <NavBar questions={questions} solarObjects={solarObjects}/>
+      <NavBar questions={questions} solarObjects={solarObjects} setToggleLogin={setToggleLogin} />
         <Routes>
           {/* <Route path='/' element={<Home users={users} />} /> */}
-          <Route path='/login' element={<Login users={users} setUsers={setUsers} />} />
-          <Route path='/sign_up' element={<SignUp users={users} setUsers={setUsers} />} />
+          <Route path='/login' element={<Login setToggleLogin={setToggleLogin} />} />
+        <Route path='/sign_up' element={<SignUp setToggleLogin={setToggleLogin} />} />
           <Route path='/about' element={<About />} />
           <Route path='/' element={<SolarObjectContainer />} />
           <Route path='/quizzes' element={<QuizContainer />} />

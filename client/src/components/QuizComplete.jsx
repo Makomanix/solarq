@@ -33,7 +33,6 @@ export default function QuizComplete({ score, pointsPossible, postLeaderboard, s
         setQuiz("");
         setPointsPossible(0)
         patchEachQuiz()
-        console.log("See Results", planetScore)
     };
 
     const handleLastQuiz = () => {

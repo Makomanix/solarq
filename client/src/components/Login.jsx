@@ -2,12 +2,17 @@ import React,{ useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 
 
-export default function Login({users}) {
+export default function Login({ setToggleLogin }) {
 
-    const [ formData, setFormData ] = useState({});
-    const [ errors, setErrors ] = useState("");
     const navigate = useNavigate();
 
+    const [ formData, setFormData ] = useState({
+        username: "",
+        password: ""
+    });
+
+    const [ errors, setErrors ] = useState([]);
+    
     // useEffect(() => {
     //     const currentUser = sessionStorage.getItem("user_id")
     //     if (currentUser) {
@@ -15,35 +20,36 @@ export default function Login({users}) {
     //     } 
     // }, []);
 
-
-
-    const { username, password } = formData;
-
-    const handleLogin = (user) => {
-        sessionStorage.setItem("user_id", user.id);
-    }
-
-        
-
+    
     const handleSubmit = (e) => {
         e.preventDefault()
-        const user = {
-            username,
-            password
+
+        const login = {
+            ...formData
         }
+
         fetch(`/login`,{
             method:'POST',
             headers:{
                 'Content-Type': 'application/json'
             },
-            body:JSON.stringify(user)
+            body:JSON.stringify(login)
             
         })
         .then(res => {
             if(res.ok){
-                res.json().then(currentUser => handleLogin(currentUser)).then(() => {navigate("/")})
+                res.json().then(user => {
+                    sessionStorage.setItem("user_id", user.id)
+                    setErrors([])
+                    navigate("/")
+                    console.log(user.id)
+                    console.log("RES OK")
+                })
             } else {
-                res.json().then(data => setErrors(data.errors))
+                res.json().then(data => {
+                    setErrors(data.error.login)
+                    console.log("RES NOT OK")
+                })
             }
         })
     }
@@ -52,18 +58,18 @@ export default function Login({users}) {
         const { name, value } = e.target
         setFormData({ ...formData, [name]: value})
     }
-
     
-
+    
+    
     return (
         <div >
             <div className='absolute top-[200%] mx-[33%] h-[307%] w-[35%] bg-slate-900 rounded-md outline'>                
                 <form className="grid grid-cols-1 gap-y-8 bg-slate-900 rounded-md" onSubmit={handleSubmit}>
                     <label className='mt-10 mx-[20%] text-blue-400 text-xl'>Username:</label>
-                    <input className='-mt-6 mx-[20%] h-10 w-[60%] text-xl text-center rounded-lg' type='username' name='username' value={username} onChange={handleChange}/>
+                    <input className='-mt-6 mx-[20%] h-10 w-[60%] text-xl text-center rounded-lg' type='text' name='username' value={formData.username} onChange={handleChange}/>
                     <label className='mt-4 mx-[20%] text-blue-400 text-xl'>Password:</label>
-                    <input className='-mt-6 mx-[20%] h-10 w-[60%] text-xl text-center rounded-lg' type='password' name='password' value={password} onChange={handleChange} />
-                    <button className='mx-[35%] h-12 w-52 text-white bg-blue-400 hover:bg-blue-500 rounded-md font-bold text-xl' value='Log in!'>Log in!</button>                    
+                    <input className='-mt-6 mx-[20%] h-10 w-[60%] text-xl text-center rounded-lg' type='password' name='password' value={formData.password} onChange={handleChange} />
+                    <button className='mx-[35%] h-12 w-52 text-white bg-blue-400 hover:bg-blue-500 rounded-md font-bold text-xl' value='Login!'>Login!</button>                    
                     <NavLink className='m-2 px-8 text-center text-blue-400 hover:text-blue-500 text-lg' to='/sign_up'>First time? Sign Up here!</NavLink>
                 </form>                
             </div>
@@ -71,3 +77,13 @@ export default function Login({users}) {
         </div>
     );
 }
+
+
+
+// const { username, password } = formData;
+
+
+// const handleLogin = (user) => {
+//     sessionStorage.setItem("user_id", user.id);
+// }
+    // setToggleLogin(true)

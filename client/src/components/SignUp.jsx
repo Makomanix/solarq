@@ -2,16 +2,23 @@ import React, { useState } from 'react'
 import { NavLink, useNavigate } from "react-router-dom"
 import NavBar from './NavBar';
 
-const emptyForm ={
-    username: "",
-    email: "",
-    favorite_planet: ""
-}
+// const emptyForm ={
+//     username: "",
+//     password: "",
+//     email: "",
+//     favorite_planet: ""
+// }
 
 export default function SignUp({ users, setUsers, addUser }) { 
 
-    const [ formData, setFormData ] = useState(emptyForm);
     const navigate = useNavigate();
+    const [ errors, setErrors] = useState([])
+    const [ formData, setFormData ] = useState({
+        username: "",
+        password: "",
+        email: "",
+        favorite_planet: ""
+    });
 
 
     const handleChange = (e) => {
@@ -30,6 +37,7 @@ export default function SignUp({ users, setUsers, addUser }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         fetch(`/users`, {
             method: 'POST',
             headers: {
@@ -37,17 +45,34 @@ export default function SignUp({ users, setUsers, addUser }) {
             },
             body: JSON.stringify({...formData})
         })
-        .then((res) => res.json())
-        .then((newUser) => {
-            sessionStorage.setItem("user_id", newUser.id);
+        .then((res) => {
+            if(res.ok){
+                res.json().then(user => {
+                    sessionStorage.setItem("user_id", user.id)
+                    setErrors([])
+                    navigate("/")
+                })
+            } else {
+                res.json().then(data => {
+                    console.log(data.errors)
+                    setErrors(data.errors)
+                    console.log("RES NOT OK")
+                })
+            }
         })
-        .then(handleLogin(formData))       
-        .then(navigate("/"))
     }
 
-    const handleLogin = (formData) => {
-        sessionStorage.setItem("user_id", formData.id)
-    }
+                // }))
+    //     .then((newUser) => {
+    //         sessionStorage.setItem("user_id", newUser.id);
+    //     })
+    //     .then(handleLogin(formData))       
+    //     .then(navigate("/"))
+    // }
+
+    // const handleLogin = (formData) => {
+    //     sessionStorage.setItem("user_id", formData.id)
+    // }
 
     return (
         <div className=''>
@@ -56,13 +81,13 @@ export default function SignUp({ users, setUsers, addUser }) {
                 <p className='text-center pt-2 text-blue-400 pb-10'>It's quick and easy</p>
                 <form className="grid  grid-cols-2 grid-rows-4 mx-4 gap-px gap-x-4 gap-y-10 grid-flow-row w-auto h-auto" onSubmit={handleSubmit}>
                     
-                    <input className="bg-slate-100 text-center rounded-md h-12" name="username" placeholder="username" type="text" onChange={handleChange}/>
+                    <input className="bg-slate-100 text-center rounded-md h-12" name="username" placeholder="username" type="text" value={formData.username} onChange={handleChange}/>
                     
-                    <input className='bg-slate-100 text-center rounded-md h-12' name="password" placeholder="password" type="text" onChange={handleChange}/>
+                    <input className='bg-slate-100 text-center rounded-md h-12' name="password" placeholder="password" type="password" value={formData.password} onChange={handleChange}/>
                     
-                    <input className="bg-slate-100 text-center rounded-md h-12"  name="email" placeholder="email" type="text" onChange={handleChange} />
+                    <input className="bg-slate-100 text-center rounded-md h-12" name="email" placeholder="email" type="text" value={formData.email} onChange={handleChange} />
                     
-                    <select className="bg-slate-100 text-center rounded-md h-12" name="favorite_planet" type="text" onChange={handleSelect}>
+                    <select className="bg-slate-100 text-center rounded-md h-12" name="favorite_planet" type="text" value={formData.favorite_planet} onChange={handleSelect}>
                         <option className="">Select Planet</option>
                         <option value="Mercury">Mercury</option>
                         <option value="Venus">Venus</option>

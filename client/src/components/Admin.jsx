@@ -35,7 +35,6 @@ export default function Admin({ questions, solarObjects, handleAdminDisplay }) {
     const selectedObject = solarObjects.filter((solarObject) => solarObject.name === formData.solar_object)
 
     const filteredObject = selectedObject.map((object) => {
-        console.log("inside filtered object", object.id)
         return object.id
 }
         ) 
@@ -66,8 +65,6 @@ export default function Admin({ questions, solarObjects, handleAdminDisplay }) {
             })
         }
     };
-
-    console.log(selectedObject)
 
 
     return (
