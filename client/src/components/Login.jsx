@@ -11,7 +11,7 @@ export default function Login({ setToggleLogin }) {
         password: ""
     });
 
-    const [ errors, setErrors ] = useState([]);
+    const [ errors, setErrors ] = useState("");
     
     // useEffect(() => {
     //     const currentUser = sessionStorage.getItem("user_id")
@@ -40,15 +40,14 @@ export default function Login({ setToggleLogin }) {
             if(res.ok){
                 res.json().then(user => {
                     sessionStorage.setItem("user_id", user.id)
-                    setErrors([])
                     navigate("/")
                     console.log(user.id)
                     console.log("RES OK")
                 })
             } else {
                 res.json().then(data => {
-                    setErrors(data.error.login)
-                    console.log("RES NOT OK")
+                    setErrors(errors)
+                    console.log(errors)
                 })
             }
         })
@@ -72,8 +71,8 @@ export default function Login({ setToggleLogin }) {
                     <button className='mx-[35%] h-12 w-52 text-white bg-blue-400 hover:bg-blue-500 rounded-md font-bold text-xl' value='Login!'>Login!</button>                    
                     <NavLink className='m-2 px-8 text-center text-blue-400 hover:text-blue-500 text-lg' to='/sign_up'>First time? Sign Up here!</NavLink>
                 </form>                
+            {errors? <div className="absolute top-[150%] text-red-500 placeholder:text-5xl">{errors}</div> : null}
             </div>
-            {errors? <div>{errors}</div> : null}
         </div>
     );
 }
