@@ -11,7 +11,7 @@ export default function Login({ setToggleLogin }) {
         password: ""
     });
 
-    const [ errors, setErrors ] = useState("");
+    const [ errors, setErrors ] = useState([]);
     
     // useEffect(() => {
     //     const currentUser = sessionStorage.getItem("user_id")
@@ -45,9 +45,8 @@ export default function Login({ setToggleLogin }) {
                     console.log("RES OK")
                 })
             } else {
-                res.json().then(data => {
-                    setErrors(errors)
-                    console.log(errors)
+                res.json().then(data=> {
+                    setErrors(data.error.login)
                 })
             }
         })
@@ -58,20 +57,20 @@ export default function Login({ setToggleLogin }) {
         setFormData({ ...formData, [name]: value})
     }
     
-    
+    console.log(errors)
     
     return (
         <div >
+            {errors? <div className="absolute top-[310%] left-[44%] text-red-500 text-2xl z-40">{errors}</div> : null}
             <div className='absolute top-[200%] mx-[33%] h-[307%] w-[35%] bg-slate-900 rounded-md outline'>                
                 <form className="grid grid-cols-1 gap-y-8 bg-slate-900 rounded-md" onSubmit={handleSubmit}>
                     <label className='mt-10 mx-[20%] text-blue-400 text-xl'>Username:</label>
-                    <input className='-mt-6 mx-[20%] h-10 w-[60%] text-xl text-center rounded-lg' type='text' name='username' value={formData.username} onChange={handleChange}/>
+                    <input className='-mt-6 mx-[20%] h-10 w-[60%] text-xl text-center rounded-lg' placeholder='Username' type='text' name='username' value={formData.username} onChange={handleChange}/>
                     <label className='mt-4 mx-[20%] text-blue-400 text-xl'>Password:</label>
-                    <input className='-mt-6 mx-[20%] h-10 w-[60%] text-xl text-center rounded-lg' type='password' name='password' value={formData.password} onChange={handleChange} />
-                    <button className='mx-[35%] h-12 w-52 text-white bg-blue-400 hover:bg-blue-500 rounded-md font-bold text-xl' value='Login!'>Login!</button>                    
+                    <input className='-mt-6 mx-[20%] h-10 w-[60%] text-xl text-center rounded-lg' placeholder='Password' type='password' name='password' value={formData.password} onChange={handleChange} />
+                    <button className='mx-[37.5%] h-12 w-52 text-white bg-blue-400 hover:bg-blue-500 rounded-md font-bold text-xl' value='Login!'>Login!</button>                    
                     <NavLink className='m-2 px-8 text-center text-blue-400 hover:text-blue-500 text-lg' to='/sign_up'>First time? Sign Up here!</NavLink>
                 </form>                
-            {errors? <div className="absolute top-[150%] text-red-500 placeholder:text-5xl">{errors}</div> : null}
             </div>
         </div>
     );
