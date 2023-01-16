@@ -97,7 +97,7 @@ export default function Admin({ questions, solarObjects, handleAdminDisplay }) {
                             <label className='text-center text-xl text-blue-400 '>Difficulty</label>
                             <select className="bg-slate-100 text-center rounded-md h-8 outline" name="difficulty" type="text" onChange={handleSelect}>
                                 <option className=""></option>
-                                <option value="Easy">East</option>
+                                <option value="Easy">Easy</option>
                                 <option value="Medium">Medium</option>
                                 <option value="Hard">Hard</option>
                             </select>
