@@ -16,14 +16,6 @@ function App() {
   const [user, setUser] = useState([])
   const [ solarObjects, setSolarObjects ] = useState([])
   const [ questions, setQuestions] = ([])
-  const [ toggleLogin, setToggleLogin ] = useState(null)
-
-
-  // useEffect(() => {
-  //   fetch(`/users/${currentUser}`)
-  //     .then((res) => res.json())
-  //     .then((user) => setUser(user))
-  // }, [toggleLogin])
 
   useEffect(() => {
     fetch(`/solar_objects`)
@@ -40,11 +32,11 @@ function App() {
   return (
     <div className='relative'>
       <img className="absolute w-full h-screen mix-blend-overlay" src={background} alt='nightsky'/>
-      <NavBar questions={questions} solarObjects={solarObjects} setToggleLogin={setToggleLogin} />
+      <NavBar questions={questions} solarObjects={solarObjects} />
         <Routes>
           {/* <Route path='/' element={<Home users={users} />} /> */}
-          <Route path='/login' element={<Login setToggleLogin={setToggleLogin} />} />
-        <Route path='/sign_up' element={<SignUp setToggleLogin={setToggleLogin} />} />
+          <Route path='/login' element={<Login  />} />
+        <Route path='/sign_up' element={<SignUp  />} />
           <Route path='/about' element={<About />} />
           <Route path='/' element={<SolarObjectContainer />} />
           <Route path='/quizzes' element={<QuizContainer />} />

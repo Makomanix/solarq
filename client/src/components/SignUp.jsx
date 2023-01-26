@@ -1,15 +1,8 @@
 import React, { useState } from 'react'
 import { NavLink, useNavigate } from "react-router-dom"
-import NavBar from './NavBar';
 
-// const emptyForm ={
-//     username: "",
-//     password: "",
-//     email: "",
-//     favorite_planet: ""
-// }
 
-export default function SignUp({ users, setUsers, addUser }) { 
+export default function SignUp() { 
 
     const navigate = useNavigate();
     const [ errors, setErrors] = useState([])
@@ -20,7 +13,7 @@ export default function SignUp({ users, setUsers, addUser }) {
         favorite_planet: ""
     });
 
-
+    // takes user sign up data and adds to formData(username, password, email)
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -28,6 +21,7 @@ export default function SignUp({ users, setUsers, addUser }) {
         })
     }
 
+    // takes user sign up data and adds to formData(favorite_planet)
     const handleSelect = (e) => {
         const { name, value } = e.target
         setFormData({
@@ -35,6 +29,7 @@ export default function SignUp({ users, setUsers, addUser }) {
         })
     }
 
+    //submits formData, session created as user.id, and receives back any failed validation 
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -62,24 +57,13 @@ export default function SignUp({ users, setUsers, addUser }) {
         })
     }
 
-                // }))
-    //     .then((newUser) => {
-    //         sessionStorage.setItem("user_id", newUser.id);
-    //     })
-    //     .then(handleLogin(formData))       
-    //     .then(navigate("/"))
-    // }
-
-    // const handleLogin = (formData) => {
-    //     sessionStorage.setItem("user_id", formData.id)
-    // }
-
+// Displays user sign up form
     return (
         <div className=''>
             <div className='absolute top-[200%] mx-[33%] h-[300%] w-[35%] bg-slate-900 outline rounded-md'>
                 <h1 className='text-center pt-4 text-blue-400 text-3xl font-bold'>Sign Up!</h1>
                 <p className='text-center pt-2 text-blue-400 text-xl pb-10'>It's quick and easy</p>
-                <form className="grid  grid-cols-2 grid-rows-4 mx-4 gap-px gap-x-4 gap-y-6 grid-flow-row w-auto h-auto" onSubmit={handleSubmit}>
+                <form className="grid grid-cols-2 grid-rows-4 mx-4 gap-px gap-x-4 gap-y-6 grid-flow-row w-auto h-auto" onSubmit={handleSubmit}>
                     
                     <input className="bg-slate-100 text-center rounded-md h-12" name="username" placeholder="username" type="text" value={formData.username} onChange={handleChange}/>
                     
@@ -88,7 +72,7 @@ export default function SignUp({ users, setUsers, addUser }) {
                     <input className="bg-slate-100 text-center rounded-md h-12" name="email" placeholder="email" type="text" value={formData.email} onChange={handleChange} />
                     
                     <select className="bg-slate-100 text-center rounded-md h-12" name="favorite_planet" type="text" value={formData.favorite_planet} onChange={handleSelect}>
-                        <option className="">Select Planet</option>
+                        <option className=""> Select Favorite Planet</option>
                         <option value="Mercury">Mercury</option>
                         <option value="Venus">Venus</option>
                         <option value="Earth">Earth</option>
@@ -101,6 +85,18 @@ export default function SignUp({ users, setUsers, addUser }) {
                     <button className='absolute top-[70%] mx-[35%] h-12 w-52 font-bold bg-blue-400 hover:bg-blue-500 text-white text-2xl rounded-md'>Sign Up!</button>
                     <NavLink className='absolute top-[90%] mx-[43.5%]  font-bold text-blue-400 hover:text-blue-500 text-2xl rounded-md' to='/login'>Login</NavLink>
                 </form>
+                <div>
+                    {errors? 
+                    <div className='grid grid-cols-1 grid-rows-auto h-auto w-auto bg-slate-900 text-red-600 text-center text-2xl rounded-md'>
+                        <p>{errors[0]}</p>
+                        <p>{errors[1]}</p>
+                        <p>{errors[2]}</p>
+                        <p>{errors[3]}</p>
+                        <p>{errors[4]}</p>
+                        <p>{errors[5]}</p>
+                        <p>{errors[6]}</p>
+                    </div> : null }
+                </div>
             </div>
         </div>
     )

@@ -1,8 +1,8 @@
-import React,{ useState, useEffect } from "react";
+import React,{ useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 
 
-export default function Login({ setToggleLogin }) {
+export default function Login() {
 
     const navigate = useNavigate();
 
@@ -12,14 +12,6 @@ export default function Login({ setToggleLogin }) {
     });
 
     const [ errors, setErrors ] = useState([]);
-    
-    // useEffect(() => {
-    //     const currentUser = sessionStorage.getItem("user_id")
-    //     if (currentUser) {
-    //         navigate("/")
-    //     } 
-    // }, []);
-
     
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -61,7 +53,6 @@ export default function Login({ setToggleLogin }) {
     
     return (
         <div >
-            {errors? <div className="absolute top-[310%] left-[44%] text-red-500 text-2xl z-40">{errors}</div> : null}
             <div className='absolute top-[200%] mx-[33%] h-[307%] w-[35%] bg-slate-900 rounded-md outline'>                
                 <form className="grid grid-cols-1 gap-y-8 bg-slate-900 rounded-md" onSubmit={handleSubmit}>
                     <label className='mt-10 mx-[20%] text-blue-400 text-xl'>Username:</label>
@@ -72,16 +63,7 @@ export default function Login({ setToggleLogin }) {
                     <NavLink className='m-2 px-8 text-center text-blue-400 hover:text-blue-500 text-lg' to='/sign_up'>First time? Sign Up here!</NavLink>
                 </form>                
             </div>
+            {errors? <div className="absolute top-[306%] left-[44%] text-red-500 text-2xl z-40">{errors}</div> : null}
         </div>
     );
 }
-
-
-
-// const { username, password } = formData;
-
-
-// const handleLogin = (user) => {
-//     sessionStorage.setItem("user_id", user.id);
-// }
-    // setToggleLogin(true)
