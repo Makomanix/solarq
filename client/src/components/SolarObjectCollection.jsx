@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import SolarObjectCard from './SolarObjectCard'
 import SolarObjectDetails from './SolarObjectDetails'
 
-export default function SolarObjectCollection({ solarObjects, setCategory}) {
+export default function SolarObjectCollection({ user, solarObjects, setCategory, solarObjectId, setSolarObjectId, favoriteObject}) {
+    // const {id, name} = favoriteObject
+    // const [solarObjectId, setSolarObjectId ] = useState(null)
 
-    const [solarObjectId, setSolarObjectId ] = useState(null)
-
+    // console.log(user.favorite_planet)
+    // console.log(solarObjectId)
+    // console.log(favoriteObject.id)
     
     const selectedSolarObject = solarObjects.find((solarObject) => solarObject.id === solarObjectId)
     

@@ -59,19 +59,19 @@ export default function NavBar({questions, solarObjects}) {
                 <button className='absolute top-4 right-14 h-8 w-24 text-white text-2xl' onClick={handleAdminDisplay}>Admin</button> {adminDisplay ?
                 <Admin questions={questions} solarObjects={solarObjects} handleAdminDisplay={handleAdminDisplay} />  : null }
                 </div> : null }
-            {/* <NavLink className="absolute top-16 right-[12%] text-white text-3xl hover:text-blue-500" to="/about">About</NavLink> */}
             <h1 className='absolute top-0 left-4 mt-2 text-white text-8xl'>Solar Explorer</h1> 
             <div className="h-32 w-full"></div>
             {currentUser  ? 
             <div>
-                <div className='absolute top-16 right-[9.3%] grid-cols-4 gap-x-20' >
+                    <p className='absolute top-8 left-[44.5%] h-auto w-72 bg-slate-900 text-blue-500 text-4xl text-center font-semibold rounded-md outline'>Welcome {user.username}</p>
+                <div className='absolute top-16 right-[7.5%] grid grid-cols-3' >
                         {/* <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/">Home</NavLink> */}
-                        <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/">Solar System</NavLink>  
-                        <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/quizzes">Quizzes</NavLink> 
-                        <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/leaderboard">Leaderboard</NavLink>
+                    <NavLink className=' text-white text-3xl text-center hover:text-blue-500' to="/">Solar System</NavLink>  
+                    <NavLink className=' text-white text-3xl text-center hover:text-blue-500' to="/quizzes">Quizzes</NavLink> 
+                    <NavLink className=' text-white text-3xl text-center hover:text-blue-500' to="/leaderboard">Leaderboard</NavLink>
                 </div>             
                 <button 
-                        className=' absolute top-16 right-16 text-white hover:text-blue-500 text-3xl' 
+                    className=' absolute top-16 right-16 text-white hover:text-blue-500 text-3xl' 
                     onClick={handleProfileDisplay}>Profile
                 </button>
                 <div>{profileDisplay ? 

@@ -137,7 +137,7 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
     
     return (
         <div className='relative'>
-            <div className='h-16 ml-[24%] w-[55%] grid grid-cols-3 mt-4 grid-rows-1 '>
+            <div className='h-16 ml-[16.5%] w-auto grid grid-cols-3 mt-4 grid-rows-1 '>
                 <div>
                     {planetQuizComplete}
                 </div>
@@ -175,11 +175,11 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
                         <div className='mx-[27%] h-72 w-[46%]'>
                         {questionCards[currentQuestion]}
                         </div>
-                        <div className='absolute -top-16 left-[23%] w-[15%] h-10 text-white bg-blue-400 text-2xl text-center rounded-md '>
-                            High Score: {high_score} points
+                        <div className='absolute -top-16 left-[23%] w-[13%] h-10 text-white bg-blue-400 text-2xl text-center rounded-md '>
+                            High Score: {high_score} 
                         </div>
-                        <div className='absolute -top-16 left-[62%] w-[15%] h-10  text-white bg-blue-400 text-2xl text-center rounded-md '>
-                            Current Score: {score} points
+                        <div className='absolute -top-16 left-[63.5%] w-[13%] h-10  text-white bg-blue-400 text-2xl text-center rounded-md '>
+                            Current Score: {score} 
                         </div>
                         <div className='absolute -top-[21%] left-[41.6%] h-10 w-80 grid grid-cols-1 rounded-md'>
                             <span className='text-3xl text-center font-bold text-red-500 '>{notSelected ? "Answer to Continue" : null}</span>

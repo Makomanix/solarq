@@ -15,30 +15,23 @@ function App() {
   // const currentUser = localStorage.getItem("user_id")
   const [user, setUser] = useState([])
   const [ solarObjects, setSolarObjects ] = useState([])
-  const [ questions, setQuestions] = ([])
 
   useEffect(() => {
     fetch(`/solar_objects`)
       .then((res) => res.json())
       .then((solarObjects) => setSolarObjects(solarObjects))
-  }, [setSolarObjects])
-
-  useEffect(() => {
-    fetch(`/questions`)
-      .then((res) => res.json())
-      .then((questions) => setQuestions(questions))
-  }, [setQuestions])
+  }, [])
 
   return (
     <div className='relative'>
       <img className="absolute w-full h-screen mix-blend-overlay" src={background} alt='nightsky'/>
-      <NavBar questions={questions} solarObjects={solarObjects} />
+      <NavBar solarObjects={solarObjects} />
         <Routes>
           {/* <Route path='/' element={<Home users={users} />} /> */}
           <Route path='/login' element={<Login  />} />
         <Route path='/sign_up' element={<SignUp  />} />
           <Route path='/about' element={<About />} />
-          <Route path='/' element={<SolarObjectContainer />} />
+          <Route path='/' element={<SolarObjectContainer solarObjects={solarObjects} setSolarObjects={setSolarObjects}/>} />
           <Route path='/quizzes' element={<QuizContainer />} />
           <Route path='/leaderboard' element={<Leaderboard />} />
         </Routes>

@@ -14,7 +14,7 @@ const emptyForm = {
     solar_object_id: ""
 }
 
-export default function Admin({ questions, solarObjects, handleAdminDisplay }) {
+export default function Admin({ solarObjects, handleAdminDisplay }) {
 
     const [ formData, setFormData ] = useState(emptyForm)
 
@@ -41,7 +41,17 @@ export default function Admin({ questions, solarObjects, handleAdminDisplay }) {
         
 
     const handleSubmit = () => {
-        if (formData.text === "" || formData.difficulty === "" || formData.points === 0 || formData.category === "" || formData.answer === "" || formData.option2 === "" || formData.option3 === "" || formData.option4 === "" || formData.hint === "" || filteredObject.length === 0) { alert("Please Complete Form")  
+        if (formData.text === "" || 
+        formData.difficulty === "" || 
+        formData.points === 0 || 
+        formData.category === "" || 
+        formData.answer === "" || 
+        formData.option2 === "" || 
+        formData.option3 === "" || 
+        formData.option4 === "" || 
+        formData.hint === "" || 
+        filteredObject.length === 0) 
+        { alert("Please Complete Form")  
         } else {
             fetch(`/questions`, {
                 method: 'POST',

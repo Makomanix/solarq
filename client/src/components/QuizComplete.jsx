@@ -46,13 +46,13 @@ export default function QuizComplete({ score, pointsPossible, postLeaderboard, s
 
     return (
         <div className='relative'>{saveQuizResults ?
-                <div className='absolute top-14 left-[40%] h-80 w-96 grid-cols-1 text-center bg-slate-900 outline rounded-md'>
+                <div className='absolute top-14 left-[42.15%] h-80 w-96 grid-cols-1 text-center bg-slate-900 outline rounded-md'>
                     <div className='text-blue-400 mt-6 text-3xl'>Final Results</div>
                 <div className='text-blue-400 my-4 text-3xl'>{score} out of {pointsPossible} Points!</div>
                 <div className='text-blue-400 text-3xl'>{percentage}%</div>
                 {chooseAnotherQuiz}
                 </div> :
-                <div className='absolute top-14 left-[40%] h-56 w-96 grid-cols-1 text-center bg-slate-900 outline rounded-md'>
+                <div className='absolute top-14 left-[42.15%] h-56 w-96 grid-cols-1 text-center bg-slate-900 outline rounded-md'>
                     <button className='h-16 w-80 bg-blue-400 text-white text-5xl mt-20 rounded-lg' onClick={seeResults}>See Results</button>
                 </div>
                 }
