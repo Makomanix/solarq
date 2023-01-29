@@ -2,7 +2,7 @@ import React,{ useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 
 
-export default function Login() {
+export default function Login({setUser}) {
 
     const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ export default function Login() {
 
         const login = {
             ...formData
-        }
+        };
 
         fetch(`/login`,{
             method:'POST',
@@ -30,11 +30,16 @@ export default function Login() {
         })
         .then(res => {
             if(res.ok){
-                res.json().then(user => {
+                res.json()
+                .then(user => {
                     sessionStorage.setItem("user_id", user.id)
-                    navigate("/")
-                    console.log(user.id)
-                    console.log("RES OK")
+                    setUser({id: user.id,
+                        username: user.username,
+                        score: user.score,
+                        high_score: user.high_score,
+                        favorite_planet: user.favorite_planet,
+                    })
+                    navigate("/", { state: { user: user } })
                 })
             } else {
                 res.json().then(data=> {
@@ -42,14 +47,14 @@ export default function Login() {
                 })
             }
         })
-    }
+    };
+
 
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData({ ...formData, [name]: value})
-    }
+    };
     
-    console.log(errors)
     
     return (
         <div >
@@ -67,3 +72,5 @@ export default function Login() {
         </div>
     );
 }
+
+

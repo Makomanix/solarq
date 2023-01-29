@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import { useNavigate } from 'react-router-dom';
 import DeleteAccount from './DeleteAccount'
 
 const emptyForm = {
@@ -9,11 +10,21 @@ const emptyForm = {
 }
 export default function Profile({ user, setUser, handleLogOut, setProfileDisplay, handleProfileDisplay }) {
     
-    const {id, username, password, email, favorite_planet, high_score, } = user
+    const navigate = useNavigate()
     const [ edit, setEdit ] = useState(false)
     const [ formData, setFormData ] = useState (emptyForm)
     const [ showDelete, setShowDelete ] = useState (false)
-    
+
+    useEffect(() => {
+        const currentUser = sessionStorage.getItem("user_id")
+        if (currentUser == null) {
+            navigate('/login')
+        } else {
+            fetch(`/users/${currentUser}`)
+                .then((res) => res.json())
+                .then((user) => setUser(user))            
+        }
+    }, [navigate, setUser]);
 
     const handleEdit = () => {
         setEdit(!edit)
@@ -37,6 +48,7 @@ export default function Profile({ user, setUser, handleLogOut, setProfileDisplay
         })
     };
 
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         fetch(`/users/${user.id}`, {
@@ -53,31 +65,23 @@ export default function Profile({ user, setUser, handleLogOut, setProfileDisplay
             })
         })
             .then((res) => res.json())
-            .then((user) => setUser({
-                id: id,
-                username: username,
-                password: password,
-                email: email,
-                favorite_planet: favorite_planet
-            })
-            )
-            .then(setEdit(!edit))
-            .then(reload())
-    };
-
-    const reload = () => {
-        window.location.reload(true)
-    }
-
-
+            .then((user) => setUser( user
+                )
+                )
+                .then(setEdit(!edit))
+                .then(setProfileDisplay(false))
+                .then(navigate('/'))
+            };
+            
+            
     return (
         <div className='bg-slate-900 bg-cover top-28 right-0 pb-1 fixed h-auto w-[18%] z-40 px-2 rounded-md outline'>
             <div className='grid grid-cols-1'>
                 <button className='text-blue-400 mr-3 text-right text-2xl' onClick={handleProfileDisplay} >x</button>
-                <p className='text-blue-400 -mt-3 pl-10 text-2xl text-left'>Username: {username}</p>
-                <p className='text-blue-400  pl-10 text-2xl text-left'>Email: {email}</p>
-                <p className='text-blue-400  pl-10 text-2xl text-left'>Favorite Planet: {favorite_planet}</p>
-                <p className='text-blue-400  pl-10 text-2xl text-left'>High Score: {high_score}</p>
+                <p className='text-blue-400 -mt-3 pl-10 text-2xl text-left'>Username: {user.username}</p>
+                <p className='text-blue-400  pl-10 text-2xl text-left'>Email: {user.email}</p>
+                <p className='text-blue-400  pl-10 text-2xl text-left'>Favorite Planet: {user.favorite_planet}</p>
+                <p className='text-blue-400  pl-10 text-2xl text-left'>High Score: {user.high_score}</p>
                 <button className='bg-blue-400 hover:bg-blue-500 h-8 my-6 mx-20 text-2xl text-white rounded-md' onClick={handleEdit}>Edit</button>
                 
                     { edit ? 

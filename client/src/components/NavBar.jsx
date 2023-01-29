@@ -5,20 +5,12 @@ import Profile from './Profile'
 import Admin from './Admin'
 
 
-export default function NavBar({questions, solarObjects}) {
+export default function NavBar({user, setUser, questions, solarObjects}) {
     const currentUser = sessionStorage.getItem("user_id")
     const navigate = useNavigate()
     const [ adminDisplay, setAdminDisplay] = useState(false)
     const [ profileDisplay, setProfileDisplay ] = useState(false)
-    const [ user, setUser ] = useState({
-        id: "",
-        username: "",
-        password: "",
-        email: "",
-        favorite_planet: "",
-        high_score: 0,
-        admin: false
-})
+
 
     useEffect(() => {
         fetch(`/users/${currentUser}`)
@@ -32,7 +24,7 @@ export default function NavBar({questions, solarObjects}) {
                 high_score: user.high_score,
                 admin: user.admin
             }))
-}, [navigate, currentUser]);
+}, [navigate, currentUser, setUser]);
 
     const handleLogOut = () => {
         sessionStorage.removeItem("user_id")
@@ -64,9 +56,9 @@ export default function NavBar({questions, solarObjects}) {
             {currentUser  ? 
             <div>
                     <p className='absolute top-8 left-[44.5%] h-auto w-72 bg-slate-900 text-blue-500 text-4xl text-center font-semibold rounded-md outline'>Welcome {user.username}</p>
-                <div className='absolute top-16 right-[7.5%] grid grid-cols-3' >
-                        {/* <NavLink className=' text-white text-3xl mx-8 hover:text-blue-500' to="/">Home</NavLink> */}
-                    <NavLink className=' text-white text-3xl text-center hover:text-blue-500' to="/">Solar System</NavLink>  
+                <div className='absolute top-16 right-[7.5%] grid grid-cols-4' >
+                        <NavLink className=' text-white text-3xl text-center hover:text-blue-500' to="/">Home</NavLink>
+                    <NavLink className=' text-white text-3xl text-center hover:text-blue-500' to="/solar_system">Solar System</NavLink>  
                     <NavLink className=' text-white text-3xl text-center hover:text-blue-500' to="/quizzes">Quizzes</NavLink> 
                     <NavLink className=' text-white text-3xl text-center hover:text-blue-500' to="/leaderboard">Leaderboard</NavLink>
                 </div>             

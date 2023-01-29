@@ -3,30 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import SolarObjectCollection from './SolarObjectCollection';
 
 
-export default function SolarObjectContainer({solarObjects, setSolarObjects}) {
-
-    // const favoriteObject = solarObjects.find((solarObject) => solarObject.name === user.favorite_planet);
-    const [solarObjectId, setSolarObjectId] = useState(null)
+export default function SolarObjectContainer({user, setUser, solarObjects, setSolarObjects}) {
+    const [solarObjectId, setSolarObjectId] = useState()
     const [ category, setCategory ] = useState("")
     const navigate = useNavigate();
-    const [user, setUser] = useState({
-        id: 0,
-        username: "",
-        score: 0,
-        high_score: 0,
-        favorite_planet: "",
-    })
     
-    let favoriteObject = null
     
-    // solarObjects.find((solarObject) => solarObject.name === user.favorite_planet)
     
-    const handleFavoriteObject = () => {
-            favoriteObject = setTimeout(() => {
-                console.log(user)   
-            }, 500);
-            // let favoriteObject = solarObjects.find((solarObject) => solarObject.name === user.favorite_planet)
-            // return favoriteObject
+    const handleFavoriteObject = () => {  
+        let favoriteObject = solarObjects.find((solarObject) => solarObject.name === user.favorite_planet)
+        setSolarObjectId(favoriteObject.id)
         };
     
     
@@ -37,33 +23,33 @@ export default function SolarObjectContainer({solarObjects, setSolarObjects}) {
         } else {
             fetch(`/users/${currentUser}`)
             .then((res) => res.json())
-            .then((user) => setUser({
-                id: user.id,
-                username: user.username,
-                    score: 0,
-                    high_score: user.high_score,
-                    favorite_planet: user.favorite_planet,
-                }))
-                .then(console.log(solarObjects))
-                .then(console.log(solarObjectId))
-                .then(handleFavoriteObject())
+            .then((user) => setUser(user))
+            .then(handleFavoriteObject())
+                // id: user.id,
+                // username: user.username,
+                //     score: 0,
+                //     high_score: user.high_score,
+                //     favorite_planet: user.favorite_planet,
+                // .then(console.log("solarObjects in Container",solarObjects))
+                // .then(console.log("SolarObject ID",solarObjectId))
+                // .then(console.log("user in container", location.state.user))
                 // .then(console.log(user.favorite_planet))
             
             }
-        }, [, setUser]);
+        }, [navigate, setUser]);
         
 
     useEffect(() => {
         fetch(`/solar_objects/${category}`)
         .then((res) => res.json())
         .then((solarObjects) => setSolarObjects(solarObjects));
-    }, [category]);
+    }, [category, setSolarObjects]);
 
-    
+    // console.log(user)
 
     return (
         <div>
             <SolarObjectCollection user={user} solarObjects={solarObjects} setSolarObjects={setSolarObjects} setCategory={setCategory} solarObjectId={solarObjectId} setSolarObjectId={setSolarObjectId}/>
         </div>
     )
-}
+};

@@ -12,26 +12,25 @@ import background from "./assets/background.jpg"
 
 
 function App() {
-  // const currentUser = localStorage.getItem("user_id")
-  const [user, setUser] = useState([])
+  const [ user, setUser ] = useState({})
   const [ solarObjects, setSolarObjects ] = useState([])
 
   useEffect(() => {
     fetch(`/solar_objects`)
       .then((res) => res.json())
       .then((solarObjects) => setSolarObjects(solarObjects))
-  }, [])
+  }, [setUser])
 
   return (
     <div className='relative'>
       <img className="absolute w-full h-screen mix-blend-overlay" src={background} alt='nightsky'/>
-      <NavBar solarObjects={solarObjects} />
+      <NavBar user={user} setUser={setUser} solarObjects={solarObjects} />
         <Routes>
-          {/* <Route path='/' element={<Home users={users} />} /> */}
-          <Route path='/login' element={<Login  />} />
-        <Route path='/sign_up' element={<SignUp  />} />
+          <Route path='/' element={<Home user={user} setUser={setUser}/>} />
+          <Route path='/login' element={<Login setUser={setUser} />} />
+        <Route path='/sign_up' element={<SignUp user={user} setUser={setUser} />} />
           <Route path='/about' element={<About />} />
-          <Route path='/' element={<SolarObjectContainer solarObjects={solarObjects} setSolarObjects={setSolarObjects}/>} />
+          <Route path='/solar_system' element={<SolarObjectContainer user={user} setUser={setUser} solarObjects={solarObjects} setSolarObjects={setSolarObjects}/>} />
           <Route path='/quizzes' element={<QuizContainer />} />
           <Route path='/leaderboard' element={<Leaderboard />} />
         </Routes>
