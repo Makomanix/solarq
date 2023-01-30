@@ -4,6 +4,10 @@ class QuestionsController < ApplicationController
         render json: Question.all, status: :ok
     end
 
+    # def show
+    #     question = Question.find
+    # end
+
     def create
         question = Question.create!(question_params)
         render json: question, status: :created
@@ -15,6 +19,10 @@ class QuestionsController < ApplicationController
     end
 
     private
+
+    def select_question
+        @question = Question.find(params[:id])
+    end
 
     def question_params
         params.permit(:text, :difficulty, :points, :category, :answer, :option1, :option2, :option3, :option4, :hint, :solar_object_id )

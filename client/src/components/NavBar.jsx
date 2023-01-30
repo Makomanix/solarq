@@ -8,7 +8,6 @@ import Admin from './Admin'
 export default function NavBar({user, setUser, questions, solarObjects}) {
     const currentUser = sessionStorage.getItem("user_id")
     const navigate = useNavigate()
-    const [ adminDisplay, setAdminDisplay] = useState(false)
     const [ profileDisplay, setProfileDisplay ] = useState(false)
 
 
@@ -34,11 +33,10 @@ export default function NavBar({user, setUser, questions, solarObjects}) {
 
     const handleProfileDisplay = () => {
         setProfileDisplay(!profileDisplay)
-        setAdminDisplay(false)
     }
 
     const handleAdminDisplay = () => {
-        setAdminDisplay(!adminDisplay)
+        navigate('/admin')
         setProfileDisplay(false)
     }
 
@@ -48,8 +46,7 @@ export default function NavBar({user, setUser, questions, solarObjects}) {
         <div className='relative'>
             {user.admin ?
             <div>
-                <button className='absolute top-4 right-14 h-8 w-24 text-white text-2xl' onClick={handleAdminDisplay}>Admin</button> {adminDisplay ?
-                <Admin questions={questions} solarObjects={solarObjects} handleAdminDisplay={handleAdminDisplay} />  : null }
+                <button className='absolute top-4 right-14 h-8 w-24 text-white text-2xl' onClick={handleAdminDisplay}>Admin</button> 
                 </div> : null }
             <h1 className='absolute top-0 left-4 mt-2 text-white text-8xl'>Solar Explorer</h1> 
             <div className="h-32 w-full"></div>

@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 import CurrentQuiz from './CurrentQuiz';
 import { useNavigate } from 'react-router-dom';
 
-export default function QuizContainer() {
+export default function QuizContainer({ questions, setQuestions }) {
     const navigate = useNavigate();
-    const [ questions, setQuestions ] = useState([])
+    
     const [ quiz, setQuiz ] = useState("")
     const [ user, setUser ] = useState({
     id: 0,

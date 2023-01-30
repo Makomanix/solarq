@@ -148,7 +148,6 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
                     {otherQuizComplete}
                 </div>            
             </div>
-            {/* High Score : {high_score} Total Score : {totalScore} */}
             <div>{(quiz === "planet" || quiz === "moon" || quiz === "other") ?
                 <div className='relative'>{showQuizResults ? 
                     <QuizComplete  
