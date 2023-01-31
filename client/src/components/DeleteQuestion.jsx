@@ -1,29 +1,20 @@
-import React, { useState, useEffect} from 'react'
-import DeleteQuestionCards from './DeleteQuestionCards';
+import React from 'react'
 
-export default function DeleteQuestion({questions, setQuestions}) {
+export default function DeleteQuestion({ question, setDeleted, handleDelete, handleDeleteQuestion }) {
+    const {text} = question
 
-    useEffect(() => {
-        fetch(`/questions`)
-            .then((res) => res.json())
-            .then((data) => setQuestions(data))
-    }, []);
-
-    console.log(questions)
-
-    const handleDeleteQuestion = () => {
+    const handleClick = (e) => {
+        setDeleted(e.target.value)
+        handleDelete(e.target.value)
+        handleDeleteQuestion()
+        
         
     }
 
-    const deleteQuestionCards = questions.map((question) =>
-    <DeleteQuestionCards
-        key={question.id}
-        id={question.id}
-        question={question} />)
-
     return (
-        <div>
-        {deleteQuestionCards}
-        </div>
+        <button className='h-12 px-2 bg-blue-400 hover:bg-blue-500 text-center text-2xl text-white truncate rounded-md'
+        value={question.id} onClick={handleClick}>
+            {text}
+        </button>
     )
 }
