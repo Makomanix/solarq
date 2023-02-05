@@ -1,98 +1,69 @@
-import React, { useState } from 'react'
+import React,{useState} from 'react'
 
-const emptyForm = {
-    text: "",
-    difficulty: "",
-    points: 0,
-    category: "",
-    answer: "",
-    option1: "",
-    option2: "",
-    option3: "",
-    option4: "",
-    hint: "",
-    solar_object_id: ""
-}
+export default function EditQuestionForm({question, patchEdit, setEdit, solarObjects}) {
 
-export default function AddQuestion({solarObjects}) {
+    const {text,
+        difficulty, 
+        points, 
+        category, 
+        answer, 
+        option1, 
+        option2, 
+        option3, 
+        option4, 
+        hint, 
+        solar_object_id} = question
 
-    const [ formData, setFormData ] = useState(emptyForm)
-    const [ returnedQuestion, setReturnedQuestion ] = useState({})
+    const [ editFormData, setEditFormData ] = useState({
+        text: text,
+        difficulty: difficulty,
+        points: points,
+        category: category,
+        answer: answer,
+        option1: option1,
+        option2: option2,
+        option3: option3,
+        option4: option4,
+        hint: hint,
+        solar_object_id: solar_object_id
+    })
+
+    const matchObjectIdToName = solarObjects.filter((solarObject) => solarObject.id === solar_object_id)
+
+    const nameOfObject = matchObjectIdToName.map((object) => {
+        return object.name
+    });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({
-            ...formData, [name]: value
+        setEditFormData({
+            ...editFormData, [name]: value
         })
     };
 
     const handleSelect = (e) => {
         const { name, value } = e.target
-        setFormData({
-            ...formData, [name]: value,
+        setEditFormData({
+            ...editFormData, [name]: value,
         })
     };
 
-    const selectedObject = solarObjects.filter((solarObject) => solarObject.name === formData.solar_object)
-
-    const filteredObject = selectedObject.map((object) => {
-        return object.id
-    });
-
-
-    const handleSubmit = () => {
-        if (formData.text === "" ||
-            formData.difficulty === "" ||
-            formData.points === 0 ||
-            formData.category === "" ||
-            formData.answer === "" ||
-            formData.option2 === "" ||
-            formData.option3 === "" ||
-            formData.option4 === "" ||
-            formData.hint === "" ||
-            filteredObject.length === 0) {
-            alert("Please Complete Form")
-        } else {
-            fetch(`/questions`, {
-                method: 'POST',
-                headers: {
-                    "Content-type": "application/json",
-                },
-                body: JSON.stringify({
-                    text: formData.text,
-                    difficulty: formData.difficulty,
-                    points: formData.points,
-                    category: formData.category,
-                    answer: formData.answer,
-                    option1: formData.answer,
-                    option2: formData.option2,
-                    option3: formData.option3,
-                    option4: formData.option4,
-                    hint: formData.hint,
-                    solar_object_id: filteredObject[0]
-                })
-            })
-            .then(res => res.json())
-            .then(data => setReturnedQuestion(data))
-            .then(console.log(returnedQuestion))
-        }
-    };
-
-    console.log(returnedQuestion)
+    console.log("editFormData", editFormData)
+    console.log("question", question)
 
     return (
         <div className='absolute bg-slate-900 top-40 ml-[10%] h-96 w-[80%] pt-16 px-8 rounded-md outline'>
-            <form className='grid grid-cols-3 gap-x-8 gap-y-8' onSubmit={handleSubmit}>
-                    <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="text" placeholder="question" type="text" onChange={handleChange} />
-                    <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="answer" placeholder="answer" type="text" onChange={handleChange} />
-                    <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="hint" placeholder="hint" type="text" onChange={handleChange} />
-                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option2" placeholder="option" type="text" onChange={handleChange} />
-                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option3" placeholder="option" type="text" onChange={handleChange} />                
-                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option4" placeholder="option" type="text" onChange={handleChange} />
+            <form className='grid grid-cols-3 gap-x-8 gap-y-8' onSubmit={patchEdit}>
+                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="text" placeholder={text} type="text" onChange={handleChange} />
+                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="answer" placeholder={answer} type="text" onChange={handleChange} />
+                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="hint" placeholder={hint} type="text" onChange={handleChange} />
+                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option2" placeholder={option2} type="text" onChange={handleChange} />
+                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option3" placeholder={option3} type="text" onChange={handleChange} />
+                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option4" placeholder={option4} type="text" onChange={handleChange} />
                 <div>
                     <label className='text-center text-2xl text-blue-400 mr-9'>Object</label>
                     <select className="bg-slate-100 text-center text-2xl rounded-md h-8 w-80 outline" name="solar_object" type="number" onChange={handleSelect}>
-                        <option ></option>
+                        <option >{nameOfObject}</option>
                         <option value="The Sun">The Sun</option>
                         <option value="Mercury">Mercury</option>
                         <option value="Venus">Venus</option>
@@ -117,7 +88,7 @@ export default function AddQuestion({solarObjects}) {
                 <div>
                     <label className='text-center text-2xl text-blue-400 mr-10'>Category</label>
                     <select className="bg-slate-100 text-center text-2xl rounded-md h-8 w-80 outline" name="category" placeholder="category" type="text" onChange={handleSelect}>
-                        <option className=""></option>
+                        <option>{category}</option>
                         <option value="planet">Planet</option>
                         <option value="moon">Moon</option>
                         <option value="other">Other</option>
@@ -126,7 +97,7 @@ export default function AddQuestion({solarObjects}) {
                 <div>
                     <label className='text-center text-2xl text-blue-400 mr-10 '>Difficulty</label>
                     <select className="bg-slate-100 text-center text-2xl rounded-md h-8 w-80 outline" name="difficulty" type="text" onChange={handleSelect}>
-                        <option className=""></option>
+                        <option>{difficulty}</option>
                         <option value="Easy">Easy</option>
                         <option value="Medium">Medium</option>
                         <option value="Hard">Hard</option>
@@ -135,7 +106,7 @@ export default function AddQuestion({solarObjects}) {
                 <div>
                     <label className='text-center text-2xl text-blue-400 mr-10 '>Points</label>
                     <select className="bg-slate-100 text-center text-2xl rounded-md h-8 w-80 outline" name="points" placeholder="points" type="text" onChange={handleSelect}>
-                        <option className=""></option>
+                        <option >{points}</option>
                         <option value="100">100</option>
                         <option value="200">200</option>
                         <option value="300">300</option>

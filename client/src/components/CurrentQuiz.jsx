@@ -112,8 +112,8 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
         <button className='h-14 w-72 bg-slate-900 text-4xl text-blue-400 rounded-md hover:text-white hover:bg-blue-400' value="moon" onClick={handleQuizClick}>Moon Quiz</button>);   
         
     const otherQuizComplete = (otherScore > 0 ?
-        <button className='h-14 w-72 bg-blue-400 text-4xl text-white-400 rounded-md ' value="other" >Sun+ Quiz {otherScore}</button> :
-        <button className='h-14 w-72 bg-slate-900 text-4xl text-blue-400 rounded-md hover:text-white hover:bg-blue-400' value="other" onClick={handleQuizClick}>Sun+ Quiz</button>);    
+        <button className='h-14 w-72 bg-blue-400 text-4xl text-white-400 rounded-md ' value="other" >Other Quiz {otherScore}</button> :
+        <button className='h-14 w-72 bg-slate-900 text-4xl text-blue-400 rounded-md hover:text-white hover:bg-blue-400' value="other" onClick={handleQuizClick}>Other Quiz</button>);    
 
 
     
