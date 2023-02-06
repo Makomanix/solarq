@@ -1,14 +1,10 @@
 import React from 'react'
 
-export default function EditQuestionCards({ question, setEdit, handleEdit, handleEditQuestion }) {
+export default function EditQuestionCards({ question, setEdit}) {
     const {text} = question
 
     const handleClick = () => {
-        setEdit(question)
-        // handleEdit(e.target.value)
-        // handleEditQuestion()
-        
-        
+        setEdit(question)       
     }
 
 

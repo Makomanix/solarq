@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-export default function EditQuestionForm({question, patchEdit, setEdit, solarObjects}) {
+export default function EditQuestionForm({ question, setEdit, solarObjects, handleDelete, handleEditQuestion }) {
 
     const {text,
         difficulty, 
@@ -28,6 +28,12 @@ export default function EditQuestionForm({question, patchEdit, setEdit, solarObj
         solar_object_id: solar_object_id
     })
 
+    const selectedEditObject = solarObjects.filter((solarObject) => solarObject.name === editFormData.solar_object)
+
+    const filteredEditObject = selectedEditObject.map((object) => {
+        return object.id
+    });
+
     const matchObjectIdToName = solarObjects.filter((solarObject) => solarObject.id === solar_object_id)
 
     const nameOfObject = matchObjectIdToName.map((object) => {
@@ -48,18 +54,51 @@ export default function EditQuestionForm({question, patchEdit, setEdit, solarObj
         })
     };
 
+    const handleDeleteClick = () => {
+        handleDelete(question)
+        setEdit(null)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        fetch(`/questions/${question.id}`, {
+            method: 'PATCH',
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+                id: question.id,
+                text: editFormData.text,
+                difficulty: editFormData.difficulty,
+                points: editFormData.points,
+                category: editFormData.category,
+                answer: editFormData.answer,
+                option1: editFormData.option1,
+                option2: editFormData.option2,
+                option3: editFormData.option3,
+                option4: editFormData.option4,
+                hint: editFormData.hint,
+                solar_object_id: filteredEditObject[0]
+            })
+        })
+        .then(res => res.json())
+        .then(handleEditQuestion())
+        .then(setEdit(null))
+    }
+
     console.log("editFormData", editFormData)
-    console.log("question", question)
+    console.log("question", question.id)
+    console.log("solar object Id", filteredEditObject[0])
 
     return (
-        <div className='absolute bg-slate-900 top-40 ml-[10%] h-96 w-[80%] pt-16 px-8 rounded-md outline'>
-            <form className='grid grid-cols-3 gap-x-8 gap-y-8' onSubmit={patchEdit}>
+        <div className='absolute bg-slate-900 top-40 ml-[10%] h-96 w-[80%] pt-8 px-8 rounded-md outline'>
+            <form className='grid grid-cols-3 gap-x-8 gap-y-8' onSubmit={handleSubmit}>
                 <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="text" placeholder={text} type="text" onChange={handleChange} />
                 <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="answer" placeholder={answer} type="text" onChange={handleChange} />
-                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="hint" placeholder={hint} type="text" onChange={handleChange} />
                 <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option2" placeholder={option2} type="text" onChange={handleChange} />
                 <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option3" placeholder={option3} type="text" onChange={handleChange} />
                 <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option4" placeholder={option4} type="text" onChange={handleChange} />
+                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="hint" placeholder={hint} type="text" onChange={handleChange} />
                 <div>
                     <label className='text-center text-2xl text-blue-400 mr-9'>Object</label>
                     <select className="bg-slate-100 text-center text-2xl rounded-md h-8 w-80 outline" name="solar_object" type="number" onChange={handleSelect}>
@@ -112,8 +151,11 @@ export default function EditQuestionForm({question, patchEdit, setEdit, solarObj
                         <option value="300">300</option>
                     </select>
                 </div>
-                <button className='bg-blue-400  hover:bg-blue-500 h-12 mt-2 mx-32 text-white text-center text-2xl rounded-md'>Save</button>
+                <button className='bg-blue-400  hover:bg-blue-500 h-12 my-4 mx-32 text-white text-center text-2xl rounded-md'>Save Changes</button>
             </form>
+            <div className='grid grid-cols-1'>
+                <button className='mx-[40.7%] bg-blue-400 hover:bg-blue-500 h-12 mt-2 text-white text-center text-2xl rounded-md' onClick={handleDeleteClick}>Delete Question</button>
+            </div>
         </div>
     )
-}
+};

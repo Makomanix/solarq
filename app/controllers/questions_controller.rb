@@ -4,13 +4,14 @@ class QuestionsController < ApplicationController
         render json: Question.all, status: :ok
     end
 
-    # def show
-    #     @question
-    # end
-
     def create
         question = Question.create!(question_params)
         render json: question, status: :created
+    end
+
+    def update
+        question = Question.find(params[:id])
+        render json: question.update!(question_params), status: :accepted
     end
 
     def destroy

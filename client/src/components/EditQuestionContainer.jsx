@@ -10,42 +10,31 @@ export default function EditQuestionContainer({ questions, setQuestions, handleE
         fetch(`/questions`)
         .then((res) => res.json())
         .then((data) => setQuestions(data))
-    }, [navigate]);
+    }, [navigate, edit]);
     
     const filteredQuestions = questions.filter(question => question.id !== edit)
 
-    const questionToEdit = questions.filter(question => question.id === edit)
         
-//     function handleDelete(question) {     
-//         fetch(`/questions/${question.id}`, {
-//             // method: 'DELETE',
-//         })
-//         // .then(navigate('/admin'))
-//     //     .then(fetch(`/questions`)
-//     //         .then((res) => res.json())
-//     //         .then((data) => setQuestions(data))
-//     //         .then(setEdit(null))
-//     // );
-// };
+    function handleDelete(question) {     
+        fetch(`/questions/${question.id}`, {
+            method: 'DELETE',
+        })
+        .then(navigate('/admin'))
+        .then(fetch(`/questions`)
+            .then((res) => res.json())
+            .then((data) => setQuestions(data))
+            .then(handleEditQuestion)
+            .then(setEdit(null))
+    );
+};
 
 console.log(edit)
 
-    function patchEdit(question) {
-        fetch(`/question/${question.id}`, {
-            method: 'PATCH',
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify({
 
-            })
-        })
-        //    .then(setEdit(null))
-    }
 
     return (
         <div>  
-            <EditQuestions questions={filteredQuestions} patchEdit={patchEdit} edit={edit} setEdit={setEdit} handleEditQuestion={handleEditQuestion} solarObjects={solarObjects} />
+            <EditQuestions questions={filteredQuestions} edit={edit} setEdit={setEdit} handleEditQuestion={handleEditQuestion} handleDelete={handleDelete} solarObjects={solarObjects} />
         </div>
     )
 }

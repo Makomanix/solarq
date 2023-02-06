@@ -85,10 +85,10 @@ export default function AddQuestion({solarObjects}) {
             <form className='grid grid-cols-3 gap-x-8 gap-y-8' onSubmit={handleSubmit}>
                     <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="text" placeholder="question" type="text" onChange={handleChange} />
                     <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="answer" placeholder="answer" type="text" onChange={handleChange} />
-                    <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="hint" placeholder="hint" type="text" onChange={handleChange} />
                 <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option2" placeholder="option" type="text" onChange={handleChange} />
                 <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option3" placeholder="option" type="text" onChange={handleChange} />                
                 <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option4" placeholder="option" type="text" onChange={handleChange} />
+                    <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="hint" placeholder="hint" type="text" onChange={handleChange} />
                 <div>
                     <label className='text-center text-2xl text-blue-400 mr-9'>Object</label>
                     <select className="bg-slate-100 text-center text-2xl rounded-md h-8 w-80 outline" name="solar_object" type="number" onChange={handleSelect}>

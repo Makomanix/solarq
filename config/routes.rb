@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
     resources :users, only: [ :index, :show, :create, :destroy, :update ]
     resources :solar_objects, only: [:index ]
-    resources :questions, only: [ :index, :create, :destroy ]
+    resources :questions, only: [ :index, :create, :destroy, :update ]
     resources :user_questions, only: [ :index, :create ]
     resources :leaderboards, only: [ :index, :create ]
 

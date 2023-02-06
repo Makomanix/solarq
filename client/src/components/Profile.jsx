@@ -65,9 +65,7 @@ export default function Profile({ user, setUser, handleLogOut, setProfileDisplay
             })
         })
             .then((res) => res.json())
-            .then((user) => setUser( user
-                )
-                )
+            .then((user) => setUser(user))
                 .then(setEdit(!edit))
                 .then(setProfileDisplay(false))
                 .then(navigate('/'))
