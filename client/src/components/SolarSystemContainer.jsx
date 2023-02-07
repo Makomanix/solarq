@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import Home from './Home'
-import SolarObjectContainer from './SolarObjectContainer'
-import About from './About'
 import { useNavigate } from 'react-router-dom'
 
 export default function QuizContainer() {

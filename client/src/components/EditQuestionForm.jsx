@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-export default function EditQuestionForm({ question, setEdit, solarObjects, handleDelete, handleEditQuestion }) {
+export default function EditQuestionForm({ question, solarObjects, handleDelete, handleEditQuestion }) {
 
     const {text,
         difficulty, 
@@ -56,7 +56,7 @@ export default function EditQuestionForm({ question, setEdit, solarObjects, hand
 
     const handleDeleteClick = () => {
         handleDelete(question)
-        setEdit(null)
+        handleEditQuestion()
     }
 
     const handleSubmit = (e) => {
@@ -83,7 +83,6 @@ export default function EditQuestionForm({ question, setEdit, solarObjects, hand
         })
         .then(res => res.json())
         .then(handleEditQuestion())
-        .then(setEdit(null))
     }
 
     console.log("editFormData", editFormData)
@@ -91,17 +90,23 @@ export default function EditQuestionForm({ question, setEdit, solarObjects, hand
     console.log("solar object Id", filteredEditObject[0])
 
     return (
-        <div className='absolute bg-slate-900 top-40 ml-[10%] h-96 w-[80%] pt-8 px-8 rounded-md outline'>
-            <form className='grid grid-cols-3 gap-x-8 gap-y-8' onSubmit={handleSubmit}>
-                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="text" placeholder={text} type="text" onChange={handleChange} />
-                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="answer" placeholder={answer} type="text" onChange={handleChange} />
-                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option2" placeholder={option2} type="text" onChange={handleChange} />
-                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option3" placeholder={option3} type="text" onChange={handleChange} />
-                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option4" placeholder={option4} type="text" onChange={handleChange} />
-                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="hint" placeholder={hint} type="text" onChange={handleChange} />
+        <div className='absolute bg-slate-900 top-40 ml-[10%] h-auto w-[80%] pt-8 pb-8 px-8 rounded-md outline'>
+            <form className='grid grid-cols-3 gap-x-8 gap-y-6' onSubmit={handleSubmit}>
+                <lable className='text-center text-3xl text-blue-400'>Text</lable>
+                <lable className='text-center text-3xl text-blue-400'>Answer</lable>
+                <lable className='text-center text-3xl text-blue-400'>Option 2</lable>
+                <input className="bg-slate-100 text-center text-3xl rounded-md h-10 mb-1 outline" name="text" placeholder={text} type="text" onChange={handleChange} />
+                <input className="bg-slate-100 text-center text-3xl rounded-md h-10 mb-1 outline" name="answer" placeholder={answer} type="text" onChange={handleChange} />
+                <input className="bg-slate-100 text-center text-3xl rounded-md h-10 mb-1 outline" name="option2" placeholder={option2} type="text" onChange={handleChange} />
+                <lable className='text-center text-3xl text-blue-400'>Option 3</lable>
+                <lable className='text-center text-3xl text-blue-400'>Option 4</lable>
+                <lable className='text-center text-3xl text-blue-400'>Hint</lable>
+                <input className="bg-slate-100 text-center text-3xl rounded-md h-10 mb-1 outline" name="option3" placeholder={option3} type="text" onChange={handleChange} />
+                <input className="bg-slate-100 text-center text-3xl rounded-md h-10 mb-1 outline" name="option4" placeholder={option4} type="text" onChange={handleChange} />
+                <input className="bg-slate-100 text-center text-3xl rounded-md h-10 mb-1 outline" name="hint" placeholder={hint} type="text" onChange={handleChange} />
                 <div>
-                    <label className='text-center text-2xl text-blue-400 mr-9'>Object</label>
-                    <select className="bg-slate-100 text-center text-2xl rounded-md h-8 w-80 outline" name="solar_object" type="number" onChange={handleSelect}>
+                    <label className='text-center text-3xl text-blue-400 mr-9'>Object</label>
+                    <select className="bg-slate-100 text-center text-3xl rounded-md h-10 w-80 outline" name="solar_object" type="number" onChange={handleSelect}>
                         <option >{nameOfObject}</option>
                         <option value="The Sun">The Sun</option>
                         <option value="Mercury">Mercury</option>
@@ -125,8 +130,8 @@ export default function EditQuestionForm({ question, setEdit, solarObjects, hand
                     </select>
                 </div>
                 <div>
-                    <label className='text-center text-2xl text-blue-400 mr-10'>Category</label>
-                    <select className="bg-slate-100 text-center text-2xl rounded-md h-8 w-80 outline" name="category" placeholder="category" type="text" onChange={handleSelect}>
+                    <label className='text-center text-3xl text-blue-400 mr-10'>Category</label>
+                    <select className="bg-slate-100 text-center text-3xl rounded-md h-10 w-80 outline" name="category" placeholder="category" type="text" onChange={handleSelect}>
                         <option>{category}</option>
                         <option value="planet">Planet</option>
                         <option value="moon">Moon</option>
@@ -134,8 +139,8 @@ export default function EditQuestionForm({ question, setEdit, solarObjects, hand
                     </select>
                 </div>
                 <div>
-                    <label className='text-center text-2xl text-blue-400 mr-10 '>Difficulty</label>
-                    <select className="bg-slate-100 text-center text-2xl rounded-md h-8 w-80 outline" name="difficulty" type="text" onChange={handleSelect}>
+                    <label className='text-center text-3xl text-blue-400 mr-10 '>Difficulty</label>
+                    <select className="bg-slate-100 text-center text-3xl rounded-md h-10 w-80 outline" name="difficulty" type="text" onChange={handleSelect}>
                         <option>{difficulty}</option>
                         <option value="Easy">Easy</option>
                         <option value="Medium">Medium</option>
@@ -143,18 +148,18 @@ export default function EditQuestionForm({ question, setEdit, solarObjects, hand
                     </select>
                 </div>
                 <div>
-                    <label className='text-center text-2xl text-blue-400 mr-10 '>Points</label>
-                    <select className="bg-slate-100 text-center text-2xl rounded-md h-8 w-80 outline" name="points" placeholder="points" type="text" onChange={handleSelect}>
+                    <label className='text-center text-3xl text-blue-400 mr-10 '>Points</label>
+                    <select className="bg-slate-100 text-center text-3xl rounded-md h-10 w-80 outline" name="points" placeholder="points" type="text" onChange={handleSelect}>
                         <option >{points}</option>
                         <option value="100">100</option>
                         <option value="200">200</option>
                         <option value="300">300</option>
                     </select>
                 </div>
-                <button className='bg-blue-400  hover:bg-blue-500 h-12 my-4 mx-32 text-white text-center text-2xl rounded-md'>Save Changes</button>
+                <button className='bg-blue-400  hover:bg-blue-500 h-12 my-4 mx-32 text-white text-center text-3xl rounded-md'>Save Changes</button>
             </form>
             <div className='grid grid-cols-1'>
-                <button className='mx-[40.7%] bg-blue-400 hover:bg-blue-500 h-12 mt-2 text-white text-center text-2xl rounded-md' onClick={handleDeleteClick}>Delete Question</button>
+                <button className='mx-[40.7%] bg-blue-400 hover:bg-blue-500 h-12 mt-2 text-white text-center text-3xl rounded-md' onClick={handleDeleteClick}>Delete Question</button>
             </div>
         </div>
     )

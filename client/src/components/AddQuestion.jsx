@@ -17,7 +17,7 @@ const emptyForm = {
 export default function AddQuestion({solarObjects}) {
 
     const [ formData, setFormData ] = useState(emptyForm)
-    const [ returnedQuestion, setReturnedQuestion ] = useState({})
+    // const [ returnedQuestion, setReturnedQuestion ] = useState({})
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -73,25 +73,31 @@ export default function AddQuestion({solarObjects}) {
                 })
             })
             .then(res => res.json())
-            .then(data => setReturnedQuestion(data))
-            .then(console.log(returnedQuestion))
+            // .then(data => setReturnedQuestion(data))
+            // .then(console.log(returnedQuestion))
         }
     };
 
-    console.log(returnedQuestion)
+    // console.log(returnedQuestion)
 
     return (
-        <div className='absolute bg-slate-900 top-40 ml-[10%] h-96 w-[80%] pt-16 px-8 rounded-md outline'>
+        <div className='absolute bg-slate-900 top-40 ml-[10%] h-auto w-[80%] pt-8 pb-8 px-8 rounded-md outline'>
             <form className='grid grid-cols-3 gap-x-8 gap-y-8' onSubmit={handleSubmit}>
-                    <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="text" placeholder="question" type="text" onChange={handleChange} />
-                    <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="answer" placeholder="answer" type="text" onChange={handleChange} />
-                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option2" placeholder="option" type="text" onChange={handleChange} />
-                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option3" placeholder="option" type="text" onChange={handleChange} />                
-                <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="option4" placeholder="option" type="text" onChange={handleChange} />
-                    <input className="bg-slate-100 text-center text-2xl rounded-md h-8 mb-1 outline" name="hint" placeholder="hint" type="text" onChange={handleChange} />
+                <lable className='text-center text-3xl text-blue-400'>Text</lable>
+                <lable className='text-center text-3xl text-blue-400'>Answer</lable>
+                <lable className='text-center text-3xl text-blue-400'>Option 2</lable>
+                <input className="bg-slate-100 text-center text-3xl rounded-md h-10 mb-1 outline" name="text" placeholder="question" type="text" onChange={handleChange} />
+                <input className="bg-slate-100 text-center text-3xl rounded-md h-10 mb-1 outline" name="answer" placeholder="answer" type="text" onChange={handleChange} />
+                <input className="bg-slate-100 text-center text-3xl rounded-md h-10 mb-1 outline" name="option2" placeholder="option" type="text" onChange={handleChange} />
+                <lable className='text-center text-3xl text-blue-400'>Option 3</lable>
+                <lable className='text-center text-3xl text-blue-400'>Option 4</lable>
+                <lable className='text-center text-3xl text-blue-400'>Hint</lable>
+                <input className="bg-slate-100 text-center text-3xl rounded-md h-10 mb-1 outline" name="option3" placeholder="option" type="text" onChange={handleChange} />                
+                <input className="bg-slate-100 text-center text-3xl rounded-md h-10 mb-1 outline" name="option4" placeholder="option" type="text" onChange={handleChange} />
+                <input className="bg-slate-100 text-center text-3xl rounded-md h-10 mb-1 outline" name="hint" placeholder="hint" type="text" onChange={handleChange} />
                 <div>
-                    <label className='text-center text-2xl text-blue-400 mr-9'>Object</label>
-                    <select className="bg-slate-100 text-center text-2xl rounded-md h-8 w-80 outline" name="solar_object" type="number" onChange={handleSelect}>
+                    <label className='text-center text-3xl text-blue-400 mr-9'>Object</label>
+                    <select className="bg-slate-100 text-center text-3xl rounded-md h-10 w-80 outline" name="solar_object" type="number" onChange={handleSelect}>
                         <option ></option>
                         <option value="The Sun">The Sun</option>
                         <option value="Mercury">Mercury</option>
@@ -115,8 +121,8 @@ export default function AddQuestion({solarObjects}) {
                     </select>
                 </div>
                 <div>
-                    <label className='text-center text-2xl text-blue-400 mr-10'>Category</label>
-                    <select className="bg-slate-100 text-center text-2xl rounded-md h-8 w-80 outline" name="category" placeholder="category" type="text" onChange={handleSelect}>
+                    <label className='text-center text-3xl text-blue-400 mr-10'>Category</label>
+                    <select className="bg-slate-100 text-center text-3xl rounded-md h-10 w-80 outline" name="category" placeholder="category" type="text" onChange={handleSelect}>
                         <option className=""></option>
                         <option value="planet">Planet</option>
                         <option value="moon">Moon</option>
@@ -124,8 +130,8 @@ export default function AddQuestion({solarObjects}) {
                     </select>
                 </div>
                 <div>
-                    <label className='text-center text-2xl text-blue-400 mr-10 '>Difficulty</label>
-                    <select className="bg-slate-100 text-center text-2xl rounded-md h-8 w-80 outline" name="difficulty" type="text" onChange={handleSelect}>
+                    <label className='text-center text-3xl text-blue-400 mr-10 '>Difficulty</label>
+                    <select className="bg-slate-100 text-center text-3xl rounded-md h-10 w-80 outline" name="difficulty" type="text" onChange={handleSelect}>
                         <option className=""></option>
                         <option value="Easy">Easy</option>
                         <option value="Medium">Medium</option>
@@ -133,8 +139,8 @@ export default function AddQuestion({solarObjects}) {
                     </select>
                 </div>
                 <div>
-                    <label className='text-center text-2xl text-blue-400 mr-10 '>Points</label>
-                    <select className="bg-slate-100 text-center text-2xl rounded-md h-8 w-80 outline" name="points" placeholder="points" type="text" onChange={handleSelect}>
+                    <label className='text-center text-3xl text-blue-400 mr-10 '>Points</label>
+                    <select className="bg-slate-100 text-center text-3xl rounded-md h-10 w-80 outline" name="points" placeholder="points" type="text" onChange={handleSelect}>
                         <option className=""></option>
                         <option value="100">100</option>
                         <option value="200">200</option>

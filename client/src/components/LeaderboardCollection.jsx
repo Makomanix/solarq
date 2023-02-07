@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import LeaderboardCard from './LeaderboardCard'
 
 export default function LeaderboardCollection({ leaderboardData, setLeaderboardData, setUpdateFetch, planetLeaderboard }) {
@@ -27,7 +27,7 @@ export default function LeaderboardCollection({ leaderboardData, setLeaderboardD
                         <button className='bg-slate-900 text-blue-400 text-xl hover:bg-blue-400 hover:text-white rounded-md focus:bg-blue-400 focus:text-white' value={"other_score"}  onClick={ handleLeaderboardClick }>Other Score</button>
                     </div>
                 </div>
-                <div className='absolute left-[24.9%] grid grid-cols-1 grid-rows-auto pt-1 w-[50.3%] pb-4 bg-slate-900 rounded outline'>
+                <div className='absolute left-[24.9%] grid grid-cols-1 grid-rows-auto pt-1 w-[50%] pb-4 bg-slate-900 rounded outline'>
                     {leaderboardCards}
                 </div>
             </div>

@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
 
     def getByCategory
         question = Question.where(category: params[:quiz])
-        render json: question.shuffle.slice(0, 6), status: :ok
+        render json: question.shuffle.slice(0, 3), status: :ok
     end
 
     private

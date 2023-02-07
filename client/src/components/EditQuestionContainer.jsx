@@ -10,7 +10,7 @@ export default function EditQuestionContainer({ questions, setQuestions, handleE
         fetch(`/questions`)
         .then((res) => res.json())
         .then((data) => setQuestions(data))
-    }, [navigate, edit]);
+    }, [navigate, setQuestions]);
     
     const filteredQuestions = questions.filter(question => question.id !== edit)
 
@@ -24,7 +24,6 @@ export default function EditQuestionContainer({ questions, setQuestions, handleE
             .then((res) => res.json())
             .then((data) => setQuestions(data))
             .then(handleEditQuestion)
-            .then(setEdit(null))
     );
 };
 

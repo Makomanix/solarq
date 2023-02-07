@@ -14,7 +14,7 @@ export default function EditQuestions({ questions, edit, setEdit, handleEditQues
         <div>
             { edit ? 
                 <div>
-                    <EditQuestionForm question={edit} setEdit={setEdit} solarObjects={solarObjects} handleDelete={handleDelete} handleEditQuestion={handleEditQuestion} />
+                    <EditQuestionForm question={edit} solarObjects={solarObjects} handleDelete={handleDelete} handleEditQuestion={handleEditQuestion} />
                 </div>
             :
                 <div className='absolute bg-slate-900 top-32 mx-[2.5%] h-auto w-auto pb-8 pt-8 px-8 rounded-md outline'>
