@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import Profile from './Profile'
 
 
-export default function NavBar({user, setUser, questions, solarObjects}) {
+export default function NavBar({user, setUser}) {
     const currentUser = sessionStorage.getItem("user_id")
     const navigate = useNavigate()
     const [ profileDisplay, setProfileDisplay ] = useState(false)
