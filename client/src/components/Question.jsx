@@ -40,11 +40,11 @@ export default function Question({ question, questions, stateAnswer, setAnswer, 
 
     
     return (
-        <div className='mt-28 h-[200%] w-[100%] bg-slate-900 outline rounded-md'>
+        <div className='mt-28 h-[220%] w-[100%] bg-slate-900 outline rounded-md'>
             <span className='flex items-center justify-center py-4 bg-blue-400 text-white text-2xl'>
                 <p>Question # {currentQuestion + 1} out of {questions.length} : {points} Points</p>
             </span>
-            <span className='grid grid-cols-1 pt-2 mb-2 h-14 text-center text-blue-400 text-3xl '>
+            <span className='grid grid-cols-1 pt-2 mb-10 h-14 text-center text-blue-400 text-3xl '>
                 {text}
             </span>
             <div>

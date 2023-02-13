@@ -5,9 +5,9 @@ import QuizComplete from './QuizComplete';
 
 export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, quiz, setQuiz, user, setUser,}) {
     const { id, username, score, high_score } = user
-    const [ planetScore, setPlanetScore] = useState(0)
-    const [ moonScore, setMoonScore ] = useState(0)
-    const [ otherScore, setOtherScore ] = useState(0)
+    const [ planetScore, setPlanetScore] = useState(null)
+    const [ moonScore, setMoonScore ] = useState(null)
+    const [ otherScore, setOtherScore ] = useState(null)
     const [ totalScore, setTotalScore ] = useState(0)
     const [ currentQuestion, setCurrentQuestion ] = useState(0);
     const [ points, setPoints ] = useState(0);
@@ -84,7 +84,7 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
 
 
     const postLeaderboard = () => {
-        if(planetScore > 0 && moonScore > 0 && otherScore > 0) 
+        if (planetScore !== null && moonScore !== null && otherScore !== null) 
             fetch(`/leaderboards`, {
                 method: 'POST',
                 headers: {
@@ -103,15 +103,15 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
     };
 
 
-    const planetQuizComplete = (planetScore > 0 ? 
+    const planetQuizComplete = (planetScore !== null ? 
         <button className='h-14 w-72 bg-blue-400 text-4xl text-white-400 rounded-md' value="planet" >Planet Quiz {planetScore}</button> :
         <button className='h-14 w-72 bg-slate-900 text-4xl text-blue-400 rounded-md hover:text-white hover:bg-blue-400' value="planet" onClick={handleQuizClick}>Planet Quiz</button>);
 
-    const moonQuizComplete = (moonScore > 0 ?
+    const moonQuizComplete = (moonScore !== null ?
         <button className='h-14 w-72 bg-blue-400 text-4xl text-white-400 rounded-md ' value="moon" >Moon Quiz {moonScore}</button> :
         <button className='h-14 w-72 bg-slate-900 text-4xl text-blue-400 rounded-md hover:text-white hover:bg-blue-400' value="moon" onClick={handleQuizClick}>Moon Quiz</button>);   
         
-    const otherQuizComplete = (otherScore > 0 ?
+    const otherQuizComplete = (otherScore !== null ?
         <button className='h-14 w-72 bg-blue-400 text-4xl text-white-400 rounded-md ' value="other" >Other Quiz {otherScore}</button> :
         <button className='h-14 w-72 bg-slate-900 text-4xl text-blue-400 rounded-md hover:text-white hover:bg-blue-400' value="other" onClick={handleQuizClick}>Other Quiz</button>);    
 
@@ -180,7 +180,7 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
                         <div className='absolute -top-16 left-[63.5%] w-[13%] h-10  text-white bg-blue-400 text-2xl text-center rounded-md '>
                             Current Score: {score} 
                         </div>
-                        <div className='absolute -top-[21%] left-[41.6%] h-10 w-80 grid grid-cols-1 rounded-md'>
+                        <div className='absolute -top-[21%] left-[43.5%] h-10 w-80 grid grid-cols-1 rounded-md'>
                             <span className='text-3xl text-center font-bold text-red-500 '>{notSelected ? "Answer to Continue" : null}</span>
                         </div>
                     </div>

@@ -22,7 +22,7 @@ export default function NavBar({user, setUser, questions, solarObjects}) {
                 high_score: user.high_score,
                 admin: user.admin
             }))
-}, [navigate, currentUser, setUser]);
+}, [setUser, currentUser, profileDisplay]);
 
     const handleLogOut = () => {
         sessionStorage.removeItem("user_id")

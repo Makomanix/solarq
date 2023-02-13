@@ -11,17 +11,14 @@ export default function QuizComplete({ score, pointsPossible, postLeaderboard, s
     const seeResults = () => {
         if (quiz === "planet") {
             setPlanetScore(score)
-            // planetScore = score
             updateHighScore()
             
         } else if (quiz === "moon") {
             setMoonScore(score)
-            // moonScore = score
             updateHighScore()
             
         } else {
             setOtherScore(score)
-            // otherScore = score
             updateHighScore()    
         }
             setSaveQuizResults(true)
@@ -40,7 +37,7 @@ export default function QuizComplete({ score, pointsPossible, postLeaderboard, s
         navigate("/leaderboard")
     }
 
-    const chooseAnotherQuiz = ((planetScore > 0 && moonScore > 0 && otherScore > 0) ?
+    const chooseAnotherQuiz = ((planetScore !== null && moonScore !== null && otherScore !== null) ?
         <button className='bg-blue-400 h-12 w-80 mt-16 text-3xl hover:bg-blue-500 rounded-md' onClick={handleLastQuiz}>Check the Leaderboard</button> :
         <button className='bg-blue-400 h-12 w-80 mt-16 text-3xl hover:bg-blue-500 rounded-md' onClick={handleNextQuiz}>Choose Another Quiz</button>);
 

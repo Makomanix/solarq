@@ -31,7 +31,7 @@ export default function SolarObjectCollection({ user, solarObjects, setCategory,
 
     return (
         <div className='relative'>             
-            <div className='w-[40%] h-12 mx-[30.3%] mt-4 grid grid-cols-3 grid-rows-1 bg-slate-900 rounded-lg outline'>
+            <div className='w-[40%] h-14 mx-[30.3%] mt-4 grid grid-cols-3 grid-rows-1 bg-slate-900 rounded-lg outline'>
                 <button className='text-2xl text-blue-400 hover:bg-blue-400 hover:text-white rounded-md' value="planet" onClick={handleObjectClick}>Planets</button>
                 <button className='text-2xl text-blue-400 hover:bg-blue-400 hover:text-white rounded-md' value="moon" onClick={handleObjectClick}>Moons</button>
                 <button className='text-2xl text-blue-400 hover:bg-blue-400 hover:text-white rounded-md' value="other" onClick={handleObjectClick}>Sun / Other </button>
@@ -39,7 +39,7 @@ export default function SolarObjectCollection({ user, solarObjects, setCategory,
             <div className='absolute top-32 h-[1200%] w-[70%] '>{ solarObjectId ?
             <SolarObjectDetails solarObject={selectedSolarObject}/> : null }
             </div>
-            <div className='absolute pt-8 top-0 right-0 h-[1700%] w-[25%] bg-slate-900 grid grid-cols-2 gap-y-14 overflow-auto rounded-md outline'>
+            <div className='absolute pt-8 pb-8 top-0 right-0 h-[1800%] w-[25%] bg-slate-900 grid grid-cols-2 gap-y-14 overflow-auto rounded-md outline'>
                     {solarObjectCards}
             </div>
         </div>

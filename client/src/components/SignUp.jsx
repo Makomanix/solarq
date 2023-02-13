@@ -65,13 +65,13 @@ export default function SignUp() {
                 <p className='text-center pt-2 text-blue-400 text-xl pb-10'>It's quick and easy</p>
                 <form className="grid grid-cols-2 grid-rows-4 mx-4 gap-px gap-x-4 gap-y-6 grid-flow-row w-auto h-auto" onSubmit={handleSubmit}>
                     
-                    <input className="bg-slate-100 text-center rounded-md h-12" name="username" placeholder="username" type="text" value={formData.username} onChange={handleChange}/>
+                    <input className="bg-slate-100 text-center text-2xl rounded-md h-12" name="username" placeholder="username" type="text" value={formData.username} onChange={handleChange}/>
                     
-                    <input className='bg-slate-100 text-center rounded-md h-12' name="password" placeholder="password" type="password" value={formData.password} onChange={handleChange}/>
+                    <input className='bg-slate-100 text-center text-2xl rounded-md h-12' name="password" placeholder="password" type="password" value={formData.password} onChange={handleChange}/>
                     
-                    <input className="bg-slate-100 text-center rounded-md h-12" name="email" placeholder="email" type="text" value={formData.email} onChange={handleChange} />
+                    <input className="bg-slate-100 text-center text-2xl rounded-md h-12" name="email" placeholder="email" type="text" value={formData.email} onChange={handleChange} />
                     
-                    <select className="bg-slate-100 text-center rounded-md h-12" name="favorite_planet" type="text" value={formData.favorite_planet} onChange={handleSelect}>
+                    <select className="bg-slate-100 text-center text-2xl rounded-md h-12" name="favorite_planet" type="text" value={formData.favorite_planet} onChange={handleSelect}>
                         <option className=""> Select Favorite Planet</option>
                         <option value="Mercury">Mercury</option>
                         <option value="Venus">Venus</option>
@@ -87,14 +87,14 @@ export default function SignUp() {
                 </form>
                 <div>
                     {errors? 
-                    <div className='grid grid-cols-1 grid-rows-auto h-auto w-auto bg-slate-900 text-red-600 text-center text-2xl rounded-md'>
-                        <p>{errors[0]}</p>
-                        <p>{errors[1]}</p>
-                        <p>{errors[2]}</p>
-                        <p>{errors[3]}</p>
-                        <p>{errors[4]}</p>
-                        <p>{errors[5]}</p>
-                        <p>{errors[6]}</p>
+                    <div className='grid grid-cols-1 grid-rows-auto h-auto w-auto mx-20 bg-slate-900 text-center text-2xl rounded-md'>
+                        <p className='text-red-600'>{errors[0]}</p>
+                        <p className='text-red-600'>{errors[1]}</p>
+                        <p className='text-red-600'>{errors[2]}</p>
+                        <p className='text-red-600'>{errors[3]}</p>
+                        <p className='text-red-600'>{errors[4]}</p>
+                        <p className='text-red-600'>{errors[5]}</p>
+                        <p className='text-red-600'>{errors[6]}</p>
                     </div> : null }
                 </div>
             </div>

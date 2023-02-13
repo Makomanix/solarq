@@ -24,17 +24,7 @@ export default function SolarObjectContainer({user, setUser, solarObjects, setSo
             fetch(`/users/${currentUser}`)
             .then((res) => res.json())
             .then((user) => setUser(user))
-            .then(handleFavoriteObject())
-                // id: user.id,
-                // username: user.username,
-                //     score: 0,
-                //     high_score: user.high_score,
-                //     favorite_planet: user.favorite_planet,
-                // .then(console.log("solarObjects in Container",solarObjects))
-                // .then(console.log("SolarObject ID",solarObjectId))
-                // .then(console.log("user in container", location.state.user))
-                // .then(console.log(user.favorite_planet))
-            
+            .then(handleFavoriteObject())       
             }
         }, [navigate, setUser]);
         

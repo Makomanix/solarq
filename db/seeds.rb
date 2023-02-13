@@ -9,22 +9,22 @@ UserQuestion.destroy_all
 Leaderboard.destroy_all
 
 puts "Creating Users"
-User.create(username: "admin", password: "1234567", email: "astro@astro.com", favorite_planet: "Mars", score: 0, high_score: 0, admin: true )
-User.create(username: "Solar Queen", password: "1234567", email: "SolarQueen@astro.com", favorite_planet: "Mars", score: 0, high_score: 0, admin: false )
-User.create(username: "Dark Matter", password: "1234567", email: "DarkMatter@astro.com", favorite_planet: "Mars", score: 0, high_score: 0, admin: false )
-User.create(username: "Star Lord", password: "1234567", email: "StarLord@astro.com", favorite_planet: "Mars", score: 0, high_score: 0, admin: false )
+User.create(username: "admin", password: "1234567", email: "admin@gmail.com", favorite_planet: "Mars", score: 0, high_score: 0, admin: true )
+User.create(username: "Julie", password: "1234567", email: "Julie@gmail.com", favorite_planet: "Jupiter", score: 0, high_score: 0, admin: false )
+User.create(username: "Ken", password: "1234567", email: "Ken@gmail.com", favorite_planet: "Saturn", score: 0, high_score: 0, admin: false )
+User.create(username: "Dan", password: "1234567", email: "Dan@gmail.com", favorite_planet: "Earth", score: 0, high_score: 0, admin: false )
 
 puts "Creating Leaderboards"
-Leaderboard.create(username: "Solar Queen", total_score: 2400, planet_score: 1200, moon_score: 200, other_score: 1000 )
-Leaderboard.create(username: "Star Lord", total_score: 2300, planet_score: 700, moon_score: 800, other_score: 800 )
-Leaderboard.create(username: "Dark Matter", total_score: 2100, planet_score: 800, moon_score: 700, other_score: 600 )
-Leaderboard.create(username: "Solar Queen", total_score: 2100, planet_score: 800, moon_score: 800, other_score: 500 )
-Leaderboard.create(username: "Solar Queen", total_score: 1900, planet_score: 1100, moon_score: 400, other_score: 400 )
-Leaderboard.create(username: "Dark Matter", total_score: 1700, planet_score: 200, moon_score: 1200, other_score: 300 )
-Leaderboard.create(username: "Star Lord", total_score: 1600, planet_score: 400, moon_score: 900, other_score: 300 )
-Leaderboard.create(username: "Star Lord", total_score: 1400, planet_score: 100, moon_score: 200, other_score: 1100 )
-Leaderboard.create(username: "Dark Matter", total_score: 1200, planet_score: 300, moon_score: 800, other_score: 0 )
-Leaderboard.create(username: "Dark Matter", total_score: 1000, planet_score: 100, moon_score: 200, other_score: 700 )
+Leaderboard.create(username: "Julie", total_score: 1200, planet_score: 400, moon_score: 400, other_score: 400 )
+Leaderboard.create(username: "Dan", total_score: 1100, planet_score: 100, moon_score: 600, other_score: 400 )
+Leaderboard.create(username: "Ken", total_score: 1000, planet_score: 300, moon_score: 300, other_score: 400 )
+Leaderboard.create(username: "Julie", total_score: 900, planet_score: 200, moon_score: 200, other_score: 500 )
+Leaderboard.create(username: "Julie", total_score: 800, planet_score: 400, moon_score: 400, other_score: 0 )
+Leaderboard.create(username: "Ken", total_score: 700, planet_score: 0, moon_score: 300, other_score: 400 )
+Leaderboard.create(username: "Dan", total_score: 600, planet_score: 200, moon_score: 200, other_score: 200 )
+Leaderboard.create(username: "Dan", total_score: 500, planet_score: 500, moon_score: 0, other_score: 0 )
+Leaderboard.create(username: "Ken", total_score: 400, planet_score: 100, moon_score: 200, other_score: 100 )
+Leaderboard.create(username: "Ken", total_score: 300, planet_score: 100, moon_score: 100, other_score: 100 )
 
 
 puts "Creating Solar_Objects"

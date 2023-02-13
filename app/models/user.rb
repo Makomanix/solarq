@@ -8,7 +8,7 @@ class User < ApplicationRecord
     validates :password, presence: true
     validates :favorite_planet, presence: true
     validates :username, uniqueness: true
-    validates :username, length: {in: 2..15}
+    validates :username, length: {in: 3..15}
     validates :email, presence: true,
     format: { with: /(.+)@(.+)/, message: "is invalid, check for @ symbol" }, 
                 uniqueness: { case_sensitive: false },
