@@ -34,8 +34,7 @@ export default function QuizComplete({ score, pointsPossible, postLeaderboard, s
 
     const handleLastQuiz = () => {
         postLeaderboard()
-        navigate("/leaderboard")
-    }
+    };
 
     const chooseAnotherQuiz = ((planetScore !== null && moonScore !== null && otherScore !== null) ?
         <div>

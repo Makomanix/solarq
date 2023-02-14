@@ -31,10 +31,13 @@ export default function Leaderboard() {
     }, [navigate]);
 
     useEffect(() => {
+        const timer = setTimeout(() => {
         fetch(`/leaderboards/${updateFetch}`)
         .then((res) =>res.json())
         .then((leaderboardData) => setLeaderboardData(leaderboardData))
-    }, [updateFetch, setLeaderboardData]);
+        }, 500);
+        return () => clearTimeout(timer);
+    }, [updateFetch]);
 
 
     return (
