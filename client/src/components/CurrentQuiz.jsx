@@ -28,8 +28,12 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
     
     const updateHighScore = () => {
         if(totalScore > high_score ) {
-        high_score = totalScore }
+        setUser({ ...user, high_score: totalScore })
+        }
     };
+
+    console.log("high score", high_score)
+    console.log("total score", totalScore)
 
 
     const updateScore = () => {

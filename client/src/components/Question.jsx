@@ -24,7 +24,7 @@ export default function Question({ question, questions, stateAnswer, setAnswer, 
         
     
     const handleAnswerClick = () => {
-        if (choice === "0" && stateAnswer === "1") {
+        if (choice === "-1" && stateAnswer === "1") {
             setNotSelected(true)
         } else {           
             setNotSelected(false)               
