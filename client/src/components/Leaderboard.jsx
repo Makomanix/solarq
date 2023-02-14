@@ -34,7 +34,7 @@ export default function Leaderboard() {
         fetch(`/leaderboards/${updateFetch}`)
         .then((res) =>res.json())
         .then((leaderboardData) => setLeaderboardData(leaderboardData))
-    }, [updateFetch]);
+    }, [updateFetch, setLeaderboardData]);
 
 
     return (

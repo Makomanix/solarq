@@ -102,7 +102,7 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
                 })
                 
             })
-            
+                .then(patchEachQuiz())
     };
 
 
