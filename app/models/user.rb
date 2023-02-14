@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
 
     validates :username, presence: true
-    validates :password, presence: true
+    validates :password, presence: true, allow_blank: true
+    # validates :password, allow_blank: true
     validates :favorite_planet, presence: true
     validates :username, uniqueness: true
     validates :username, length: {in: 3..15}

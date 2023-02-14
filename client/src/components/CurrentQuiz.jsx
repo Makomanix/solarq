@@ -4,7 +4,7 @@ import Question from './Question';
 import QuizComplete from './QuizComplete';
 
 export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, quiz, setQuiz, user, setUser,}) {
-    const { id, username, score, high_score } = user
+    let { id, username, score, high_score } = user
     const [ planetScore, setPlanetScore] = useState(null)
     const [ moonScore, setMoonScore ] = useState(null)
     const [ otherScore, setOtherScore ] = useState(null)
@@ -28,8 +28,7 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
     
     const updateHighScore = () => {
         if(totalScore > high_score ) {
-            setUser({...user, high_score: totalScore })
-        }
+        high_score = totalScore }
     };
 
 

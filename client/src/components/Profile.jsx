@@ -6,7 +6,7 @@ export default function Profile({ user, setUser, handleLogOut, setProfileDisplay
     
     const emptyForm = {
         username: user.username,
-        password: user.password,
+        password: "",
         email: user.email,
         favorite_planet: user.favorite_planet
     };
@@ -49,7 +49,6 @@ export default function Profile({ user, setUser, handleLogOut, setProfileDisplay
         })
     };
 
-    console.log(formData.password)
 
     
     const handleSubmit = (e) => {

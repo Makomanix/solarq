@@ -10,7 +10,8 @@ export default function SignUp() {
         username: "",
         password: "",
         email: "",
-        favorite_planet: ""
+        favorite_planet: "",
+        high_score: 0
     });
 
     // takes user sign up data and adds to formData(username, password, email)
