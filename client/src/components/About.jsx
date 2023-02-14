@@ -16,7 +16,8 @@
 //             {/* <NavLink className='text-blue-400 mr-3 text-right text-2xl' to='https://github.com/Makomanix'>CLICK THIS</NavLink> */}
 //             <h1>Created by: Jon Bruckman</h1>
 //                 <h2>Flatiron Grad: Jan, 2023</h2>
-//             <a target='_blank' rel="noreferrer" href='https://github.com/Makomanix'>My Gethub</a>
+//             {/* <a target='_blank' rel="noreferrer" href='https://github.com/Makomanix'>My Gethub</a> */}
+//             <a id="fonts" href="https://github.com/atkhodier1297" className="item">Github</a>
 //         </div>
 //     )
 // }

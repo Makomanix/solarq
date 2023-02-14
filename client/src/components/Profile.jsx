@@ -49,6 +49,8 @@ export default function Profile({ user, setUser, handleLogOut, setProfileDisplay
         })
     };
 
+    console.log(formData.password)
+
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -88,7 +90,7 @@ export default function Profile({ user, setUser, handleLogOut, setProfileDisplay
                         <form className='grid grid-cols-1 mx-6 gap-y-4' onSubmit={handleSubmit}>
                             <input className="bg-slate-100 text-center text-2xl rounded-md h-12 outline" name="username" placeholder="username" type="text" onChange={handleChange} />
                             <input className='bg-slate-100 text-center text-2xl rounded-md h-12 outline' name="password" placeholder="password" type="text" onChange={handleChange} />
-                            <input className="bg-slate-100 text-center text-2xl rounded-md h-12 outline" name="email" placeholder={emptyForm.email} type="text" onChange={handleChange} />
+                            <input className="bg-slate-100 text-center text-2xl rounded-md h-12 outline" name="email" placeholder="email" type="text" onChange={handleChange} />
                             <label className='text-center text-2xl text-blue-400 '>Favorite Planet</label>
                             <select className="bg-slate-100 text-center text-2xl rounded-md h-12 outline" name="favorite_planet" type="text" onChange={handleSelect}>
                                 <option className=""></option>
