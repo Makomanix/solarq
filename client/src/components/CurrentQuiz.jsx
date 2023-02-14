@@ -13,7 +13,7 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
     const [ points, setPoints ] = useState(0);
     const [ pointsPossible, setPointsPossible ] = useState(0)
     const [ answer, setAnswer ] = useState("1");
-    const [ choice, setChoice ] = useState("0");
+    const [ choice, setChoice ] = useState("-1");
     const [ showQuizResults, setShowQuizResults ] = useState(false)
     const [ saveQuizResults, setSaveQuizResults ] = useState(false)
     const [ notSelected, setNotSelected ] = useState(false)
@@ -22,7 +22,7 @@ export default function CurrentQuiz({ questions, setQuestions, handleQuizClick, 
 
     const resetAnswerChoice = () => {
         setAnswer("1")
-        setChoice("0")
+        setChoice("-1")
     };
 
     

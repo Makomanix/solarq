@@ -43,7 +43,7 @@ export default function QuizComplete({ score, pointsPossible, postLeaderboard, s
             <button className='bg-blue-400 h-12 w-80 mt-10 text-3xl hover:bg-blue-500 rounded-md' onClick={handleLastQuiz}>Check the Leaderboard</button> 
         </div>
         :
-        <button className='bg-blue-400 h-12 w-80 mt-16 text-3xl hover:bg-blue-500 rounded-md' onClick={handleNextQuiz}>Choose Another Quiz</button>);
+        <button className='bg-blue-400 h-18 w-80 mt-16 text-3xl hover:bg-blue-500 rounded-md' onClick={handleNextQuiz}>Save Score & Select Next Quest</button>);
 
     return (
         <div className='relative'>{saveQuizResults ?
