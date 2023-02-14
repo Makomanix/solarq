@@ -45,7 +45,7 @@ export default function NavBar({user, setUser}) {
         <div className='relative'>
             {user.admin ?
             <div>
-                <button className='absolute top-4 right-14 h-8 w-24 text-white text-2xl' onClick={handleAdminDisplay}>Admin</button> 
+                <button className='absolute top-4 right-14 h-8 w-24 text-white text-2xl hover:text-blue-400' onClick={handleAdminDisplay}>Admin</button> 
                 </div> : null }
             <h1 className='absolute top-0 left-4 mt-2 text-white text-8xl'>Solar Explorer</h1> 
             {/* <NavLink className='absolute top-3 right-72 text-white text-3xl text-center hover:text-blue-500' to="/about">About</NavLink> */}
